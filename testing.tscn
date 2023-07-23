@@ -5,15 +5,14 @@
 [ext_resource type="Script" path="res://RoomControl.gd" id="2_evlsn"]
 
 [node name="Main" type="Node2D"]
-position = Vector2(210, 200)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_6vdy8")]
 z_index = 1
 
-[node name="Room Control" type="Node" parent="."]
+[node name="Room Control" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_evlsn")
+player = NodePath("../Player")
 
 [node name="TileMap" parent="Room Control" instance=ExtResource("1_sneut")]
-position = Vector2(210, 200)
