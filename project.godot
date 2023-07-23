@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Augmented"
+run/main_scene="res://testing.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [rendering]
 
