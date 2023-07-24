@@ -10,6 +10,9 @@
 
 [node name="Player" parent="." instance=ExtResource("1_6vdy8")]
 z_index = 1
+scale = Vector2(1.5, 1.5)
+SPEED = 300.0
+ACCELERATION = 4000.0
 
 [node name="Room Control" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_evlsn")
