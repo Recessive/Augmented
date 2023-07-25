@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0a68r75d23ct"]
+
+[ext_resource type="PackedScene" uid="uid://c1madl7yg0ie4" path="res://player.tscn" id="1_6vdy8"]
+[ext_resource type="Script" path="res://HUD.gd" id="1_c5hqg"]
+[ext_resource type="PackedScene" uid="uid://do0n8wx6fpltf" path="res://Rooms/Testing Rooms/room1.tscn" id="1_sneut"]
+[ext_resource type="Script" path="res://RoomControl.gd" id="2_evlsn"]
+[ext_resource type="Texture2D" uid="uid://cdhfu5ubhuqgp" path="res://Sprites/Enemies/enemy.png" id="4_y5un7"]
+[ext_resource type="Script" path="res://Globos.gd" id="5_fc1pg"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="6_ji6go"]
+[ext_resource type="AudioStream" uid="uid://bfjflw61ilixu" path="res://Songs/testing.mp3" id="9_d5elt"]
+[ext_resource type="Script" path="res://AudioController.gd" id="9_vdj3f"]
+
+[sub_resource type="Curve" id="Curve_ifm2s"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6c21k"]
+radius = 36.0139
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_10bvj"]
+radius = 36.0139
+
+[node name="Main" type="Node2D"]
+
+[node name="HUD" type="Node" parent="." node_paths=PackedStringArray("hpLabel")]
+script = ExtResource("1_c5hqg")
+hpLabel = NodePath("Health")
+
+[node name="Health" type="Label" parent="HUD"]
+offset_left = -566.0
+offset_top = -319.0
+offset_right = -526.0
+offset_bottom = -293.0
+text = "HP:"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_6vdy8")]
+z_index = 1
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+motion_mode = 1
+
+[node name="Room Control" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_evlsn")
+player = NodePath("../Player")
+
+[node name="TileMap" parent="Room Control" instance=ExtResource("1_sneut")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_d5elt")
+volume_db = -14.054
+pitch_scale = 0.13
+autoplay = true
+script = ExtResource("9_vdj3f")
+beatFilePath = "res://Songs/testing_map.txt"
+
+[node name="Globos2" type="Node" parent="."]
+script = ExtResource("5_fc1pg")
+DAMAGE = 5.0
+PENETRATION = null
+KNOCKBACK = 500.0
+moveCurve = SubResource("Curve_ifm2s")
+
+[node name="Globos" type="CharacterBody2D" parent="Globos2"]
+position = Vector2(-254, 141)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Globos2/Globos" groups=["Killable"]]
+modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_y5un7")
+
+[node name="Enemy" type="Node" parent="Globos2/Globos/Sprite2D"]
+script = ExtResource("6_ji6go")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Globos2/Globos"]
+shape = SubResource("CircleShape2D_6c21k")
+
+[node name="PlayerHurt" type="Area2D" parent="Globos2/Globos"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Globos2/Globos/PlayerHurt"]
+shape = SubResource("CircleShape2D_10bvj")
+
+[node name="Line2D" type="Line2D" parent="Globos2"]
+position = Vector2(-254, 141)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="body_entered" from="Globos2/Globos/PlayerHurt" to="Globos2/Globos" method="_on_player_hurt_body_entered"]

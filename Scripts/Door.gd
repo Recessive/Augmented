@@ -3,4 +3,5 @@ extends Area2D
 signal door_entered
 
 func _on_body_entered(body):
-	emit_signal("door_entered", self)
+	if body.is_in_group("Player"):
+		emit_signal("door_entered", self)

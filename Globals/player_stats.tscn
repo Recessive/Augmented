@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfbyoh5kyo326"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="1_5oy3t"]
+
+[node name="PlayerStats" type="Node"]
+script = ExtResource("1_5oy3t")
+maxHP = 100.0
+maxSpeed = 600.0
+acceleration = 6000.0
