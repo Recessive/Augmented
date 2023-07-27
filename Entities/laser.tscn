@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj8wa8lbw31pq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o0q1y"]
+load_path = "res://.godot/imported/dot.png-bb3a6bf652ab27348fdd87703534d0ea.ctex"
+
+[sub_resource type="Curve" id="Curve_ko1mm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_w2u8h"]
+offsets = PackedFloat32Array(0, 0.854305, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jjkif"]
+load_path = "res://.godot/imported/dot.png-bb3a6bf652ab27348fdd87703534d0ea.ctex"
+
+[sub_resource type="Curve" id="Curve_gd72o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_44j3c"]
+offsets = PackedFloat32Array(0, 0.854305, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Laser" type="Line2D"]
+width = 5.0
+default_color = Color(1, 1, 0, 1)
+
+[node name="LaserStart" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 0.203922, 1)
+emitting = false
+texture = SubResource("CompressedTexture2D_o0q1y")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_ko1mm")
+color_ramp = SubResource("Gradient_w2u8h")
+
+[node name="LaserEnd" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 0.203922, 1)
+emitting = false
+lifetime = 0.3
+texture = SubResource("CompressedTexture2D_jjkif")
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_gd72o")
+color_ramp = SubResource("Gradient_44j3c")

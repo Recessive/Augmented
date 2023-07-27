@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ywvt2rfxhyn4"]
+[gd_scene load_steps=7 format=3 uid="uid://ywvt2rfxhyn4"]
 
 [ext_resource type="Script" path="res://Scripts/Globos.gd" id="1_slg25"]
 [ext_resource type="Texture2D" uid="uid://cdhfu5ubhuqgp" path="res://Sprites/Enemies/enemy.png" id="2_7j8vh"]
+[ext_resource type="AudioStream" uid="uid://ciye41cfa1s2c" path="res://Sounds/lockon_one.wav" id="3_iw8nv"]
+[ext_resource type="AudioStream" uid="uid://k8mnp2eg43ga" path="res://Sounds/bop2.wav" id="4_drc5h"]
 
-[sub_resource type="Curve" id="Curve_8dbir"]
-_data = [Vector2(1, 1), 0.0, 0.0, 1, 0]
-point_count = 1
+[sub_resource type="Curve" id="Curve_xjsec"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_10bvj"]
 radius = 36.0139
@@ -14,9 +16,13 @@ radius = 36.0139
 script = ExtResource("1_slg25")
 DAMAGE = 5.0
 KNOCKBACK = 1000.0
-moveCurve = SubResource("Curve_8dbir")
 responseBeat = 1
 minShootDist = 100.0
+laserChargeWidth = 3.0
+laserFireWidth = 15.0
+laserFireDuration = 0.1
+laserChargeCurve = SubResource("Curve_xjsec")
+laserScene = "res://Entities/laser.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Killable"]]
 texture_filter = 1
@@ -31,8 +37,20 @@ collision_mask = 2
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/PlayerHurt"]
 shape = SubResource("CircleShape2D_10bvj")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="TelegraphLine" type="Line2D" parent="."]
 scale = Vector2(0.5, 0.5)
-width = 3.0
+width = 2.0
+
+[node name="LaserCharge" type="Line2D" parent="."]
+width = 4.0
+default_color = Color(1, 1, 0.447059, 1)
+
+[node name="LaserLockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iw8nv")
+volume_db = -10.0
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_drc5h")
+volume_db = -8.0
 
 [connection signal="body_entered" from="Sprite2D/PlayerHurt" to="." method="_on_player_hurt_body_entered"]
