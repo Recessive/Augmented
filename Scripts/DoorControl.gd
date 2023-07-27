@@ -12,6 +12,7 @@ signal new_room
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	# assign a room type to each door in this room
 	var roomWeights = []
 	for room in roomTypes:
