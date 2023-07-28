@@ -12,7 +12,7 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_10bvj"]
 radius = 36.0139
 
-[node name="Globos" type="Node2D"]
+[node name="Globos" type="Node2D" groups=["Enemy"]]
 script = ExtResource("1_slg25")
 DAMAGE = 5.0
 KNOCKBACK = 1000.0
@@ -24,7 +24,7 @@ laserFireDuration = 0.1
 laserChargeCurve = SubResource("Curve_xjsec")
 laserScene = "res://Entities/laser.tscn"
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["Killable"]]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_7j8vh")
@@ -40,10 +40,11 @@ shape = SubResource("CircleShape2D_10bvj")
 [node name="TelegraphLine" type="Line2D" parent="."]
 scale = Vector2(0.5, 0.5)
 width = 2.0
+default_color = Color(1, 1, 1, 0.498039)
 
 [node name="LaserCharge" type="Line2D" parent="."]
 width = 4.0
-default_color = Color(1, 1, 0.447059, 1)
+default_color = Color(1, 1, 0.447059, 0.498039)
 
 [node name="LaserLockSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_iw8nv")

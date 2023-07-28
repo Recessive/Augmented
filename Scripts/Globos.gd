@@ -31,6 +31,9 @@ var laserFireWidth : float
 var laserFireDuration : float
 
 @export
+var laserParticleDuration : float
+
+@export
 var laserChargeCurve : Curve
 
 @export
@@ -90,6 +93,7 @@ func fire_laser(start : Vector2, end : Vector2):
 	laserLine.width = laserFireWidth
 	var laserTween = get_tree().create_tween()
 	laserTween.tween_property(laserLine, "width", 0, laserFireDuration)
+	laserTween.tween_interval(laserParticleDuration)
 	laserTween.tween_callback(laserLine.queue_free)
 
 func _physics_process(delta):
@@ -170,16 +174,5 @@ func beat(enabled : Array[bool], beat : int):
 		reset_laserCharge()
 		if telegraphLine.points.size() == 1:
 			angle = sprite.global_position.angle_to_point(player.global_position)
-			# angle = randf_range(0, 2*PI)
-			# for addAng in [0, PI/2, PI, 3*PI/2]:
-			# 	direc = Vector2(cos(angle+addAng), sin(angle+addAng))
-			# 	query = PhysicsRayQueryParameters2D.create(target, direc*10000, 0x00000001)
-			# 	result = space.intersect_ray(query)
-			# 	if result.is_empty():
-			# 		continue
-			# 	var d = target.distance_to(result.position)
-			# 	if d > minShootDist:
-			# 		angle += addAng
-			# 		break
 			direc = Vector2(cos(angle), sin(angle))
 			prepping = true

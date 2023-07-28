@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj8wa8lbw31pq"]
+[gd_scene load_steps=8 format=3 uid="uid://dj8wa8lbw31pq"]
+
+[ext_resource type="Environment" uid="uid://c10t3isdi14l8" path="res://Environments/glow.tres" id="1_s6hx0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o0q1y"]
 load_path = "res://.godot/imported/dot.png-bb3a6bf652ab27348fdd87703534d0ea.ctex"
@@ -53,3 +55,6 @@ scale_amount_min = 0.1
 scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_gd72o")
 color_ramp = SubResource("Gradient_44j3c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_s6hx0")
