@@ -14,7 +14,7 @@ func _ready():
 
 
 var charging : bool = false
-var chargingBullet : Node
+var chargingBullet : CharacterBody2D
 func _physics_process(delta):
 	
 	var direc = Vector2(0, 0)
@@ -35,13 +35,11 @@ func _physics_process(delta):
 		# Initially, set bullet position to right on top of player
 		var b : Node = bullet.instantiate()
 		add_child(b)
-		b.position = Vector2()
 		
 		charging = true
 		chargingBullet = b
 	
 	if charging:
-		chargingBullet.position = Vector2()
 		var chargeAni : AnimatedSprite2D = chargingBullet.get_node("ChargeAni")
 		var p : float = Conductor.percentage_enabled(fireBeatIndex)
 		chargeAni.frame = floor(chargeAni.sprite_frames.get_frame_count("default") * p)
@@ -54,12 +52,13 @@ func hurt(attack : Attack):
 func beat(enabled : Array[bool], beat : int):
 	if enabled[fireBeatIndex] and charging:
 		charging = false
+		chargingBullet.ignoreCol = false
+		chargingBullet.get_node("ChargeAni").visible = false
+		chargingBullet.get_node("BulletAni").visible = true
+		var vel = global_position.direction_to(get_global_mouse_position()).normalized() * chargingBullet.SPEED
+		chargingBullet.velocity = vel
 		remove_child(chargingBullet)
 		get_tree().get_root().add_child(chargingBullet)
-		
-		chargingBullet.get_node("ChargeAni").visible = false
-		chargingBullet.get_node("RigidBody2D").visible = true
-		var force = global_position.direction_to(get_global_mouse_position()).normalized() * chargingBullet.SPEED
-		chargingBullet.get_node("RigidBody2D").apply_central_impulse(force)
+		chargingBullet.global_position = global_position
 		
 		

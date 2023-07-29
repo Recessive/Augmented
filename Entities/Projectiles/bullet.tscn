@@ -20,8 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://vxdp6ob55ctt" path="res://Sprites/Projectiles/Bullet1 Charge/bullet_1_charge_09.png" id="18_2rnki"]
 [ext_resource type="Texture2D" uid="uid://cgyufaby54if8" path="res://Sprites/Projectiles/Bullet1 Charge/bullet_1_charge_10.png" id="19_cgiup"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_na774"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_1o480"]
 animations = [{
 "frames": [{
@@ -96,26 +94,20 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_cgiup")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Bullet" type="CanvasGroup" groups=["Player Projectile"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45ht1"]
+
+[node name="Bullet" type="CharacterBody2D" groups=["Player Projectile"]]
 modulate = Color(0, 1, 1, 1)
 script = ExtResource("1_r10pf")
-SPEED = 800.0
+SPEED = 10.0
 DAMAGE = 5.0
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-visible = false
-collision_layer = 8
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("RectangleShape2D_na774")
-
-[node name="BulletAni" type="AnimatedSprite2D" parent="RigidBody2D"]
+[node name="BulletAni" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(30.77, 31.36, 29.59, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1o480")
@@ -124,15 +116,19 @@ frame = 1
 frame_progress = 0.633436
 speed_scale = 8.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="RigidBody2D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oevbp")
 
 [node name="ChargeAni" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(7, 7, 7, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_n61sp")
-autoplay = "default"
 frame = 3
 frame_progress = 0.156268
 
-[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_45ht1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c1madl7yg0ie4" path="res://player.tscn" id="1_6vdy8"]
 [ext_resource type="Script" path="res://HUD.gd" id="1_c5hqg"]
 [ext_resource type="PackedScene" uid="uid://do0n8wx6fpltf" path="res://Rooms/Testing Rooms/room1.tscn" id="1_sneut"]
-[ext_resource type="AudioStream" uid="uid://c4y5xa6su12mg" path="res://Songs/upbeatting.wav" id="3_vhac6"]
+[ext_resource type="AudioStream" uid="uid://bfjflw61ilixu" path="res://Songs/testing.mp3" id="3_qdblx"]
 [ext_resource type="Script" path="res://Scripts/RoomControl.gd" id="4_fjk4l"]
 [ext_resource type="Script" path="res://Scripts/AudioController.gd" id="7_ckjrg"]
 [ext_resource type="PackedScene" uid="uid://ywvt2rfxhyn4" path="res://Entities/Enemies/globos.tscn" id="8_ecqo5"]
@@ -31,11 +31,11 @@ collision_layer = 2
 motion_mode = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_vhac6")
+stream = ExtResource("3_qdblx")
 volume_db = -15.622
 autoplay = true
 script = ExtResource("7_ckjrg")
-beatFilePath = "res://Songs/upbeat1.txt"
+beatFilePath = "res://Songs/testing_call.txt"
 
 [node name="Room Control" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_fjk4l")
