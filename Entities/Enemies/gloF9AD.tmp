@@ -11,9 +11,10 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_he16o"]
-radius = 18.0
+radius = 180.278
 
 [node name="Globos" instance=ExtResource("1_ee8lh")]
+scale = Vector2(0.1, 0.1)
 script = ExtResource("2_l14rr")
 DAMAGE = 5.0
 PENETRATION = 0.0
@@ -28,16 +29,9 @@ laserFireDuration = 0.1
 laserParticleDuration = 0.0
 laserChargeCurve = SubResource("Curve_cr62t")
 laserScene = "res://Entities/laser.tscn"
-CONTACT_DAMAGE = 5.0
-CONTACT_KNOCKBACK = 1500.0
-maxHP = 100.0
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_ulhjp")
-
-[node name="Area2D" parent="." index="3"]
-collision_mask = 2
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 scale = Vector2(1, 1)

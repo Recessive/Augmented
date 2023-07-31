@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://b0a68r75d23ct"]
 
 [ext_resource type="PackedScene" uid="uid://c1madl7yg0ie4" path="res://player.tscn" id="1_6vdy8"]
-[ext_resource type="Script" path="res://HUD.gd" id="1_c5hqg"]
 [ext_resource type="PackedScene" uid="uid://do0n8wx6fpltf" path="res://Rooms/Testing Rooms/room1.tscn" id="1_sneut"]
-[ext_resource type="AudioStream" uid="uid://bfjflw61ilixu" path="res://Songs/testing.mp3" id="3_qdblx"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_xasxf"]
+[ext_resource type="AudioStream" uid="uid://cupdml0m1es7u" path="res://Songs/FINALBATTLE.wav" id="3_sf8du"]
 [ext_resource type="Script" path="res://Scripts/RoomControl.gd" id="4_fjk4l"]
 [ext_resource type="Script" path="res://Scripts/AudioController.gd" id="7_ckjrg"]
-[ext_resource type="PackedScene" uid="uid://ywvt2rfxhyn4" path="res://Entities/Enemies/globos.tscn" id="8_ecqo5"]
+[ext_resource type="PackedScene" uid="uid://be25arkmfs6t6" path="res://Entities/Enemies/globos.tscn" id="7_yta2q"]
 
 [node name="Main" type="Node2D"]
 
 [node name="HUD" type="Node" parent="." node_paths=PackedStringArray("hpLabel")]
-script = ExtResource("1_c5hqg")
+script = ExtResource("1_xasxf")
 hpLabel = NodePath("Health")
 
 [node name="Health" type="Label" parent="HUD"]
@@ -27,15 +27,14 @@ text = "HP:"
 z_index = 1
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
-collision_layer = 2
 motion_mode = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_qdblx")
+stream = ExtResource("3_sf8du")
 volume_db = -15.622
 autoplay = true
 script = ExtResource("7_ckjrg")
-beatFilePath = "res://Songs/testing_call.txt"
+beatFilePath = "res://Songs/boss1.txt"
 
 [node name="Room Control" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_fjk4l")
@@ -44,8 +43,14 @@ player = NodePath("../Player")
 [node name="TileMap" parent="Room Control" node_paths=PackedStringArray("doorNodes") instance=ExtResource("1_sneut")]
 doorNodes = []
 
-[node name="Globos" parent="." instance=ExtResource("8_ecqo5")]
-position = Vector2(-212, 217)
-laserChargeWidth = 4.0
-
 [node name="EnemyControl" type="Node" parent="."]
+
+[node name="Globos" parent="." instance=ExtResource("7_yta2q")]
+position = Vector2(-342, 158)
+collision_layer = 1
+collision_mask = 1
+PENETRATION = 0.0
+callBeat = 0
+offsetBeats = 0
+laserParticleDuration = 0.0
+maxHP = 0.0

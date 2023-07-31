@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://bmcgvbkhfhxio"]
+
+[ext_resource type="Script" path="res://Scripts/ProjectileControl.gd" id="1_nd1sl"]
+[ext_resource type="Texture2D" uid="uid://ckef4e484u0dl" path="res://Sprites/Projectiles/Bullet1/bullet1_01.png" id="2_4tt2c"]
+[ext_resource type="Texture2D" uid="uid://m6k43hbvjef7" path="res://Sprites/Projectiles/Bullet1/bullet1_02.png" id="3_oogq1"]
+[ext_resource type="Texture2D" uid="uid://qiqr6pce05mc" path="res://Sprites/Projectiles/Bullet1/bullet1_03.png" id="4_8rk1u"]
+[ext_resource type="Texture2D" uid="uid://bp8sxm24ira6j" path="res://Sprites/Projectiles/Bullet1/bullet1_04.png" id="5_dwd7t"]
+[ext_resource type="Texture2D" uid="uid://bikb6bw8r8rte" path="res://Sprites/Projectiles/Bullet1/bullet1_05.png" id="6_kjw8g"]
+[ext_resource type="Texture2D" uid="uid://cqdskrfgea180" path="res://Sprites/Projectiles/Bullet1/bullet1_06.png" id="7_pommy"]
+[ext_resource type="Texture2D" uid="uid://dtnstgmjequog" path="res://Sprites/Projectiles/Bullet1/bullet1_07.png" id="8_4hnd6"]
+[ext_resource type="Texture2D" uid="uid://du4wn4wso1k65" path="res://Sprites/Projectiles/Bullet1/bullet1_08.png" id="9_3fm8g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1o480"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4tt2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oogq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8rk1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dwd7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kjw8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pommy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4hnd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3fm8g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Environment" id="Environment_oevbp"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.55
+glow_strength = 1.39
+glow_blend_mode = 0
+glow_hdr_threshold = 1.34
+glow_hdr_scale = 0.21
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45ht1"]
+
+[node name="Bullet" type="CharacterBody2D" groups=["Player Projectile"]]
+modulate = Color(0, 1, 1, 1)
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_nd1sl")
+SPEED = 10.0
+DAMAGE = 5.0
+
+[node name="BulletAni" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(30.77, 31.36, 29.59, 1)
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1o480")
+autoplay = "default"
+frame = 1
+frame_progress = 0.633436
+speed_scale = 8.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oevbp")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+collision_priority = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_45ht1")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerStats="*res://Globals/player_stats.tscn"
 Conductor="*res://Scripts/Conductor.gd"
+GlobalAssets="*res://Globals/global_assets.tscn"
 
 [display]
 

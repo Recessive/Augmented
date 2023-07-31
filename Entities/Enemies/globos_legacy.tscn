@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://ywvt2rfxhyn4"]
+
+[ext_resource type="Script" path="res://Scripts/Globos.gd" id="1_ijkfu"]
+[ext_resource type="Texture2D" uid="uid://cdhfu5ubhuqgp" path="res://Sprites/Enemies/enemy.png" id="2_knmhw"]
+[ext_resource type="Script" path="res://Entities/Enemies/ParentConnect.gd" id="3_d7ojx"]
+[ext_resource type="AudioStream" uid="uid://ciye41cfa1s2c" path="res://Sounds/lockon_one.wav" id="4_c2i2h"]
+[ext_resource type="AudioStream" uid="uid://k8mnp2eg43ga" path="res://Sounds/bop2.wav" id="5_gako8"]
+
+[sub_resource type="Curve" id="Curve_xjsec"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_10bvj"]
+radius = 36.0139
+
+[node name="Globos" type="Node2D" groups=["Enemy"]]
+script = ExtResource("1_ijkfu")
+DAMAGE = 5.0
+KNOCKBACK = 1000.0
+responseBeat = 1
+minShootDist = 100.0
+laserChargeWidth = 3.0
+laserFireWidth = 15.0
+laserFireDuration = 0.1
+laserChargeCurve = SubResource("Curve_xjsec")
+laserScene = "res://Entities/laser.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_knmhw")
+
+[node name="PlayerHurt" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("parent") groups=["Enemy"]]
+scale = Vector2(5, 5)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_d7ojx")
+parent = NodePath("../..")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/PlayerHurt"]
+shape = SubResource("CircleShape2D_10bvj")
+
+[node name="TelegraphLine" type="Line2D" parent="."]
+scale = Vector2(0.5, 0.5)
+width = 2.0
+default_color = Color(1, 1, 1, 0.498039)
+
+[node name="LaserCharge" type="Line2D" parent="."]
+width = 4.0
+default_color = Color(1, 1, 0.447059, 0.498039)
+
+[node name="LaserLockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c2i2h")
+volume_db = -10.0
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gako8")
+volume_db = -8.0
+
+[connection signal="body_entered" from="Sprite2D/PlayerHurt" to="." method="_on_player_hurt_body_entered"]

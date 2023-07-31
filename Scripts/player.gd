@@ -20,9 +20,7 @@ func _ready():
 	Conductor.onBeat.connect(beat)
 
 
-var charging : bool = false
-var chargingBullet : CharacterBody2D
-var last = 0
+var canClick = true
 func _physics_process(delta):
 	
 	var direc = Vector2(0, 0)
@@ -37,43 +35,32 @@ func _physics_process(delta):
 	
 	velocity = velocity.move_toward(direc * PlayerStats.maxSpeed, PlayerStats.acceleration * delta)
 	move_and_slide()
-	
-	if Input.is_action_pressed("shoot") and !charging:
-		
-		# Initially, set bullet position to right on top of player
-		var b : Node = bullet.instantiate()
-		add_child(b)
-		
-		# Scale the pitch of weapon charge so it finishes after the reamining time
-		# weaponChargeSound.pitch_scale = weaponChargeSound.stream.get_length() / Conductor.timeToNextEnabled(fireBeatIndex)
-		# weaponChargeSound.play()
-		
-		charging = true
-		chargingBullet = b
-	
-	if charging:
-		var chargeAni : AnimatedSprite2D = chargingBullet.get_node("ChargeAni")
-		var p : float = Conductor.percentage_enabled(fireBeatIndex)
-		chargeAni.frame = floor(chargeAni.sprite_frames.get_frame_count("default") * p)
-		if chargeAni.frame != last:
-			weaponChargeSound.play()
-		last = chargeAni.frame
+	if Input.is_action_just_pressed("shoot") and canClick:
+		# Immediately shoot to give responsiveness, then start shooting on the beat
+		shoot()
+		canClick = false
 
+func shoot():
+	var b : Node = bullet.instantiate()
+	var vel = global_position.direction_to(get_global_mouse_position()).normalized() * b.SPEED
+	get_tree().get_root().add_child(b)
+	b.global_position = global_position
+	b.velocity = vel
+	weaponShootSound.play()
+	
 func hurt(attack : Attack):
 	PlayerStats.hp -= attack.damage
 	velocity = (global_position - attack.pos).normalized() * attack.knockback
+	GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
 	pass
 
 func beat(enabled : Array[bool], beat : int):
-	if enabled[fireBeatIndex] and charging:
-		charging = false
-		chargingBullet.ignoreCol = false
-		chargingBullet.get_node("ChargeAni").visible = false
-		chargingBullet.get_node("BulletAni").visible = true
-		var vel = global_position.direction_to(get_global_mouse_position()).normalized() * chargingBullet.SPEED
-		chargingBullet.velocity = vel
-		remove_child(chargingBullet)
-		get_tree().get_root().add_child(chargingBullet)
-		chargingBullet.global_position = global_position
+	if enabled[fireBeatIndex]:
+		if Input.is_action_pressed("shoot"):
+			shoot()
+		elif !canClick:
+			canClick = true
+			# Play reload sound
+		
 		
 		

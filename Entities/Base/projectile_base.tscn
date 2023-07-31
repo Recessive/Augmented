@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dshfbwn7mbb0c"]
+
+[ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Entities/Base/entity_base.tscn" id="1_d03md"]
+[ext_resource type="Script" path="res://Scripts/Base/ProjectileBase.gd" id="2_00rf2"]
+
+[node name="ProjectileBase" instance=ExtResource("1_d03md")]
+script = ExtResource("2_00rf2")
+SPEED = 0.0
+DAMAGE = 0.0
+PENETRATION = 0.0
+KNOCKBACK = 0.0
+targetGroup = "Enemy"
+fireBeats = 1
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

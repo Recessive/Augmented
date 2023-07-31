@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cogrrokfhi0dg" path="res://Sprites/Player/2.png" id="2_2oc4o"]
 [ext_resource type="PackedScene" uid="uid://bmcgvbkhfhxio" path="res://Entities/Projectiles/bullet.tscn" id="2_vwwgj"]
 [ext_resource type="Texture2D" uid="uid://ck6khrl27p0p7" path="res://Sprites/Player/3.png" id="3_6fef5"]
-[ext_resource type="AudioStream" uid="uid://d1f0tij7pcojf" path="res://Sounds/met.wav" id="6_kpgfh"]
-[ext_resource type="AudioStream" uid="uid://3dpqhdsaqnrq" path="res://Sounds/Blast_3.ogg" id="7_fipmv"]
+[ext_resource type="AudioStream" uid="uid://li8ehs7dmy53" path="res://Sounds/laser2.wav" id="6_va0gp"]
+[ext_resource type="AudioStream" uid="uid://cv70jngpd1uay" path="res://Sounds/laser3.wav" id="7_nk531"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oykj"]
 size = Vector2(16, 26)
@@ -29,9 +29,11 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_qkck1")
 bullet = ExtResource("2_vwwgj")
-fireBeatIndex = 2
+fireBeatIndex = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1)
@@ -44,9 +46,9 @@ frame = 2
 frame_progress = 0.515361
 
 [node name="WeaponCharge" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_kpgfh")
+stream = ExtResource("6_va0gp")
 volume_db = -80.0
 
 [node name="WeaponShoot" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_fipmv")
+stream = ExtResource("7_nk531")
 volume_db = -10.0

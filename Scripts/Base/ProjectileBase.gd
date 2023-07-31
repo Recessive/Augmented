@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends "res://Scripts/Base/EntityBase.gd"
 
 @export
 var SPEED : float
@@ -13,14 +13,15 @@ var PENETRATION : float
 var KNOCKBACK : float
 
 @export
-var fireBeats : int = 1
+var targetGroup : String = "Enemy"
 
-var ignoreCol = false
+@export
+var fireBeats : int = 1
 
 func _physics_process(delta):
 	move_and_collide(velocity)
 
-func damage_enemy(pos : Vector2, body : Node):
+func damage_body(pos : Vector2, body : Node):
 	var attack = Attack.new()
 	attack.damage = randi_range(0, 100)
 	attack.penetration = PENETRATION
@@ -29,17 +30,14 @@ func damage_enemy(pos : Vector2, body : Node):
 	body.hurt(attack)
 
 func _on_area_2d_body_entered(body):
-	if ignoreCol:
-		return
-	if body.is_in_group("Enemy"):
-		damage_enemy(global_position, body)
+	if body.is_in_group(targetGroup):
+		damage_body(global_position, body)
 	queue_free()
 		
 
 
 func _on_area_2d_area_entered(area):
-	if ignoreCol:
-		return
-	if area.is_in_group("Enemy"):
-		damage_enemy(global_position, area.parent)
+	if area.is_in_group(targetGroup):
+		damage_body(global_position, area.parent)
 	queue_free()
+

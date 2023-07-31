@@ -1,4 +1,4 @@
-extends Node2D
+extends "res://Scripts/Base/EnemyBase.gd"
 
 @export
 var DAMAGE : float
@@ -43,9 +43,6 @@ var laserScene : String
 var player : Node = $"../Player" # TODO: Change this to work with a spawner
 
 @onready
-var sprite : Sprite2D = $Sprite2D
-
-@onready
 var telegraphLine : Line2D = $TelegraphLine
 
 @onready
@@ -71,6 +68,9 @@ var target : Vector2 = global_position
 @onready
 var pivot : Vector2 = global_position
 
+
+# Kind of yuck, but have to move the sprite and area2d instead of the parent, because if
+# I moved the parent the telegraph lines would move too
 
 var laserTween : Tween
 func _ready():
@@ -105,14 +105,16 @@ func _physics_process(delta):
 		laserChargeLine.set_point_position(0, p1)
 		laserChargeLine.set_point_position(1, p2)
 		laserChargeLine.width = laserChargeWidth * laserChargeCurve.sample(Conductor.percentage_enabled(responseBeat))
-	
-	
 	pass
 	
 func _on_player_hurt_body_entered(body : Node):
 	if body.is_in_group("Player"):
 		damage_player(sprite.global_position, body)
 
+func hurt(attack : Attack):
+	hp -= attack.damage
+	GlobalAssets.SpawnDamageNumber(attack.damage, sprite.global_position)
+	
 
 func damage_player(pos : Vector2, body : Node):
 	var attack = Attack.new()
@@ -160,6 +162,7 @@ func beat(enabled : Array[bool], beat : int):
 		pivot = telegraphLine.to_global(telegraphLine.points[0])
 		target = telegraphLine.to_global(telegraphLine.points[1])
 		
+		area2d.global_position = target
 		sprite.global_position = target
 		fire_laser(pivot, target)
 		
