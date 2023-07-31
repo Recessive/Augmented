@@ -9,12 +9,20 @@ var fireBeats : int = 1
 @export
 var fireBeatIndex : int
 
+@onready
+var weaponChargeSound : AudioStreamPlayer = $WeaponCharge
+
+@onready
+var weaponShootSound : AudioStreamPlayer = $WeaponShoot
+
+
 func _ready():
 	Conductor.onBeat.connect(beat)
 
 
 var charging : bool = false
 var chargingBullet : CharacterBody2D
+var last = 0
 func _physics_process(delta):
 	
 	var direc = Vector2(0, 0)
@@ -36,6 +44,10 @@ func _physics_process(delta):
 		var b : Node = bullet.instantiate()
 		add_child(b)
 		
+		# Scale the pitch of weapon charge so it finishes after the reamining time
+		# weaponChargeSound.pitch_scale = weaponChargeSound.stream.get_length() / Conductor.timeToNextEnabled(fireBeatIndex)
+		# weaponChargeSound.play()
+		
 		charging = true
 		chargingBullet = b
 	
@@ -43,6 +55,9 @@ func _physics_process(delta):
 		var chargeAni : AnimatedSprite2D = chargingBullet.get_node("ChargeAni")
 		var p : float = Conductor.percentage_enabled(fireBeatIndex)
 		chargeAni.frame = floor(chargeAni.sprite_frames.get_frame_count("default") * p)
+		if chargeAni.frame != last:
+			weaponChargeSound.play()
+		last = chargeAni.frame
 
 func hurt(attack : Attack):
 	PlayerStats.hp -= attack.damage

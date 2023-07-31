@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1madl7yg0ie4"]
+[gd_scene load_steps=10 format=3 uid="uid://c1madl7yg0ie4"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_qkck1"]
 [ext_resource type="Texture2D" uid="uid://xjwv30b8jwhv" path="res://Sprites/Player/1.png" id="1_qtltw"]
 [ext_resource type="Texture2D" uid="uid://cogrrokfhi0dg" path="res://Sprites/Player/2.png" id="2_2oc4o"]
 [ext_resource type="PackedScene" uid="uid://bmcgvbkhfhxio" path="res://Entities/Projectiles/bullet.tscn" id="2_vwwgj"]
 [ext_resource type="Texture2D" uid="uid://ck6khrl27p0p7" path="res://Sprites/Player/3.png" id="3_6fef5"]
+[ext_resource type="AudioStream" uid="uid://d1f0tij7pcojf" path="res://Sounds/met.wav" id="6_kpgfh"]
+[ext_resource type="AudioStream" uid="uid://3dpqhdsaqnrq" path="res://Sounds/Blast_3.ogg" id="7_fipmv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oykj"]
 size = Vector2(16, 26)
@@ -40,3 +42,11 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_v8agd")
 frame = 2
 frame_progress = 0.515361
+
+[node name="WeaponCharge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_kpgfh")
+volume_db = -80.0
+
+[node name="WeaponShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fipmv")
+volume_db = -10.0

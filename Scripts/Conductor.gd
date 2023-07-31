@@ -96,6 +96,10 @@ func get_percentage_enabled():
 func percentage_enabled(mapIndex : int) -> float:
 	return percentEnabled[mapIndex]
 
+func timeToNextEnabled(mapIndex : int) -> float:
+	var next : float = BeatToTime(rightEnabled[mapIndex][beatNumber])
+	return next - songPosition
+
 func BeatToTime(beat : int) -> float:
 	return beat * crotchet
 
