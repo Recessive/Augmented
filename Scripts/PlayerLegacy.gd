@@ -1,4 +1,4 @@
-extends "res://Scripts/Base/EntityBase.gd"
+extends CharacterBody2D
 
 @export
 var bullet : PackedScene
@@ -61,3 +61,6 @@ func beat(enabled : Array[bool], beat : int):
 		elif !canClick:
 			canClick = true
 			# Play reload sound
+		
+		
+		

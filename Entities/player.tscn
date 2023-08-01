@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhe4du707gwjv"]
+
+[ext_resource type="Texture2D" uid="uid://xjwv30b8jwhv" path="res://Sprites/Player/1.png" id="1_qtltw"]
+[ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Entities/Base/entity_base.tscn" id="1_x372u"]
+[ext_resource type="PackedScene" uid="uid://c0gpqyxi6mtd" path="res://Entities/Projectiles/player_bullet_1.tscn" id="2_jvlmm"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_kk13b"]
+[ext_resource type="AudioStream" uid="uid://cv70jngpd1uay" path="res://Sounds/laser3.wav" id="7_nk531"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmhog"]
+size = Vector2(20.5673, 23.1735)
+
+[node name="Player" instance=ExtResource("1_x372u")]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("2_kk13b")
+bullet = ExtResource("2_jvlmm")
+fireBeats = 1
+fireBeatIndex = 3
+maxHP = 100.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
+texture = ExtResource("1_qtltw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, 1)
+scale = Vector2(0.777935, 1.12197)
+shape = SubResource("RectangleShape2D_vmhog")
+
+[node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("7_nk531")
+volume_db = -10.0

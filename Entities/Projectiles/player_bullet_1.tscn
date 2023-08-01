@@ -1,9 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0gpqyxi6mtd"]
+[gd_scene load_steps=14 format=3 uid="uid://c0gpqyxi6mtd"]
 
 [ext_resource type="PackedScene" uid="uid://dshfbwn7mbb0c" path="res://Entities/Base/projectile_base.tscn" id="1_1r1id"]
+[ext_resource type="Texture2D" uid="uid://m6k43hbvjef7" path="res://Sprites/Projectiles/Bullet1/bullet1_02.png" id="2_nksu4"]
+[ext_resource type="Texture2D" uid="uid://ckef4e484u0dl" path="res://Sprites/Projectiles/Bullet1/bullet1_01.png" id="3_axc6b"]
+[ext_resource type="Texture2D" uid="uid://qiqr6pce05mc" path="res://Sprites/Projectiles/Bullet1/bullet1_03.png" id="4_n0mh4"]
+[ext_resource type="Texture2D" uid="uid://bp8sxm24ira6j" path="res://Sprites/Projectiles/Bullet1/bullet1_04.png" id="5_tcfxj"]
+[ext_resource type="Texture2D" uid="uid://bikb6bw8r8rte" path="res://Sprites/Projectiles/Bullet1/bullet1_05.png" id="6_ycsug"]
+[ext_resource type="Texture2D" uid="uid://cqdskrfgea180" path="res://Sprites/Projectiles/Bullet1/bullet1_06.png" id="7_suxtw"]
+[ext_resource type="Texture2D" uid="uid://dtnstgmjequog" path="res://Sprites/Projectiles/Bullet1/bullet1_07.png" id="8_bu8t3"]
+[ext_resource type="Texture2D" uid="uid://du4wn4wso1k65" path="res://Sprites/Projectiles/Bullet1/bullet1_08.png" id="9_yr6gx"]
+
+[sub_resource type="Animation" id="Animation_iyf4m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nksu4")]
+}
+
+[sub_resource type="Animation" id="Animation_4uwvh"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_axc6b"), ExtResource("2_nksu4"), ExtResource("4_n0mh4"), ExtResource("5_tcfxj"), ExtResource("6_ycsug"), ExtResource("7_suxtw"), ExtResource("8_bu8t3"), ExtResource("9_yr6gx")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hap7"]
+_data = {
+"RESET": SubResource("Animation_iyf4m"),
+"idle": SubResource("Animation_4uwvh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rvio"]
+radius = 5.09902
 
 [node name="PlayerBullet1" instance=ExtResource("1_1r1id")]
 collision_layer = 0
 collision_mask = 5
 SPEED = 10.0
 DAMAGE = 5.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nksu4")
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_0hap7")
+}
+
+[node name="Area2D" parent="." index="3"]
+scale = Vector2(0.901232, 0.761183)
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_1rvio")

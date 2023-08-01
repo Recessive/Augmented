@@ -36,8 +36,8 @@ func _on_area_2d_body_entered(body):
 		
 
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(area : Node):
 	if area.is_in_group(targetGroup):
-		damage_body(global_position, area.parent)
+		damage_body(global_position, area.get_parent())
 	queue_free()
 

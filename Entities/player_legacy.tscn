@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1madl7yg0ie4"]
+[gd_scene load_steps=10 format=3 uid="uid://pua77hjwiby0"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_qkck1"]
+[ext_resource type="Script" path="res://Scripts/PlayerLegacy.gd" id="1_lnwei"]
 [ext_resource type="Texture2D" uid="uid://xjwv30b8jwhv" path="res://Sprites/Player/1.png" id="1_qtltw"]
 [ext_resource type="Texture2D" uid="uid://cogrrokfhi0dg" path="res://Sprites/Player/2.png" id="2_2oc4o"]
-[ext_resource type="PackedScene" uid="uid://bmcgvbkhfhxio" path="res://Entities/Projectiles/bullet.tscn" id="2_vwwgj"]
+[ext_resource type="PackedScene" uid="uid://c0gpqyxi6mtd" path="res://Entities/Projectiles/player_bullet_1.tscn" id="2_jvlmm"]
 [ext_resource type="Texture2D" uid="uid://ck6khrl27p0p7" path="res://Sprites/Player/3.png" id="3_6fef5"]
 [ext_resource type="AudioStream" uid="uid://li8ehs7dmy53" path="res://Sounds/laser2.wav" id="6_va0gp"]
 [ext_resource type="AudioStream" uid="uid://cv70jngpd1uay" path="res://Sounds/laser3.wav" id="7_nk531"]
@@ -31,8 +31,8 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_qkck1")
-bullet = ExtResource("2_vwwgj")
+script = ExtResource("1_lnwei")
+bullet = ExtResource("2_jvlmm")
 fireBeatIndex = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
