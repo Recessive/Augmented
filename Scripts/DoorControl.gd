@@ -14,7 +14,6 @@ signal new_room
 signal room_ready
 
 func _ready():
-	
 	# assign a room type to each door in this room
 	var roomWeights = []
 	for room in roomTypes:
@@ -22,6 +21,7 @@ func _ready():
 	
 	var ind
 	for i in doorNodes.size():
+		
 		ind = RandPlus.SampleWeighted(roomWeights)
 		doorDestinations.append(roomTypes[ind])
 		# TODO: Change the sprite to reflect its room type

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Room" load_steps=2 format=3 uid="uid://56mmdpbyv7bk"]
+
+[ext_resource type="Script" path="res://Scripts/Room.gd" id="1_ku7l5"]
+
+[resource]
+script = ExtResource("1_ku7l5")
+rooms = Array[String](["res://Rooms/Cyber/room1.tscn", "res://Rooms/Cyber/room2.tscn"])
+weight = 10.0

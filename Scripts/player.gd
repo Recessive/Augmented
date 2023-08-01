@@ -13,9 +13,6 @@ var fireBeats : int = 1
 var fireBeatIndex : int
 
 @onready
-var weaponChargeSound : AudioStreamPlayer = $WeaponCharge
-
-@onready
 var weaponShootSound : AudioStreamPlayer = $WeaponShoot
 
 

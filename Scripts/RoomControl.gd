@@ -20,6 +20,7 @@ func _ready():
 	get_child(0).new_room.connect(new_room)
 	Conductor.onBeat.connect(beat)
 	fade.modulate.a = 0
+	current_room.play_door_ani()
 
 var make_room : Room = null
 
@@ -40,8 +41,8 @@ func room_pause(pause : bool):
 	else:
 		procMode = Node.PROCESS_MODE_INHERIT
 	PlayerStats.locked = pause
-	disposables.process_mode = procMode
-	current_room.process_mode = procMode
+	disposables.set_deferred("process_mode", procMode)
+	current_room.set_deferred("process_mode", procMode)
 
 func new_room(room : Room):
 	if make_room == null and !fading:
@@ -60,11 +61,8 @@ func beat(enabled : Array[bool], beat : int):
 			fadeOut = false
 			get_child(0).queue_free()
 			PlayerStats.delete_children(disposables)
-			var dir = DirAccess.open(make_room.path)
-			var files = dir.get_files()
-			# Assuming equal weighting of each room here
-			var fname = files[randi_range(0, files.size()-1)]
-			var next_room = load(make_room.path + fname).instantiate()
+			var res = make_room.rooms[randi_range(0, make_room.rooms.size()-1)]
+			var next_room = load(res).instantiate()
 			current_room = next_room
 			next_room.new_room.connect(new_room)
 			next_room.room_ready.connect(room_ready)
