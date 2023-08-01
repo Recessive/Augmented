@@ -40,7 +40,7 @@ var laserChargeCurve : Curve
 var laserScene : String
 
 @onready
-var player : Node = $"../Player" # TODO: Change this to work with a spawner
+var player : Node = $"/root/main/Player" # TODO: Change this to work with a spawner
 
 @onready
 var telegraphLine : Line2D = $TelegraphLine
@@ -154,11 +154,11 @@ func beat(enabled : Array[bool], beat : int):
 			direc = direc.bounce(result.normal)
 		
 	if(enabled[responseBeat]):
-		laserSound.play()
+		
 		# "Shoot" along the drawn path
 		if telegraphLine.points.size() == 1:
 			return
-			
+		laserSound.play()
 		pivot = telegraphLine.to_global(telegraphLine.points[0])
 		target = telegraphLine.to_global(telegraphLine.points[1])
 		

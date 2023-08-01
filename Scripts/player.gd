@@ -31,11 +31,22 @@ func _physics_process(delta):
 	var direc = Vector2(0, 0)
 	var lr = Input.get_axis("move_left", "move_right")
 	var ud = Input.get_axis("move_up", "move_down")
+	
+	$Sprite2D.flip_h = lr != 1
+
 	if lr:
 		direc.x += lr
+		$AnimationPlayer.play("side")
 	if ud:
+		if ud > 0:
+			$AnimationPlayer.play("down")
+		else:
+			$AnimationPlayer.play("up")
 		direc.y += ud
-		
+	
+	if !lr and !ud:
+		$AnimationPlayer.play("idle")
+	
 	direc = direc.normalized()
 	
 	velocity = velocity.move_toward(direc * PlayerStats.maxSpeed, PlayerStats.acceleration * delta)
@@ -60,6 +71,8 @@ func hurt(attack : Attack):
 	pass
 
 func beat(enabled : Array[bool], beat : int):
+	if PlayerStats.locked:
+		return
 	if enabled[fireBeatIndex]:
 		if Input.is_action_pressed("shoot"):
 			shoot()
