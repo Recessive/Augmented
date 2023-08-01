@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Room" load_steps=2 format=3 uid="uid://iftpyn34j37x"]
+
+[ext_resource type="Script" path="res://Scripts/Room.gd" id="1_y4duk"]
+
+[resource]
+script = ExtResource("1_y4duk")
+path = "res://Rooms/Cyber/"
+weight = 10.0

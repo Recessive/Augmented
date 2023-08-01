@@ -1,6 +1,9 @@
 extends "res://Scripts/Base/EntityBase.gd"
 
 @export
+var disposables : Node
+
+@export
 var bullet : PackedScene
 
 @export
@@ -16,13 +19,15 @@ var weaponChargeSound : AudioStreamPlayer = $WeaponCharge
 var weaponShootSound : AudioStreamPlayer = $WeaponShoot
 
 
+
 func _ready():
 	Conductor.onBeat.connect(beat)
 
 
 var canClick = true
 func _physics_process(delta):
-	
+	if PlayerStats.locked:
+		return
 	var direc = Vector2(0, 0)
 	var lr = Input.get_axis("move_left", "move_right")
 	var ud = Input.get_axis("move_up", "move_down")
@@ -43,7 +48,7 @@ func _physics_process(delta):
 func shoot():
 	var b : Node = bullet.instantiate()
 	var vel = global_position.direction_to(get_global_mouse_position()).normalized() * b.SPEED
-	get_tree().get_root().add_child(b)
+	disposables.add_child(b)
 	b.global_position = global_position
 	b.velocity = vel
 	weaponShootSound.play()

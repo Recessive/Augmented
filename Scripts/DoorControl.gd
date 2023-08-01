@@ -1,16 +1,18 @@
 extends TileMap
 
 @export
-var doorNodes : Array[Area2D]
+var doorNodes : Array[RigidBody2D]
 
 @export
 var roomTypes : Array[Room]
 
 var doorDestinations : Array[Room]
 
-signal new_room
+var spawn : Vector2
 
-# Called when the node enters the scene tree for the first time.
+signal new_room
+signal room_ready
+
 func _ready():
 	
 	# assign a room type to each door in this room
@@ -22,15 +24,22 @@ func _ready():
 	for i in doorNodes.size():
 		ind = RandPlus.SampleWeighted(roomWeights)
 		doorDestinations.append(roomTypes[ind])
+		# TODO: Change the sprite to reflect its room type
 	
 	# Connect parent to signals emitted from children (call down, signal up)
 	for doorNode in doorNodes:
 		doorNode.door_entered.connect(door_triggered)
+		
+	spawn = $Spawn.position
+	spawn.y += 90
+	spawn.x += 8
+	
+	emit_signal("room_ready")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func play_door_ani():
+	$Spawn.play()
+	for doorNode in doorNodes:
+		doorNode.get_child(0).play()
 	
 func door_triggered(x : Node):
 	var ind = doorNodes.find(x)
