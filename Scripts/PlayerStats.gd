@@ -12,6 +12,9 @@ var maxSpeed : float
 @export
 var acceleration : float
 
+@export
+var critChance : float
+
 var locked : bool = false
 
 var hp : float

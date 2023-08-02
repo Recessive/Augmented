@@ -22,6 +22,8 @@ func _ready():
 
 
 var canClick = true
+var aniPlaying : bool = false
+var playingUp : bool = false
 func _physics_process(delta):
 	if PlayerStats.locked:
 		return
@@ -30,18 +32,25 @@ func _physics_process(delta):
 	var ud = Input.get_axis("move_up", "move_down")
 	
 	$Sprite2D.flip_h = lr != 1
-
-	if lr:
-		direc.x += lr
-		$AnimationPlayer.play("side")
+	aniPlaying = false
+	playingUp = false
 	if ud:
+		aniPlaying = true
 		if ud > 0:
 			$AnimationPlayer.play("down")
 		else:
 			$AnimationPlayer.play("up")
+			playingUp = true
 		direc.y += ud
+		
+	if lr:
+		direc.x += lr
+		if !aniPlaying:
+			$AnimationPlayer.play("side")
+			aniPlaying = true
 	
-	if !lr and !ud:
+	
+	if !lr and !ud and !aniPlaying:
 		$AnimationPlayer.play("idle")
 	
 	direc = direc.normalized()
@@ -57,15 +66,17 @@ func shoot():
 	var b : Node = bullet.instantiate()
 	var vel = global_position.direction_to(get_global_mouse_position()).normalized() * b.SPEED
 	disposables.add_child(b)
+	b.isCrit = randf() < PlayerStats.critChance
 	b.global_position = global_position
 	b.velocity = vel
 	weaponShootSound.play()
+	if !playingUp:
+		$ShootAnimator.play("shoot")
 	
 func hurt(attack : Attack):
 	PlayerStats.hp -= attack.damage
 	velocity = (global_position - attack.pos).normalized() * attack.knockback
 	GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
-	pass
 
 func beat(enabled : Array[bool], beat : int):
 	if PlayerStats.locked:

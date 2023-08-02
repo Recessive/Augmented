@@ -25,6 +25,7 @@ offsets = PackedFloat32Array(0, 0.854305, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Laser" type="Line2D"]
+modulate = Color(10, 10, 10, 1)
 width = 5.0
 default_color = Color(1, 1, 0, 1)
 

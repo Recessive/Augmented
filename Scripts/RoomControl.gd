@@ -15,7 +15,6 @@ var fadeBeatIndex : int = 3
 var fading : bool = false
 var fadeOut : bool = true
 
-
 func _ready():
 	get_child(0).new_room.connect(new_room)
 	Conductor.onBeat.connect(beat)

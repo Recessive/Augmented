@@ -1,0 +1,211 @@
+[gd_scene load_steps=18 format=3 uid="uid://dhe4du707gwjv"]
+
+[ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Entities/Base/entity_base.tscn" id="1_x372u"]
+[ext_resource type="PackedScene" uid="uid://c0gpqyxi6mtd" path="res://Entities/Projectiles/player_bullet_1.tscn" id="2_jvlmm"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_kk13b"]
+[ext_resource type="Texture2D" uid="uid://cyy6ul3pibhrs" path="res://Sprites/Player/player.png" id="4_03fmv"]
+[ext_resource type="AudioStream" uid="uid://6fgwu2868c1t" path="res://Sounds/blast_1_mod.ogg" id="5_irbg8"]
+[ext_resource type="Texture2D" uid="uid://bexo7posda35h" path="res://Sprites/Effects/torso_blast_instant.png" id="6_shwbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmhog"]
+size = Vector2(20.5673, 23.1735)
+
+[sub_resource type="Animation" id="Animation_7jh24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_ah1js"]
+resource_name = "down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_56kyh"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_206ug"]
+resource_name = "side"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_ot3vm"]
+resource_name = "up"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fl8oj"]
+_data = {
+"RESET": SubResource("Animation_7jh24"),
+"down": SubResource("Animation_ah1js"),
+"idle": SubResource("Animation_56kyh"),
+"side": SubResource("Animation_206ug"),
+"up": SubResource("Animation_ot3vm")
+}
+
+[sub_resource type="Animation" id="Animation_1dk2s"]
+resource_name = "shoot"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0, 4]
+}
+
+[sub_resource type="Animation" id="Animation_y7t2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_6oy48"]
+resource_name = "shoot_idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8wrml"]
+_data = {
+"RESET": SubResource("Animation_y7t2i"),
+"shoot": SubResource("Animation_1dk2s"),
+"shoot_idle": SubResource("Animation_6oy48")
+}
+
+[node name="Player" groups=["Player"] instance=ExtResource("1_x372u")]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("2_kk13b")
+bullet = ExtResource("2_jvlmm")
+fireBeats = null
+fireBeatIndex = 3
+maxHP = 100.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
+texture = ExtResource("4_03fmv")
+hframes = 8
+vframes = 3
+frame = 1
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, 1)
+scale = Vector2(0.777935, 1.12197)
+shape = SubResource("RectangleShape2D_vmhog")
+
+[node name="FireSprite" type="Sprite2D" parent="." index="2"]
+texture_filter = 1
+texture = ExtResource("6_shwbg")
+hframes = 5
+frame = 3
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_fl8oj")
+}
+
+[node name="ShootAnimator" type="AnimationPlayer" parent="." index="4"]
+autoplay = "shoot_idle"
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_8wrml")
+}
+
+[node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("5_irbg8")
+volume_db = -13.467

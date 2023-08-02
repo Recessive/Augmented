@@ -68,7 +68,6 @@ var target : Vector2 = global_position
 @onready
 var pivot : Vector2 = global_position
 
-
 # Kind of yuck, but have to move the sprite and area2d instead of the parent, because if
 # I moved the parent the telegraph lines would move too
 
@@ -78,6 +77,7 @@ func _ready():
 	telegraphLine.add_point(Vector2(0, 0))
 	laserChargeLine.add_point(Vector2(0, 0))
 	laserChargeLine.add_point(Vector2(0, 0))
+	
 	
 	
 
@@ -97,6 +97,7 @@ func fire_laser(start : Vector2, end : Vector2):
 	laserTween.tween_callback(laserLine.queue_free)
 
 func _physics_process(delta):
+	if dead: return
 	# Take next enabled beat on responseBeat index and gradually increase laser size
 	# If there exists more than 2 points in the telegraphLine that is
 	if telegraphLine.points.size() > 1:
@@ -115,6 +116,18 @@ func hurt(attack : Attack):
 	hp -= attack.damage
 	GlobalAssets.SpawnDamageNumber(attack.damage, sprite.global_position)
 	
+func die():
+	dead = true
+	disable_collision()
+	$Sprite2D.visible = false
+	$TelegraphLine.visible = false
+	$LaserCharge.visible = false
+	$DeathAnimation.global_position = $Sprite2D.global_position
+	$DeathAnimation.visible = true
+	$DeathAnimation.play()
+	await $DeathAnimation.animation_finished
+	emit_signal("died", self)
+	queue_free()
 
 func damage_player(pos : Vector2, body : Node):
 	var attack = Attack.new()
@@ -127,6 +140,8 @@ func damage_player(pos : Vector2, body : Node):
 var prepping : bool = true
 var result
 func beat(enabled : Array[bool], beat : int):
+	if dead: return
+	
 	if(enabled[callBeat]):
 		laserLockSound.play()
 		if offsetBeats > 0:

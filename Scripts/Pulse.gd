@@ -1,4 +1,4 @@
-extends Sprite2D
+extends ColorRect
 
 @export
 var beatIndex : int
@@ -14,5 +14,5 @@ var pulseCurve : Curve
 
 func _process(delta):
 		var p = Conductor.percentage_enabled(beatIndex)
-		modulate = lerp(startColor, pulseColor, pulseCurve.sample(p))
+		color = lerp(startColor, pulseColor, pulseCurve.sample(p))
 	
