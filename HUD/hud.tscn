@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Entities/UI/healthbar.tscn" id="3_1wfya"]
 
 [node name="HUD" type="Control"]
+process_mode = 3
 top_level = true
 texture_filter = 1
 layout_mode = 3
@@ -21,6 +22,7 @@ offset_bottom = 216.0
 color = Color(0, 1, 1, 1)
 
 [node name="Game" type="Node2D" parent="."]
+visible = false
 
 [node name="TopInfo" type="ColorRect" parent="Game"]
 offset_right = 65.0
@@ -40,3 +42,59 @@ HEAT: 10"
 [node name="Healthbar" parent="Game/TopInfo" instance=ExtResource("3_1wfya")]
 position = Vector2(32.5, 33)
 scale = Vector2(1.63, 0.994)
+
+[node name="PauseMenu" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="PauseMenu"]
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0, 0, 0, 0.568627)
+
+[node name="ColorRect3" type="ColorRect" parent="PauseMenu"]
+offset_left = 96.0
+offset_right = 288.0
+offset_bottom = 216.0
+color = Color(0, 0, 0, 0.623529)
+
+[node name="Buttons" type="Node2D" parent="PauseMenu"]
+position = Vector2(0, -17)
+
+[node name="Resume" type="Button" parent="PauseMenu/Buttons"]
+offset_left = 96.0
+offset_top = 105.0
+offset_right = 288.0
+offset_bottom = 126.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 16
+text = "RESUME"
+
+[node name="Options" type="Button" parent="PauseMenu/Buttons"]
+offset_left = 96.0
+offset_top = 135.0
+offset_right = 288.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 16
+text = "OPTIONS"
+
+[node name="Credits" type="Button" parent="PauseMenu/Buttons"]
+offset_left = 96.0
+offset_top = 165.0
+offset_right = 288.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 16
+text = "CREDITS
+"
+
+[node name="Label" type="Label" parent="PauseMenu"]
+offset_top = 17.0
+offset_right = 384.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PauseMenu/Buttons/Resume" to="." method="_on_resume_pressed"]

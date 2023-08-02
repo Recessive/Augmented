@@ -183,31 +183,31 @@ hframes = 8
 vframes = 3
 frame = 1
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="PlayerAugmentRenderer" parent="." index="1" instance=ExtResource("7_j3o57")]
+
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(-0.333333, 7.33333)
 scale = Vector2(0.777935, 1.12197)
 shape = SubResource("RectangleShape2D_vmhog")
 
-[node name="FireSprite" type="Sprite2D" parent="." index="2"]
+[node name="FireSprite" type="Sprite2D" parent="." index="3"]
 texture_filter = 1
 texture = ExtResource("6_shwbg")
 hframes = 5
 frame = 3
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_fl8oj")
 }
 
-[node name="ShootAnimator" type="AnimationPlayer" parent="." index="4"]
+[node name="ShootAnimator" type="AnimationPlayer" parent="." index="5"]
 autoplay = "shoot_idle"
 speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_8wrml")
 }
 
-[node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="6"]
+[node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource("5_irbg8")
 volume_db = -13.467
-
-[node name="PlayerAugmentRenderer" parent="." index="7" instance=ExtResource("7_j3o57")]
