@@ -31,7 +31,11 @@ func _physics_process(delta):
 	var lr = Input.get_axis("move_left", "move_right")
 	var ud = Input.get_axis("move_up", "move_down")
 	
-	$Sprite2D.flip_h = lr != 1
+	if lr == -1:
+		$Sprite2D.flip_h = true
+	elif lr == 1:
+		$Sprite2D.flip_h = false
+	
 	aniPlaying = false
 	playingUp = false
 	if ud:
@@ -51,7 +55,7 @@ func _physics_process(delta):
 	
 	
 	if !lr and !ud and !aniPlaying:
-		$AnimationPlayer.play("idle")
+		$AnimationPlayer.stop() #play("idle")
 	
 	direc = direc.normalized()
 	

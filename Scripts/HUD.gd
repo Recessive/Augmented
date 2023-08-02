@@ -14,3 +14,6 @@ func update_camera():
 
 func _ready():
 	update_camera()
+
+func _process(delta):
+	$Game/Healthbar.updateHP(PlayerStats.hp/PlayerStats.maxHP)
