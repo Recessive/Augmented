@@ -15,15 +15,17 @@ var fireBeatIndex : int
 @onready
 var weaponShootSound : AudioStreamPlayer = $WeaponShoot
 
-
+var AugmentRenderer
 
 func _ready():
+	AugmentRenderer = $PlayerAugmentRenderer
 	Conductor.onBeat.connect(beat)
 
 
 var canClick = true
 var aniPlaying : bool = false
 var playingUp : bool = false
+
 func _physics_process(delta):
 	if PlayerStats.locked:
 		return
@@ -33,22 +35,27 @@ func _physics_process(delta):
 	
 	if lr == -1:
 		$Sprite2D.flip_h = true
+		AugmentRenderer.flip_h(true)
 	elif lr == 1:
 		$Sprite2D.flip_h = false
+		AugmentRenderer.flip_h(false)
 	
 	aniPlaying = false
 	playingUp = false
 		
 	if lr:
 		$AnimationPlayer.play("side")
+		AugmentRenderer.start_all("side")
 		aniPlaying = true
 	
 	if ud and not aniPlaying:
 		aniPlaying = true
 		if ud > 0:
 			$AnimationPlayer.play("down")
+			AugmentRenderer.start_all("down")
 		else:
 			$AnimationPlayer.play("up")
+			AugmentRenderer.start_all("up")
 			playingUp = true
 	
 	direc.x += lr
@@ -56,7 +63,8 @@ func _physics_process(delta):
 	
 	
 	if !lr and !ud and !aniPlaying:
-		$AnimationPlayer.stop() #play("idle")
+		$AnimationPlayer.stop()
+		AugmentRenderer.stop_all()
 	
 	direc = direc.normalized()
 	

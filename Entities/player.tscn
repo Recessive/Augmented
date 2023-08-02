@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhe4du707gwjv"]
+[gd_scene load_steps=19 format=3 uid="uid://dhe4du707gwjv"]
 
 [ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Entities/Base/entity_base.tscn" id="1_x372u"]
 [ext_resource type="PackedScene" uid="uid://c0gpqyxi6mtd" path="res://Entities/Projectiles/player_bullet_1.tscn" id="2_jvlmm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cyy6ul3pibhrs" path="res://Sprites/Player/player.png" id="4_03fmv"]
 [ext_resource type="AudioStream" uid="uid://6fgwu2868c1t" path="res://Sounds/blast_1_mod.ogg" id="5_irbg8"]
 [ext_resource type="Texture2D" uid="uid://bexo7posda35h" path="res://Sprites/Effects/torso_blast_instant.png" id="6_shwbg"]
+[ext_resource type="PackedScene" uid="uid://c0v34jigfgcac" path="res://Entities/player_augment_renderer.tscn" id="7_j3o57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmhog"]
 size = Vector2(12.8545, 11.8839)
@@ -208,3 +209,5 @@ libraries = {
 [node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("5_irbg8")
 volume_db = -13.467
+
+[node name="PlayerAugmentRenderer" parent="." index="7" instance=ExtResource("7_j3o57")]

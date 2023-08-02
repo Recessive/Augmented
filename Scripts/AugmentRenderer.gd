@@ -12,6 +12,10 @@ func _ready():
 		$RightLeg
 	]
 
+func flip_h(state : bool):
+	for child in limbs:
+		child.flip_h = state
+
 func start_all(anim):
 	for child in limbs:
 		child.play(anim)
