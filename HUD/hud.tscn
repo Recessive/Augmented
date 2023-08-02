@@ -14,8 +14,7 @@ offset_right = 384.0
 offset_bottom = 216.0
 script = ExtResource("1_7vhrk")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+[node name="HelperWindowRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 384.0
 offset_bottom = 216.0
@@ -46,12 +45,12 @@ scale = Vector2(1.63, 0.994)
 [node name="PauseMenu" type="Node2D" parent="."]
 visible = false
 
-[node name="ColorRect2" type="ColorRect" parent="PauseMenu"]
+[node name="Background" type="ColorRect" parent="PauseMenu"]
 offset_right = 384.0
 offset_bottom = 216.0
 color = Color(0, 0, 0, 0.568627)
 
-[node name="ColorRect3" type="ColorRect" parent="PauseMenu"]
+[node name="ButtonsColumn" type="ColorRect" parent="PauseMenu"]
 offset_left = 96.0
 offset_right = 288.0
 offset_bottom = 216.0
@@ -85,10 +84,11 @@ offset_right = 288.0
 offset_bottom = 186.0
 theme_override_fonts/font = ExtResource("2_2rdo1")
 theme_override_font_sizes/font_size = 16
+disabled = true
 text = "CREDITS
 "
 
-[node name="Label" type="Label" parent="PauseMenu"]
+[node name="PausedTitle" type="Label" parent="PauseMenu"]
 offset_top = 17.0
 offset_right = 384.0
 offset_bottom = 71.0
@@ -97,4 +97,60 @@ theme_override_font_sizes/font_size = 64
 text = "PAUSED"
 horizontal_alignment = 1
 
+[node name="OptionsMenu" type="Node2D" parent="."]
+
+[node name="Background2" type="ColorRect" parent="OptionsMenu"]
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0, 0, 0, 0.568627)
+
+[node name="ButtonsColumn2" type="ColorRect" parent="OptionsMenu"]
+offset_left = 96.0
+offset_right = 288.0
+offset_bottom = 216.0
+color = Color(0, 0, 0, 0.623529)
+
+[node name="Buttons2" type="Node2D" parent="OptionsMenu"]
+position = Vector2(0, -17)
+
+[node name="Back" type="Button" parent="OptionsMenu/Buttons2"]
+offset_left = 96.0
+offset_top = 105.0
+offset_right = 288.0
+offset_bottom = 126.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
+[node name="Volume" type="HSlider" parent="OptionsMenu/Buttons2"]
+offset_left = 96.0
+offset_top = 148.0
+offset_right = 480.0
+offset_bottom = 164.0
+scale = Vector2(0.5, 0.5)
+min_value = -20.0
+max_value = 20.0
+value = 1.0
+
+[node name="VolumeLabel" type="Label" parent="OptionsMenu/Buttons2"]
+offset_top = 134.0
+offset_right = 384.0
+offset_bottom = 188.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 16
+text = "VOLUME"
+horizontal_alignment = 1
+
+[node name="OptionsTitle" type="Label" parent="OptionsMenu"]
+offset_top = 17.0
+offset_right = 384.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 48
+text = "OPTIONS"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="PauseMenu/Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="OptionsMenu/Buttons2/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="OptionsMenu/Buttons2/Volume" to="." method="set_master_volume"]

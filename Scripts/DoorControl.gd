@@ -4,7 +4,7 @@ extends TileMap
 var enemies : Array[Node]
 
 @export
-var doorNodes : Array[RigidBody2D]
+var doorNodes : Array[StaticBody2D]
 
 @export
 var roomTypes : Array[Room]

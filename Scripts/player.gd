@@ -70,6 +70,7 @@ func _physics_process(delta):
 	
 	velocity = velocity.move_toward(direc * PlayerStats.maxSpeed, PlayerStats.acceleration * delta)
 	move_and_slide()
+	
 	if Input.is_action_just_pressed("shoot") and canClick:
 		# Immediately shoot to give responsiveness, then start shooting on the beat
 		shoot()

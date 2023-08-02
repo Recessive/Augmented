@@ -11,6 +11,7 @@
 [node name="main" type="Node"]
 
 [node name="BasicComponents" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("1_7vy7n")
 volume_db = -20.0
 autoplay = true
@@ -42,6 +43,7 @@ offset_bottom = 708.0
 color = Color(0, 0, 0, 1)
 
 [node name="BattleComponents" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 volume_db = -80.0
 autoplay = true
 

@@ -29,7 +29,8 @@ func update_camera():
 func _ready():
 	menus = {
 		'game':$Game,
-		'pause':$PauseMenu
+		'pause':$PauseMenu,
+		'options':$OptionsMenu
 	}
 	healthBar = $Game/TopInfo/Healthbar
 	roomControl = $/root/main/RoomControl
@@ -52,7 +53,17 @@ func _process(delta):
 			switch_menu('game')
 			get_tree().paused = false
 
+func set_master_volume(volume : float):
+	print('Volume set to ',volume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)
 
+# When buttons pressed:
 func _on_resume_pressed():
 	switch_menu('game')
 	get_tree().paused = false
+
+func _on_back_pressed():
+	switch_menu('pause')
+	
+func _on_options_pressed():
+	switch_menu('options')

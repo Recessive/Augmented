@@ -98,10 +98,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkpdh"]
 size = Vector2(22, 22)
 
-[node name="Door" type="RigidBody2D"]
+[node name="Door" type="StaticBody2D"]
 collision_mask = 0
-gravity_scale = 0.0
-freeze = true
 script = ExtResource("1_lr3q3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
