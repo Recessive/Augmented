@@ -19,6 +19,15 @@ var locked : bool = false
 
 var hp : float
 
+var augments = {
+	"head":"none",
+	"body":"none",
+	"leftarm":"none",
+	"rightarm":"none",
+	"leftleg":"none",
+	"rightleg":"none"
+}
+
 func _ready():
 	hp = maxHP
 
