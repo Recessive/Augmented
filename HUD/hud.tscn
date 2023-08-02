@@ -15,6 +15,7 @@ offset_bottom = 216.0
 script = ExtResource("1_7vhrk")
 
 [node name="HelperWindowRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 384.0
 offset_bottom = 216.0
@@ -98,6 +99,7 @@ text = "PAUSED"
 horizontal_alignment = 1
 
 [node name="OptionsMenu" type="Node2D" parent="."]
+visible = false
 
 [node name="Background2" type="ColorRect" parent="OptionsMenu"]
 offset_right = 384.0
@@ -130,7 +132,6 @@ offset_bottom = 164.0
 scale = Vector2(0.5, 0.5)
 min_value = -20.0
 max_value = 20.0
-value = 1.0
 
 [node name="VolumeLabel" type="Label" parent="OptionsMenu/Buttons2"]
 offset_top = 134.0
