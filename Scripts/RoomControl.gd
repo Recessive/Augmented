@@ -12,6 +12,9 @@ var fade : ColorRect
 @export
 var fadeBeatIndex : int = 3
 
+var depth : int = 0
+var heat : int = 0
+
 var fading : bool = false
 var fadeOut : bool = true
 
@@ -53,7 +56,13 @@ func new_room(room : Room):
 	
 func room_ready():
 	player.position = current_room.spawn
+	
+	# update the camera for each room
 	$/root/main/HUD.update_camera()
+	
+	# increase depth for each room
+	depth += 1
+	heat = depth / 10 # temporary increase heat once for each 10 rooms you go through
 
 func beat(enabled : Array[bool], beat : int):
 	if enabled[fadeBeatIndex] and fading:

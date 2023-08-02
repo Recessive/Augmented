@@ -2,7 +2,8 @@ extends Control
 
 var camera : Camera2D
 var screen_size : Vector2
-var healthBar
+var healthBar : Node2D
+var roomControl : Node
 
 func update_camera():
 	# places the gui on the camera
@@ -15,7 +16,11 @@ func update_camera():
 
 func _ready():
 	healthBar = $Game/TopInfo/Healthbar
+	roomControl = $/root/main/RoomControl
 	update_camera()
 
 func _process(delta):
 	healthBar.updateHP(PlayerStats.hp/PlayerStats.maxHP)
+	var depth = roomControl.depth
+	var heat = roomControl.heat
+	$Game/TopInfo/Label.text = "DEPTH: %s\nHEAT: %s" % [depth, heat]

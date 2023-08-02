@@ -38,20 +38,21 @@ func _physics_process(delta):
 	
 	aniPlaying = false
 	playingUp = false
-	if ud:
+		
+	if lr:
+		$AnimationPlayer.play("side")
+		aniPlaying = true
+	
+	if ud and not aniPlaying:
 		aniPlaying = true
 		if ud > 0:
 			$AnimationPlayer.play("down")
 		else:
 			$AnimationPlayer.play("up")
 			playingUp = true
-		direc.y += ud
-		
-	if lr:
-		direc.x += lr
-		if !aniPlaying:
-			$AnimationPlayer.play("side")
-			aniPlaying = true
+	
+	direc.x += lr
+	direc.y += ud
 	
 	
 	if !lr and !ud and !aniPlaying:
