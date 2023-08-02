@@ -14,6 +14,7 @@ offset_bottom = 216.0
 script = ExtResource("1_7vhrk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 384.0
 offset_bottom = 216.0
@@ -21,12 +22,12 @@ color = Color(0, 1, 1, 1)
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="ColorRect2" type="ColorRect" parent="Game"]
+[node name="TopInfo" type="ColorRect" parent="Game"]
 offset_right = 65.0
 offset_bottom = 31.0
 color = Color(0, 0, 0, 0.67451)
 
-[node name="Label" type="Label" parent="Game/ColorRect2"]
+[node name="Label" type="Label" parent="Game/TopInfo"]
 offset_left = 4.0
 offset_right = 63.0
 offset_bottom = 32.0
@@ -35,6 +36,6 @@ theme_override_font_sizes/font_size = 16
 text = "DEPTH: 100
 HEAT: 10"
 
-[node name="Healthbar" parent="Game/ColorRect2" instance=ExtResource("3_1wfya")]
+[node name="Healthbar" parent="Game/TopInfo" instance=ExtResource("3_1wfya")]
 position = Vector2(32.5, 33)
 scale = Vector2(1.63, 0.994)

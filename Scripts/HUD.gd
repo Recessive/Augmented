@@ -2,6 +2,7 @@ extends Control
 
 var camera : Camera2D
 var screen_size : Vector2
+var healthBar
 
 func update_camera():
 	# places the gui on the camera
@@ -13,7 +14,8 @@ func update_camera():
 	print(global_position)
 
 func _ready():
+	healthBar = $Game/TopInfo/Healthbar
 	update_camera()
 
 func _process(delta):
-	$Game/Healthbar.updateHP(PlayerStats.hp/PlayerStats.maxHP)
+	healthBar.updateHP(PlayerStats.hp/PlayerStats.maxHP)
