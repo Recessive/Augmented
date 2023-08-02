@@ -20,12 +20,12 @@ var locked : bool = false
 var hp : float
 
 var augments = {
-	"head":"none",
+	"head":"basic",
 	"body":"none",
-	"leftarm":"none",
+	"leftarm":"basic",
 	"rightarm":"none",
 	"leftleg":"none",
-	"rightleg":"none"
+	"rightleg":"basic"
 }
 
 func _ready():
