@@ -9,7 +9,7 @@ func update_camera():
 	screen_size = get_viewport_rect().size
 	size.x = screen_size.x / camera.zoom.x
 	size.y = screen_size.y / camera.zoom.y
-	global_position = camera.global_position
+	global_position = camera.global_position - Vector2(size.x/2, size.y/2)
 	print(global_position)
 
 func _ready():

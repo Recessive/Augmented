@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8anhn5n048yx"]
+[gd_scene load_steps=3 format=3 uid="uid://b8anhn5n048yx"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_7vhrk"]
+[ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="2_2rdo1"]
 
 [node name="HUD" type="Control"]
 top_level = true
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 384.0
@@ -11,7 +13,24 @@ offset_bottom = 216.0
 script = ExtResource("1_7vhrk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 384.0
 offset_bottom = 216.0
 color = Color(0, 1, 1, 1)
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="Game"]
+offset_right = 65.0
+offset_bottom = 49.0
+color = Color(0, 0, 0, 0.67451)
+
+[node name="Label" type="Label" parent="Game"]
+offset_right = 59.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 16
+text = "HP: 100/100
+DEPTH: 100
+HEAT: 10"
