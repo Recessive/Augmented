@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8anhn5n048yx"]
+
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_7vhrk"]
+
+[node name="HUD" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 384.0
+offset_bottom = 216.0
+script = ExtResource("1_7vhrk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0, 1, 1, 1)

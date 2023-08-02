@@ -53,6 +53,7 @@ func new_room(room : Room):
 	
 func room_ready():
 	player.position = current_room.spawn
+	$/root/main/HUD.update_camera()
 
 func beat(enabled : Array[bool], beat : int):
 	if enabled[fadeBeatIndex] and fading:

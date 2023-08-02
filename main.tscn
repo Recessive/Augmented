@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnke24mc1elql"]
+[gd_scene load_steps=8 format=3 uid="uid://cnke24mc1elql"]
 
 [ext_resource type="AudioStream" uid="uid://dnlsjmsjhydgv" path="res://Songs/Back1/AREATHEME.wav" id="1_7vy7n"]
 [ext_resource type="Script" path="res://Scripts/AudioController.gd" id="2_n4i6r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://n1jt1t3tea4i" path="res://Rooms/Tutorial/TutorialRoom.tscn" id="4_ryk4n"]
 [ext_resource type="PackedScene" uid="uid://dhe4du707gwjv" path="res://Entities/player.tscn" id="5_5l5kb"]
 [ext_resource type="Resource" uid="uid://dl736i1tgrnn6" path="res://Rooms/tutorial_room.tres" id="5_cs656"]
+[ext_resource type="PackedScene" uid="uid://b8anhn5n048yx" path="res://HUD/hud.tscn" id="7_yfyk6"]
 
 [node name="main" type="Node"]
 
@@ -43,3 +44,5 @@ color = Color(0, 0, 0, 1)
 [node name="BattleComponents" type="AudioStreamPlayer" parent="."]
 volume_db = -80.0
 autoplay = true
+
+[node name="HUD" parent="." instance=ExtResource("7_yfyk6")]
