@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b6nm637d76yu4" path="res://Sprites/UI/PlayerHealth/Healthbar Animated.png" id="1_1v64x"]
 
-[sub_resource type="Theme" id="Theme_gdqp7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5ig0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82e17"]
 atlas = ExtResource("1_1v64x")
@@ -56,7 +56,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_acumt")
 }],
-"loop": true,
+"loop": false,
 "name": &"Normal",
 "speed": 5.0
 }, {
@@ -69,21 +69,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Control"]
+[node name="Healthbar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0, 0.94902, 0.623529, 1)
 custom_minimum_size = Vector2(1, 1)
-offset_left = 930.0
-offset_top = 74.0
-offset_right = 1104.0
-offset_bottom = 101.0
-theme = SubResource("Theme_gdqp7")
+layout_mode = 0
+offset_left = 987.0
+offset_top = 84.0
+offset_right = 1046.0
+offset_bottom = 92.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_h5ig0")
+value = 100.0
+show_percentage = false
 
-[node name="Healthbar" type="AnimatedSprite2D" parent="."]
+[node name="HealthbarSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1016, 88)
-scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_kdjv7")
 animation = &"Normal"
