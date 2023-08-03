@@ -12,6 +12,7 @@ var direc : Vector2 = Vector2()
 
 func _ready():
 	Conductor.onBeat.connect(beat)
+	add_to_group('Enemies')
 	
 func _physics_process(delta):
 	if dead: return

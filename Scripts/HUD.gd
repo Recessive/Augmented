@@ -35,17 +35,37 @@ func update_camera():
 
 func _ready():
 	$HelperWindowRect.hide()
+	
 	menus = {
 		'game':$Game,
 		'pause':$PauseMenu,
 		'options':$OptionsMenu,
 		'upgrade':$UpgradeMenu
 	}
+	
 	healthBar = $Game/TopInfo/Healthbar
 	roomControl = $/root/main/RoomControl
+	
 	update_camera()
 
+func check_for_enemies():
+	var currentRoom = roomControl.get_children()[-1]
+	for child in currentRoom.get_children():
+		if child.is_in_group("Enemies"):
+			return true
+	return false
+
+var wasEnemyActive = true
+var isEnemyActive = false
+
 func _process(delta):
+	
+	isEnemyActive = check_for_enemies()
+	if wasEnemyActive!=isEnemyActive:
+		if isEnemyActive: $Game/TopInfo._on_combat_start()
+		else: $Game/TopInfo._on_combat_end()
+	wasEnemyActive = isEnemyActive
+	
 	# update the game menu
 	if activeMenu == 'game':
 		healthBar.updateHP(PlayerStats.hp/PlayerStats.maxHP)

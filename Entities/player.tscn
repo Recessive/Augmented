@@ -209,9 +209,9 @@ libraries = {
 "": SubResource("AnimationLibrary_8wrml")
 }
 
-[node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="7"]
-stream = ExtResource("5_irbg8")
-volume_db = -13.467
-
 [node name="Invincibility" type="Timer" parent="." index="7"]
 wait_time = 2.0
+
+[node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("5_irbg8")
+volume_db = -13.467

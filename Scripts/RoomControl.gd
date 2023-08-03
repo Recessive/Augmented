@@ -19,6 +19,7 @@ var fading : bool = false
 var fadeOut : bool = true
 
 func _ready():
+	
 	get_child(0).new_room.connect(new_room)
 	Conductor.onBeat.connect(beat)
 	fade.modulate.a = 0
@@ -57,7 +58,6 @@ func new_room(room : Room):
 func room_ready():
 	player.position = current_room.spawn
 	
-	# update the camera for each room
 	$/root/main/HUD.update_camera()
 	
 	# increase depth for each room

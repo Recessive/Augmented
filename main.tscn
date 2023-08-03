@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnke24mc1elql"]
+[gd_scene load_steps=9 format=3 uid="uid://cnke24mc1elql"]
 
 [ext_resource type="AudioStream" uid="uid://dnlsjmsjhydgv" path="res://Songs/Back1/AREATHEME.wav" id="1_7vy7n"]
 [ext_resource type="Script" path="res://Scripts/AudioController.gd" id="2_n4i6r"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhe4du707gwjv" path="res://Entities/player.tscn" id="5_5l5kb"]
 [ext_resource type="Resource" uid="uid://dl736i1tgrnn6" path="res://Rooms/tutorial_room.tres" id="5_cs656"]
 [ext_resource type="PackedScene" uid="uid://buq3sqi80kr25" path="res://Sprites/UI/PlayerHealth/node_2d.tscn" id="7_gqoks"]
+[ext_resource type="PackedScene" uid="uid://b8anhn5n048yx" path="res://HUD/hud.tscn" id="7_yfyk6"]
 
 [node name="main" type="Node"]
 
@@ -17,13 +18,13 @@ autoplay = true
 script = ExtResource("2_n4i6r")
 beatFilePath = "res://Songs/Back1/back1.txt"
 
-[node name="Room Control" type="Node" parent="." node_paths=PackedStringArray("disposables", "player", "fade")]
+[node name="RoomControl" type="Node" parent="." node_paths=PackedStringArray("disposables", "player", "fade")]
 script = ExtResource("3_cwx3v")
 disposables = NodePath("../Disposables")
 player = NodePath("../Player")
 fade = NodePath("../Fade")
 
-[node name="Room" parent="Room Control" instance=ExtResource("4_ryk4n")]
+[node name="Room" parent="RoomControl" instance=ExtResource("4_ryk4n")]
 roomTypes = Array[Resource("res://Scripts/Room.gd")]([ExtResource("5_cs656")])
 
 [node name="Disposables" type="Node" parent="."]
@@ -55,5 +56,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="HealthbarSprite" parent="Healthbar" index="1"]
 position = Vector2(140, -75)
+
+[node name="HUD" parent="." instance=ExtResource("7_yfyk6")]
 
 [editable path="Healthbar"]
