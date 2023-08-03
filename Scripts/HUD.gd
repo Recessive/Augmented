@@ -7,6 +7,13 @@ var roomControl : Node
 var menus : Dictionary
 var activeMenu = 'game'
 
+const PLURAL_ITEM : Dictionary = {
+	"gear":"gears",
+	"plate":"plates",
+	"battery":"batteries",
+	"coil":"coils"
+}
+
 func hide_menus():
 	for menu in menus.values():
 		menu.hide()
@@ -44,16 +51,19 @@ func _process(delta):
 		healthBar.updateHP(PlayerStats.hp/PlayerStats.maxHP)
 		var depth = roomControl.depth
 		var heat = roomControl.heat
-		$Game/TopInfo/Label.text = "DEPTH: %s\nHEAT: %s" % [depth, heat]
-		
-		if Input.is_action_just_pressed('pause'):
-			switch_menu('pause')
-			get_tree().paused = true
-			
-	elif activeMenu == 'pause':
-		if Input.is_action_just_pressed('pause'):
+		var inventory : Dictionary = PlayerStats.inventory
+		var inventoryString : String = ""
+		for item in inventory:
+			inventoryString += ('\n%s: %s' % [item, inventory[item]]).to_upper()
+		$Game/TopInfo/Label.text = "DEPTH: %s\nHEAT: %s%s" % [depth, heat, inventoryString]
+
+	if Input.is_action_just_pressed('pause'):
+		if activeMenu == 'pause':
 			switch_menu('game')
 			get_tree().paused = false
+		else:
+			switch_menu('pause')
+			get_tree().paused = true
 
 func set_master_volume(volume : float):
 	print('Volume set to ',volume)
@@ -69,3 +79,29 @@ func _on_back_pressed():
 	
 func _on_options_pressed():
 	switch_menu('options')
+
+
+func _on_upgrade_shortcut_pressed():
+	switch_menu('upgrade')
+
+var part_name : String
+var upgrade_name : String
+
+func _on_part_label_value_updated(stringValue):
+	part_name = stringValue
+
+func _on_upgrade_label_value_updated(stringValue):
+	upgrade_name = stringValue
+	update_upgrade_cost()
+
+func update_upgrade_cost():
+	var label : Label = $UpgradeMenu/Buttons/CostLabel
+	var cost : Dictionary = AugmentData.AUGMENTS[upgrade_name]['cost']
+	print(upgrade_name,": ",cost)
+	var itemStrings : Array[String] = []
+	for item in cost:
+		var ammount : int = cost[item]
+		if ammount == 0: continue
+		item = item if ammount == 1 else PLURAL_ITEM[item]
+		itemStrings.append("%s %s" % [ammount, item])
+	label.text = "Cost: " + ", ".join(itemStrings)
