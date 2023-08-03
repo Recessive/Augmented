@@ -84,7 +84,11 @@ func shoot():
 	weaponShootSound.play()
 	if !playingUp:
 		$ShootAnimator.play("shoot")
-	
+
+####################
+#MAIN CHANGES HERE #
+####################
+
 func hurt(attack : Attack):
 	if canTakeDmg == true:
 		PlayerStats.hp -= attack.damage
