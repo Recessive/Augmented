@@ -6,26 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://n1jt1t3tea4i" path="res://Rooms/Tutorial/TutorialRoom.tscn" id="4_ryk4n"]
 [ext_resource type="PackedScene" uid="uid://dhe4du707gwjv" path="res://Entities/player.tscn" id="5_5l5kb"]
 [ext_resource type="Resource" uid="uid://dl736i1tgrnn6" path="res://Rooms/tutorial_room.tres" id="5_cs656"]
-[ext_resource type="PackedScene" uid="uid://b8anhn5n048yx" path="res://HUD/hud.tscn" id="7_yfyk6"]
+[ext_resource type="PackedScene" uid="uid://buq3sqi80kr25" path="res://Sprites/UI/PlayerHealth/node_2d.tscn" id="7_gqoks"]
 
 [node name="main" type="Node"]
 
 [node name="BasicComponents" type="AudioStreamPlayer" parent="."]
-process_mode = 3
 stream = ExtResource("1_7vy7n")
 volume_db = -20.0
 autoplay = true
 script = ExtResource("2_n4i6r")
 beatFilePath = "res://Songs/Back1/back1.txt"
 
-[node name="RoomControl" type="Node" parent="." node_paths=PackedStringArray("disposables", "player", "fade")]
+[node name="Room Control" type="Node" parent="." node_paths=PackedStringArray("disposables", "player", "fade")]
 script = ExtResource("3_cwx3v")
 disposables = NodePath("../Disposables")
 player = NodePath("../Player")
 fade = NodePath("../Fade")
 
-[node name="Room" parent="RoomControl" instance=ExtResource("4_ryk4n")]
-layer_0/tile_data = PackedInt32Array(0, 983041, 1, 65536, 983041, 2, 1, 1048577, 1, 65537, 1048577, 2, 2, 1114113, 1, 65538, 1114113, 2, 3, 983041, 1, 65539, 983041, 2, -65540, 1048577, 0, -4, 1048577, 1, 65532, 1048577, 2, 131068, 65537, 1, -65539, 1114113, 0, -3, 1114113, 1, 65533, 1114113, 2, 131069, 65537, 1, -65538, 983041, 0, -2, 983041, 1, 65534, 983041, 2, 131070, 65537, 1, -65537, 1048577, 0, -1, 1048577, 1, 65535, 1048577, 2, 131071, 65537, 1, -131072, 1114113, 0, -65536, 983041, 0, -131071, 983041, 0, -65535, 1048577, 0, -131070, 65537, 1, -65534, 1114113, 0, -131069, 65537, 1, -65533, 983041, 0, -131077, 65537, 0, -196604, 65537, 0, 131077, 131073, 2, -196603, 131073, 0, 196602, 1, 2, -131078, 1, 0, -65542, 1, 1, -131067, 131073, 1, 65541, 131073, 1, 131076, 65537, 2, 196603, 65537, 2, 131066, 1, 1, 65530, 1, 1, -6, 1, 1, 5, 131073, 1, -65531, 131073, 1, 196604, 65537, 2, 196605, 65537, 2, 196606, 458753, 2, 131072, 458753, 2, 131073, 65537, 2, 131074, 65537, 2, 131075, 65537, 2, -131076, 65537, 0, -131075, 65537, 0, -131074, 458753, 0, -196608, 458753, 0, -196607, 65537, 0, -196606, 65537, 0, -196605, 65537, 0, -65541, 983041, 0, -131068, 65537, 1, 65540, 65537, 1, 131067, 65537, 1, -5, 983041, 1, 65531, 983041, 2, -65532, 65537, 1, 4, 65537, 1, 196607, 65537, 2)
+[node name="Room" parent="Room Control" instance=ExtResource("4_ryk4n")]
 roomTypes = Array[Resource("res://Scripts/Room.gd")]([ExtResource("5_cs656")])
 
 [node name="Disposables" type="Node" parent="."]
@@ -43,12 +41,19 @@ offset_bottom = 708.0
 color = Color(0, 0, 0, 1)
 
 [node name="BattleComponents" type="AudioStreamPlayer" parent="."]
-process_mode = 3
 volume_db = -80.0
 autoplay = true
 
-[node name="HUD" parent="." instance=ExtResource("7_yfyk6")]
-offset_left = -192.0
-offset_top = -108.0
-offset_right = 192.0
-offset_bottom = 108.0
+[node name="Healthbar" parent="." instance=ExtResource("7_gqoks")]
+
+[node name="ProgressBar" parent="Healthbar" index="0"]
+offset_left = 112.0
+offset_top = -78.0
+offset_right = 226.0
+offset_bottom = -66.0
+scale = Vector2(0.5, 0.5)
+
+[node name="HealthbarSprite" parent="Healthbar" index="1"]
+position = Vector2(140, -75)
+
+[editable path="Healthbar"]

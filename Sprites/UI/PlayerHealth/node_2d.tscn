@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://buq3sqi80kr25"]
+
+[ext_resource type="Texture2D" uid="uid://b6nm637d76yu4" path="res://Sprites/UI/PlayerHealth/Healthbar Animated.png" id="1_1v64x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5ig0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82e17"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(256, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s3sm"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(64, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72lyn"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(128, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1mje"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(192, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acumt"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otlht"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(320, 0, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdjv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82e17")
+}],
+"loop": true,
+"name": &"Cracked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s3sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72lyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1mje")
+}],
+"loop": true,
+"name": &"DmgTaken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acumt")
+}],
+"loop": false,
+"name": &"Normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otlht")
+}],
+"loop": true,
+"name": &"VeryCracked",
+"speed": 5.0
+}]
+
+[node name="Healthbar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0, 0.94902, 0.623529, 1)
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 0
+offset_left = 987.0
+offset_top = 84.0
+offset_right = 1046.0
+offset_bottom = 92.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_h5ig0")
+value = 100.0
+show_percentage = false
+
+[node name="HealthbarSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1016, 88)
+sprite_frames = SubResource("SpriteFrames_kdjv7")
+animation = &"Normal"
