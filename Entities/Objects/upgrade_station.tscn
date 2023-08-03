@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://vi1xhrb7cshw"]
+[gd_scene load_steps=53 format=3 uid="uid://vi1xhrb7cshw"]
 
 [ext_resource type="Texture2D" uid="uid://02j74222t2g7" path="res://Sprites/Objects/capsule.png" id="1_8eff5"]
 [ext_resource type="Script" path="res://Entities/Objects/upgrade_station.gd" id="1_m34ab"]
@@ -350,9 +350,6 @@ animations = [{
 radius = 25.0
 height = 56.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xx4j2"]
-radius = 51.0
-
 [node name="UpgradeStation" type="StaticBody2D"]
 script = ExtResource("1_m34ab")
 
@@ -365,10 +362,3 @@ frame_progress = 0.309419
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cmq5r")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_xx4j2")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_interact_area_entered"]

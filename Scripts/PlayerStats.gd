@@ -28,13 +28,6 @@ var augments = {
 	"rightleg":"basic"
 }
 
-var inventory = {
-	"battery":0,
-	"coil":0,
-	"plate":0,
-	"gear":0,
-}
-
 func _ready():
 	hp = maxHP
 

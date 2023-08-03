@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8anhn5n048yx"]
+[gd_scene load_steps=4 format=3 uid="uid://b8anhn5n048yx"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_7vhrk"]
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="2_2rdo1"]
-[ext_resource type="Script" path="res://HUD/TopInfo.gd" id="2_kulc8"]
 [ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Entities/UI/healthbar.tscn" id="3_1wfya"]
-[ext_resource type="Script" path="res://HUD/SliderSelector.gd" id="4_b7grq"]
 
 [node name="HUD" type="Control"]
 process_mode = 3
@@ -23,31 +21,26 @@ offset_bottom = 216.0
 color = Color(0, 1, 1, 1)
 
 [node name="Game" type="Node2D" parent="."]
+visible = false
 
 [node name="TopInfo" type="ColorRect" parent="Game"]
-offset_right = 72.0
-offset_bottom = 95.0
+offset_right = 65.0
+offset_bottom = 31.0
 color = Color(0, 0, 0, 0.67451)
-script = ExtResource("2_kulc8")
 
 [node name="Label" type="Label" parent="Game/TopInfo"]
 layout_mode = 0
 offset_left = 4.0
-offset_right = 67.0
-offset_bottom = 96.0
+offset_right = 63.0
+offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("2_2rdo1")
 theme_override_font_sizes/font_size = 16
 text = "DEPTH: 100
-HEAT: 10
-GEAR: 99
-COIL: 99
-PLATE: 99
-BATTERY: 99"
-clip_text = true
+HEAT: 10"
 
 [node name="Healthbar" parent="Game/TopInfo" instance=ExtResource("3_1wfya")]
-position = Vector2(36, 97)
-scale = Vector2(1.8, 0.994)
+position = Vector2(32.5, 33)
+scale = Vector2(1.63, 0.994)
 
 [node name="PauseMenu" type="Node2D" parent="."]
 visible = false
@@ -95,16 +88,6 @@ disabled = true
 text = "CREDITS
 "
 
-[node name="UpgradeShortcut" type="Button" parent="PauseMenu/Buttons"]
-offset_left = 96.0
-offset_top = 197.0
-offset_right = 288.0
-offset_bottom = 218.0
-theme_override_fonts/font = ExtResource("2_2rdo1")
-theme_override_font_sizes/font_size = 16
-text = "TEMPORARY UPGRADE SHORTCUT
-"
-
 [node name="PausedTitle" type="Label" parent="PauseMenu"]
 offset_top = 17.0
 offset_right = 384.0
@@ -128,10 +111,10 @@ offset_right = 288.0
 offset_bottom = 216.0
 color = Color(0, 0, 0, 0.623529)
 
-[node name="Buttons" type="Node2D" parent="OptionsMenu"]
+[node name="Buttons2" type="Node2D" parent="OptionsMenu"]
 position = Vector2(0, -17)
 
-[node name="Back" type="Button" parent="OptionsMenu/Buttons"]
+[node name="Back" type="Button" parent="OptionsMenu/Buttons2"]
 offset_left = 96.0
 offset_top = 105.0
 offset_right = 288.0
@@ -140,7 +123,7 @@ theme_override_fonts/font = ExtResource("2_2rdo1")
 theme_override_font_sizes/font_size = 16
 text = "BACK"
 
-[node name="Volume" type="HSlider" parent="OptionsMenu/Buttons"]
+[node name="Volume" type="HSlider" parent="OptionsMenu/Buttons2"]
 offset_left = 96.0
 offset_top = 148.0
 offset_right = 480.0
@@ -149,7 +132,7 @@ scale = Vector2(0.5, 0.5)
 min_value = -20.0
 max_value = 20.0
 
-[node name="VolumeLabel" type="Label" parent="OptionsMenu/Buttons"]
+[node name="VolumeLabel" type="Label" parent="OptionsMenu/Buttons2"]
 offset_top = 134.0
 offset_right = 384.0
 offset_bottom = 188.0
@@ -168,7 +151,6 @@ text = "OPTIONS"
 horizontal_alignment = 1
 
 [node name="UpgradeMenu" type="Node2D" parent="."]
-visible = false
 
 [node name="Background3" type="ColorRect" parent="UpgradeMenu"]
 offset_right = 384.0
@@ -181,82 +163,26 @@ offset_right = 288.0
 offset_bottom = 216.0
 color = Color(0, 0, 0, 0.623529)
 
-[node name="Buttons" type="Node2D" parent="UpgradeMenu"]
+[node name="Buttons3" type="Node2D" parent="UpgradeMenu"]
 position = Vector2(1, -38)
 
-[node name="Back" type="Button" parent="UpgradeMenu/Buttons"]
-offset_left = 95.0
+[node name="Back" type="Button" parent="UpgradeMenu/Buttons3"]
+offset_left = 96.0
 offset_top = 105.0
-offset_right = 287.0
+offset_right = 288.0
 offset_bottom = 126.0
 theme_override_fonts/font = ExtResource("2_2rdo1")
 theme_override_font_sizes/font_size = 16
 text = "BACK"
 
-[node name="UpgradeButton" type="Button" parent="UpgradeMenu/Buttons"]
-offset_left = 95.0
-offset_top = 226.0
-offset_right = 287.0
-offset_bottom = 247.0
-theme_override_fonts/font = ExtResource("2_2rdo1")
-theme_override_font_sizes/font_size = 16
-disabled = true
-text = "UPGRADE"
-
-[node name="PartLabel" type="Label" parent="UpgradeMenu/Buttons"]
-offset_left = 95.0
+[node name="VolumeLabel" type="Label" parent="UpgradeMenu/Buttons3"]
 offset_top = 134.0
-offset_right = 287.0
-offset_bottom = 150.0
-theme_override_fonts/font = ExtResource("2_2rdo1")
-theme_override_font_sizes/font_size = 16
-text = "PART: HEAD"
-horizontal_alignment = 1
-script = ExtResource("4_b7grq")
-prefix = "PART: "
-values = Array[String](["HEAD", "BODY", "LEFT ARM", "RIGHT ARM", "LEFT LEG", "RIGHT LEG"])
-
-[node name="PartSlider" type="HSlider" parent="UpgradeMenu/Buttons/PartLabel"]
-layout_mode = 0
-offset_top = 15.0
 offset_right = 384.0
-offset_bottom = 31.0
-scale = Vector2(0.5, 0.5)
-max_value = 5.0
-
-[node name="UpgradeLabel" type="Label" parent="UpgradeMenu/Buttons"]
-offset_left = 95.0
-offset_top = 162.0
-offset_right = 287.0
-offset_bottom = 178.0
+offset_bottom = 188.0
 theme_override_fonts/font = ExtResource("2_2rdo1")
 theme_override_font_sizes/font_size = 16
-text = "TYPE: BASIC"
+text = "VOLUME"
 horizontal_alignment = 1
-script = ExtResource("4_b7grq")
-prefix = "UPGRADE: "
-values = Array[String](["none", "basic"])
-
-[node name="UpgradeSlider" type="HSlider" parent="UpgradeMenu/Buttons/UpgradeLabel"]
-layout_mode = 0
-offset_top = 15.0
-offset_right = 384.0
-offset_bottom = 31.0
-scale = Vector2(0.5, 0.5)
-max_value = 1.0
-value = 1.0
-
-[node name="CostLabel" type="Label" parent="UpgradeMenu/Buttons"]
-modulate = Color(1, 0, 0, 1)
-offset_left = 95.0
-offset_top = 189.0
-offset_right = 287.0
-offset_bottom = 221.0
-theme_override_fonts/font = ExtResource("2_2rdo1")
-theme_override_font_sizes/font_size = 16
-text = "COST: 1 plate, 1 coil, 1 battery, 1 gear"
-horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="UpgradeTitle" type="Label" parent="UpgradeMenu"]
 offset_top = 17.0
@@ -269,9 +195,6 @@ horizontal_alignment = 1
 
 [connection signal="pressed" from="PauseMenu/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Buttons/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="PauseMenu/Buttons/UpgradeShortcut" to="." method="_on_upgrade_shortcut_pressed"]
-[connection signal="pressed" from="OptionsMenu/Buttons/Back" to="." method="_on_back_pressed"]
-[connection signal="value_changed" from="OptionsMenu/Buttons/Volume" to="." method="set_master_volume"]
-[connection signal="pressed" from="UpgradeMenu/Buttons/Back" to="." method="_on_back_pressed"]
-[connection signal="value_updated" from="UpgradeMenu/Buttons/PartLabel" to="." method="_on_part_label_value_updated"]
-[connection signal="value_updated" from="UpgradeMenu/Buttons/UpgradeLabel" to="." method="_on_upgrade_label_value_updated"]
+[connection signal="pressed" from="OptionsMenu/Buttons2/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="OptionsMenu/Buttons2/Volume" to="." method="set_master_volume"]
+[connection signal="pressed" from="UpgradeMenu/Buttons3/Back" to="." method="_on_back_pressed"]
