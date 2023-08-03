@@ -51,4 +51,19 @@ const AUGMENTS = {
 			"health": 1,
 		}
 	},
+	"predator": {
+		"cost": {
+			"battery": 2,
+			"coil": 1,
+			"gear": 0,
+			"plate": 0,
+		},
+		"color": Color(1.0, 0.0, 0.0),
+		"modifiers": {
+			"blast": 3,
+			"shoot": 1,
+			"move": 0,
+			"health": 0,
+		}
+	},
 }

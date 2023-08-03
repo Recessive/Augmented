@@ -24,6 +24,7 @@ offset_bottom = 216.0
 color = Color(0, 1, 1, 1)
 
 [node name="Game" type="Node2D" parent="."]
+visible = false
 
 [node name="TopInfo" type="ColorRect" parent="Game"]
 offset_right = 72.0
@@ -169,7 +170,6 @@ text = "OPTIONS"
 horizontal_alignment = 1
 
 [node name="UpgradeMenu" type="Node2D" parent="."]
-visible = false
 
 [node name="Background3" type="ColorRect" parent="UpgradeMenu"]
 offset_right = 384.0
@@ -236,7 +236,7 @@ text = "TYPE: BASIC"
 horizontal_alignment = 1
 script = ExtResource("4_b7grq")
 prefix = "UPGRADE: "
-values = Array[String](["none", "basic"])
+values = Array[String](["none", "basic", "predator"])
 
 [node name="UpgradeSlider" type="HSlider" parent="UpgradeMenu/Buttons/UpgradeLabel"]
 layout_mode = 0
@@ -244,7 +244,7 @@ offset_top = 15.0
 offset_right = 384.0
 offset_bottom = 31.0
 scale = Vector2(0.5, 0.5)
-max_value = 1.0
+max_value = 2.0
 value = 1.0
 
 [node name="CostLabel" type="Label" parent="UpgradeMenu/Buttons"]
@@ -274,5 +274,6 @@ horizontal_alignment = 1
 [connection signal="pressed" from="OptionsMenu/Buttons/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="OptionsMenu/Buttons/Volume" to="." method="set_master_volume"]
 [connection signal="pressed" from="UpgradeMenu/Buttons/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="UpgradeMenu/Buttons/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="value_updated" from="UpgradeMenu/Buttons/PartLabel" to="." method="_on_part_label_value_updated"]
 [connection signal="value_updated" from="UpgradeMenu/Buttons/UpgradeLabel" to="." method="_on_upgrade_label_value_updated"]

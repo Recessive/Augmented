@@ -29,9 +29,9 @@ var augments = {
 }
 
 var inventory = {
-	"battery":0,
-	"coil":0,
-	"plate":0,
+	"battery":3,
+	"coil":2,
+	"plate":1,
 	"gear":0,
 }
 

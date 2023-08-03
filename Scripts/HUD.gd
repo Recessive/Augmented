@@ -104,24 +104,51 @@ func _on_options_pressed():
 func _on_upgrade_shortcut_pressed():
 	switch_menu('upgrade')
 
-var part_name : String
-var upgrade_name : String
+var partName : String
+var upgradeName : String
+var playerCanAfford = false
 
 func _on_part_label_value_updated(stringValue):
-	part_name = stringValue
+	partName = stringValue
 
 func _on_upgrade_label_value_updated(stringValue):
-	upgrade_name = stringValue
+	upgradeName = stringValue
 	update_upgrade_cost()
 
 func update_upgrade_cost():
 	var label : Label = $UpgradeMenu/Buttons/CostLabel
-	var cost : Dictionary = AugmentData.AUGMENTS[upgrade_name]['cost']
-	print(upgrade_name,": ",cost)
+	var cost : Dictionary = AugmentData.AUGMENTS[upgradeName]['cost']
+	print(upgradeName,": ",cost)
 	var itemStrings : Array[String] = []
+	playerCanAfford = true
 	for item in cost:
 		var ammount : int = cost[item]
+		
+		if PlayerStats.inventory[item] < ammount: playerCanAfford = false
+		
 		if ammount == 0: continue
 		item = item if ammount == 1 else PLURAL_ITEM[item]
 		itemStrings.append("%s %s" % [ammount, item])
+	if playerCanAfford:
+		$UpgradeMenu/Buttons/UpgradeButton.disabled = false
+		label.modulate = Color(0, 1, 0)
+	else:
+		$UpgradeMenu/Buttons/UpgradeButton.disabled = true
+		label.modulate = Color(1, 0, 0)
 	label.text = "Cost: " + ", ".join(itemStrings)
+
+
+func _on_upgrade_button_pressed():
+	var cost : Dictionary = AugmentData.AUGMENTS[upgradeName]['cost']
+	for item in cost:
+		PlayerStats.inventory[item] -= cost[item]
+	
+	print('upgraded player\'s ',partName,' with ',upgradeName)
+	
+	partName = partName.to_lower().replace(' ','')
+	
+	PlayerStats.augments[partName] = upgradeName
+	
+	$/root/main/Player/PlayerAugmentRenderer.update()
+	update_upgrade_cost()
+
