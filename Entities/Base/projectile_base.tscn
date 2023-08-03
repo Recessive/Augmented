@@ -6,6 +6,7 @@
 [node name="ProjectileBase" instance=ExtResource("1_d03md")]
 script = ExtResource("2_00rf2")
 SPEED = 0.0
+PROC_CHANCE = 0.0
 DAMAGE = 0.0
 PENETRATION = 0.0
 KNOCKBACK = 0.0

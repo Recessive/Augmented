@@ -173,6 +173,7 @@ script = ExtResource("2_kk13b")
 bullet = ExtResource("2_jvlmm")
 fireBeats = 1
 fireBeatIndex = 3
+playerHealth = 10.0
 maxHP = 100.0
 
 [node name="Sprite2D" parent="." index="0"]
@@ -208,3 +209,6 @@ libraries = {
 [node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("5_irbg8")
 volume_db = -13.467
+
+[node name="Invincibility" type="Timer" parent="." index="7"]
+wait_time = 2.0

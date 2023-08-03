@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://buq3sqi80kr25"]
+
+[ext_resource type="Texture2D" uid="uid://b6nm637d76yu4" path="res://Sprites/UI/PlayerHealth/Healthbar Animated.png" id="1_1v64x"]
+
+[sub_resource type="Theme" id="Theme_gdqp7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82e17"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(256, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s3sm"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(64, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72lyn"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(128, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1mje"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(192, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acumt"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otlht"]
+atlas = ExtResource("1_1v64x")
+region = Rect2(320, 0, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdjv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82e17")
+}],
+"loop": true,
+"name": &"Cracked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s3sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72lyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1mje")
+}],
+"loop": true,
+"name": &"DmgTaken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acumt")
+}],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otlht")
+}],
+"loop": true,
+"name": &"VeryCracked",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(1, 1)
+offset_left = 930.0
+offset_top = 74.0
+offset_right = 1104.0
+offset_bottom = 101.0
+theme = SubResource("Theme_gdqp7")
+
+[node name="Healthbar" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1016, 88)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_kdjv7")
+animation = &"Normal"

@@ -12,6 +12,14 @@ var fireBeats : int = 1
 @export
 var fireBeatIndex : int
 
+#Sticked those three together, as they are used in the same function
+@export
+var playerHealth : float = 10.0
+@onready 
+var invi : Node = $Invincibility
+@onready
+var canTakeDmg : bool = invi.is_stopped()
+
 @onready
 var weaponShootSound : AudioStreamPlayer = $WeaponShoot
 
@@ -87,3 +95,6 @@ func beat(enabled : Array[bool], beat : int):
 		elif !canClick:
 			canClick = true
 			# Play reload sound
+
+
+
