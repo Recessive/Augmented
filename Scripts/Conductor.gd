@@ -86,7 +86,9 @@ func get_percentage_enabled():
 	
 	for i in beats.size():
 		last = BeatToTime(leftEnabled[i][beatNumber])
-		next = BeatToTime(rightEnabled[i][beatNumber]) # error here
+		# won't raise an error anymore, but may make the beat offset strange at some point
+		next = BeatToTime(rightEnabled[i][beatNumber % len(rightEnabled[i])])
+		
 		if last >= next: 
 			percentEnabled[i] = 1
 		else: 
