@@ -5,6 +5,9 @@ var damageNumber : PackedScene
 
 var atUpgradeStation : bool = false
 
+signal combatStart
+signal combatEnd
+
 func SpawnDamageNumber(damage : float, pos : Vector2):
 	var e = damageNumber.instantiate()
 	get_tree().get_root().add_child(e)

@@ -12,7 +12,5 @@ func _process(delta):
 
 
 func _on_interact_area_entered(body):
-	print(body.name,' entered upgrade station.')
 	if body.is_in_group('Player'):
 		GlobalAssets.atUpgradeStation = true
-		print('player entered upgrade station.')
