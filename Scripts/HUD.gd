@@ -27,10 +27,12 @@ func update_camera():
 	switch_menu('game')
 
 func _ready():
+	$HelperWindowRect.hide()
 	menus = {
 		'game':$Game,
 		'pause':$PauseMenu,
-		'options':$OptionsMenu
+		'options':$OptionsMenu,
+		'upgrade':$UpgradeMenu
 	}
 	healthBar = $Game/TopInfo/Healthbar
 	roomControl = $/root/main/RoomControl

@@ -15,7 +15,6 @@ offset_bottom = 216.0
 script = ExtResource("1_7vhrk")
 
 [node name="HelperWindowRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 384.0
 offset_bottom = 216.0
@@ -151,7 +150,51 @@ theme_override_font_sizes/font_size = 48
 text = "OPTIONS"
 horizontal_alignment = 1
 
+[node name="UpgradeMenu" type="Node2D" parent="."]
+
+[node name="Background3" type="ColorRect" parent="UpgradeMenu"]
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0, 0, 0, 0.568627)
+
+[node name="ButtonsColumn3" type="ColorRect" parent="UpgradeMenu"]
+offset_left = 96.0
+offset_right = 288.0
+offset_bottom = 216.0
+color = Color(0, 0, 0, 0.623529)
+
+[node name="Buttons3" type="Node2D" parent="UpgradeMenu"]
+position = Vector2(1, -38)
+
+[node name="Back" type="Button" parent="UpgradeMenu/Buttons3"]
+offset_left = 96.0
+offset_top = 105.0
+offset_right = 288.0
+offset_bottom = 126.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
+[node name="VolumeLabel" type="Label" parent="UpgradeMenu/Buttons3"]
+offset_top = 134.0
+offset_right = 384.0
+offset_bottom = 188.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 16
+text = "VOLUME"
+horizontal_alignment = 1
+
+[node name="UpgradeTitle" type="Label" parent="UpgradeMenu"]
+offset_top = 17.0
+offset_right = 384.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("2_2rdo1")
+theme_override_font_sizes/font_size = 48
+text = "UPGRADE"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="PauseMenu/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="OptionsMenu/Buttons2/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="OptionsMenu/Buttons2/Volume" to="." method="set_master_volume"]
+[connection signal="pressed" from="UpgradeMenu/Buttons3/Back" to="." method="_on_back_pressed"]
