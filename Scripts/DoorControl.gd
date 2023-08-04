@@ -54,7 +54,6 @@ func play_door_ani():
 			doorNode.get_child(0).play()
 	
 func door_triggered(x : Node):
-	
-	var ind = doorNodes.find(x)
-	emit_signal("new_room", doorDestinations[ind])
-	pass
+	if enemies.size() == 0:
+		var ind = doorNodes.find(x)
+		emit_signal("new_room", doorDestinations[ind])

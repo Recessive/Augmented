@@ -86,8 +86,7 @@ func get_percentage_enabled():
 	
 	for i in beats.size():
 		last = BeatToTime(leftEnabled[i][beatNumber])
-		# won't raise an error anymore, but may make the beat offset strange at some point
-		next = BeatToTime(rightEnabled[i][beatNumber % len(rightEnabled[i])])
+		next = BeatToTime(rightEnabled[i][min(beatNumber, len(rightEnabled[i])-1)])
 		
 		if last >= next: 
 			percentEnabled[i] = 1
@@ -126,7 +125,11 @@ func _physics_process(delta):
 		
 		
 	get_percentage_enabled()
-	
+
+func next_song():
+	stop()
+	play()
+
 func play():
 	audioPlayer.play()
 	
