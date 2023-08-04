@@ -16,7 +16,7 @@ var PENETRATION : float
 var KNOCKBACK : float
 
 @export
-var targetGroup : String = "Enemy"
+var targetGroup : String = "Enemies"
 
 @export
 var fireBeats : int = 1
@@ -48,12 +48,12 @@ func _on_area_2d_body_entered(body):
 		damage_body(global_position, body)
 	animate_death()
 	queue_free()
-		
 
-
-func _on_area_2d_area_entered(area : Node):
+func _on_area_2d_area_entered(area):
 	if area.is_in_group(targetGroup):
-		damage_body(global_position, area.get_parent())
+		damage_body(global_position, area)
+	var parent = area.get_parent()
+	if parent.is_in_group(targetGroup):
+		damage_body(global_position, parent)
 	animate_death()
 	queue_free()
-

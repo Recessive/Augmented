@@ -106,6 +106,8 @@ func hurt(attack : Attack):
 		PlayerStats.hp -= attack.damage
 		velocity = (global_position - attack.pos).normalized() * attack.knockback
 		GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
+		
+		# Damghar's code
 		healthSprite.play("DmgTaken")
 		await healthSprite.is_playing() == false
 		if PlayerStats.hp >= 66 and healthSprite.is_playing() == false:

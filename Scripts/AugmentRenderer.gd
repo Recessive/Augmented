@@ -18,12 +18,12 @@ func update():
 	return
 	for limb in limbs:
 		var augment_name = PlayerStats.augments[limb]
-		var augment = AugmentData.AUGMENTS[augment_name]
+		#var augment = AugmentData.AUGMENTS[augment_name]
 		if augment_name == 'none':
 			limbs[limb].hide()
 		else:
 			limbs[limb].show()
-			limbs[limb].modulate = augment['color']
+			#limbs[limb].modulate = augment['color']
 
 func flip_h(state : bool):
 	for child in limbs.values():

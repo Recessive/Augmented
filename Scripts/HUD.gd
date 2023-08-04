@@ -5,7 +5,7 @@ var screen_size : Vector2
 var healthBar : Node2D
 var roomControl : Node
 var menus : Dictionary
-var activeMenu = 'game' 
+var activeMenu = 'game'
 
 @onready var augmentDisplay = $"Game/TopInfo/Augment Menu"
 
@@ -15,12 +15,14 @@ const PLURAL_ITEM : Dictionary = {
 	"battery":"batteries",
 	"tube":"tubes"
 }
+var switch_menu_func_enabled = false
 
 func hide_menus():
 	for menu in menus.values():
 		menu.hide()
 
 func switch_menu(menu):
+	if not switch_menu_func_enabled:return
 	hide_menus()
 	menus[menu].show()
 	activeMenu = menu
@@ -47,6 +49,9 @@ func _ready():
 	
 	healthBar = $Game/TopInfo/Healthbar
 	roomControl = $/root/main/RoomControl
+	
+	switch_menu_func_enabled = true
+	switch_menu('game')
 	
 	update_camera()
 
