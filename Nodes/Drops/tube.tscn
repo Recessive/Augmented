@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://beku665bvrb8u"]
+
+[ext_resource type="PackedScene" uid="uid://b1w5v4d7lusbn" path="res://Nodes/Base/drop_base.tscn" id="1_2n2ns"]
+[ext_resource type="Texture2D" uid="uid://depo5dfqkf4n7" path="res://Sprites/Drops/tube.png" id="2_i5lmq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rb51"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i5lmq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6cus"]
+size = Vector2(280, 260)
+
+[node name="Tube" instance=ExtResource("1_2n2ns")]
+sprite_frames = SubResource("SpriteFrames_2rb51")
+dropName = "tube"
+weight = 2.0
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_x6cus")

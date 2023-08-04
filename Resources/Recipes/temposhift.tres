@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://ct7ugsr0d1pj6"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.gd" id="1_bo8l2"]
+
+[resource]
+script = ExtResource("1_bo8l2")
+tier1requirements = {
+"gear": 2,
+"tube": 1
+}
+tier2requirements = {
+"circuit": 1
+}
+bodyPart = "Arms"
+productName = "Temposhift"
