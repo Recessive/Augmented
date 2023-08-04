@@ -5,7 +5,9 @@ var screen_size : Vector2
 var healthBar : Node2D
 var roomControl : Node
 var menus : Dictionary
-var activeMenu = 'game'
+var activeMenu = 'game' 
+
+@onready var augmentDisplay = $"Game/TopInfo/Augment Menu"
 
 const PLURAL_ITEM : Dictionary = {
 	"gear":"gears",
@@ -68,14 +70,8 @@ func _process(delta):
 	
 	# update the game menu
 	if activeMenu == 'game':
-		healthBar.updateHP(PlayerStats.hp/PlayerStats.maxHP)
 		var depth = roomControl.depth
-		var heat = roomControl.heat
-		var inventory : Dictionary = PlayerStats.inventory
-		var inventoryString : String = ""
-		for item in inventory:
-			inventoryString += ('\n%s: %s' % [item, inventory[item]]).to_upper()
-		$Game/TopInfo/Label.text = "DEPTH: %s\nHEAT: %s%s" % [depth, heat, inventoryString]
+		$Game/TopInfo/Label.text = "DEPTH: %s" % depth
 
 	if Input.is_action_just_pressed('pause'):
 		if activeMenu == 'pause':
@@ -100,55 +96,4 @@ func _on_back_pressed():
 func _on_options_pressed():
 	switch_menu('options')
 
-
-func _on_upgrade_shortcut_pressed():
-	switch_menu('upgrade')
-
-var partName : String
-var upgradeName : String
-var playerCanAfford = false
-
-func _on_part_label_value_updated(stringValue):
-	partName = stringValue
-
-func _on_upgrade_label_value_updated(stringValue):
-	upgradeName = stringValue
-	update_upgrade_cost()
-
-func update_upgrade_cost():
-	var label : Label = $UpgradeMenu/Buttons/CostLabel
-	var cost : Dictionary = AugmentData.AUGMENTS[upgradeName]['cost']
-	print(upgradeName,": ",cost)
-	var itemStrings : Array[String] = []
-	playerCanAfford = true
-	for item in cost:
-		var ammount : int = cost[item]
-		
-		if PlayerStats.inventory[item] < ammount: playerCanAfford = false
-		
-		if ammount == 0: continue
-		item = item if ammount == 1 else PLURAL_ITEM[item]
-		itemStrings.append("%s %s" % [ammount, item])
-	if playerCanAfford:
-		$UpgradeMenu/Buttons/UpgradeButton.disabled = false
-		label.modulate = Color(0, 1, 0)
-	else:
-		$UpgradeMenu/Buttons/UpgradeButton.disabled = true
-		label.modulate = Color(1, 0, 0)
-	label.text = "Cost: " + ", ".join(itemStrings)
-
-
-func _on_upgrade_button_pressed():
-	var cost : Dictionary = AugmentData.AUGMENTS[upgradeName]['cost']
-	for item in cost:
-		PlayerStats.inventory[item] -= cost[item]
-	
-	print('upgraded player\'s ',partName,' with ',upgradeName)
-	
-	partName = partName.to_lower().replace(' ','')
-	
-	PlayerStats.augments[partName] = upgradeName
-	
-	$/root/main/Player/PlayerAugmentRenderer.update()
-	update_upgrade_cost()
 

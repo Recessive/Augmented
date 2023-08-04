@@ -1,11 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dni320ia3li16"]
+[gd_scene load_steps=4 format=3 uid="uid://dni320ia3li16"]
 
 [ext_resource type="PackedScene" uid="uid://87fxiplh3kdf" path="res://Nodes/Base/augment_base.tscn" id="1_uav74"]
 [ext_resource type="Script" path="res://Scripts/Augments/temposhift.gd" id="2_2mvql"]
+[ext_resource type="PackedScene" uid="uid://cqc4p2rn8shah" path="res://Nodes/Status Effects/slow.tscn" id="3_ha0jn"]
 
 [node name="Temposhift" instance=ExtResource("1_uav74")]
 script = ExtResource("2_2mvql")
-slowDebuff = null
+slowDebuff = ExtResource("3_ha0jn")
 augmentName = "Temposhift"
 augmentDesc = "Slow enemies on hit"
 cost = {

@@ -1,0 +1,248 @@
+[gd_scene load_steps=11 format=3 uid="uid://j8f5knkplolj"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Highlight.gd" id="1_04fd2"]
+[ext_resource type="Script" path="res://Scripts/UI/AugmentDisplay.gd" id="1_7hi6m"]
+[ext_resource type="Texture2D" uid="uid://btfc3pwgqtre" path="res://Sprites/Player/front_augmented.png" id="1_woc1p"]
+[ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="4_2r86q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uduu"]
+size = Vector2(10, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0khgq"]
+size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53hnh"]
+size = Vector2(4, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0yl1"]
+size = Vector2(4, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5miv1"]
+size = Vector2(6, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17jwa"]
+size = Vector2(6, 9)
+
+[node name="Augment Menu" type="Node2D"]
+texture_filter = 1
+scale = Vector2(4, 4)
+script = ExtResource("1_7hi6m")
+tweenTime = 1.0
+scaleUp = 3.0
+
+[node name="DescriptionRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 13.0
+offset_top = -12.0
+offset_right = 31.0
+offset_bottom = 18.0
+color = Color(0, 0, 0, 0.67451)
+
+[node name="Title" type="Node2D" parent="DescriptionRect"]
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="DescriptionRect/Title"]
+offset_right = 90.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_2r86q")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Node2D" parent="DescriptionRect"]
+scale = Vector2(0.1, 0.1)
+
+[node name="Label" type="Label" parent="DescriptionRect/Description"]
+offset_top = 58.0
+offset_right = 180.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("4_2r86q")
+autowrap_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -12.0
+offset_top = -11.5
+offset_right = 12.0
+offset_bottom = 18.5
+color = Color(0, 0, 0, 0)
+
+[node name="Head" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_04fd2")
+offset = Vector2(0, 15)
+partName = "Head"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_1uduu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+texture = ExtResource("1_woc1p")
+hframes = 8
+vframes = 6
+
+[node name="Body" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_04fd2")
+offset = Vector2(0, -20)
+partName = "Body"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_0khgq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+texture = ExtResource("1_woc1p")
+hframes = 8
+vframes = 6
+frame = 8
+
+[node name="Left arm" type="Area2D" parent="." node_paths=PackedStringArray("pair")]
+position = Vector2(-2, 2)
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_04fd2")
+pair = NodePath("../Right arm")
+offset = Vector2(0, -20)
+partName = "Arms"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left arm"]
+position = Vector2(-6, 0.5)
+shape = SubResource("RectangleShape2D_53hnh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Left arm"]
+texture = ExtResource("1_woc1p")
+hframes = 8
+vframes = 6
+frame = 20
+
+[node name="Right arm" type="Area2D" parent="." node_paths=PackedStringArray("pair")]
+position = Vector2(2, 2)
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_04fd2")
+pair = NodePath("../Left arm")
+offset = Vector2(0, -20)
+partName = "Arms"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right arm"]
+position = Vector2(6, 0.5)
+shape = SubResource("RectangleShape2D_v0yl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Right arm"]
+texture = ExtResource("1_woc1p")
+hframes = 8
+vframes = 6
+frame = 24
+
+[node name="Left leg" type="Area2D" parent="." node_paths=PackedStringArray("pair")]
+position = Vector2(0, 2)
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_04fd2")
+pair = NodePath("../Right leg")
+offset = Vector2(0, -50)
+partName = "Legs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left leg"]
+position = Vector2(-3, 9.5)
+shape = SubResource("RectangleShape2D_5miv1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Left leg"]
+texture = ExtResource("1_woc1p")
+hframes = 8
+vframes = 6
+frame = 32
+
+[node name="Right leg" type="Area2D" parent="." node_paths=PackedStringArray("pair")]
+position = Vector2(0, 2)
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_04fd2")
+pair = NodePath("../Left leg")
+offset = Vector2(0, -50)
+partName = "Legs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right leg"]
+position = Vector2(3, 9.5)
+shape = SubResource("RectangleShape2D_17jwa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Right leg"]
+texture = ExtResource("1_woc1p")
+hframes = 8
+vframes = 6
+frame = 40
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Selected Pos" type="Node2D" parent="."]
+position = Vector2(0, -6.25)
+scale = Vector2(0.5, 0.5)
+
+[node name="Text" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.3, 0.3)
+
+[node name="Label" type="Label" parent="Text"]
+offset_left = -39.1667
+offset_top = -23.3333
+offset_right = 38.8333
+offset_bottom = -7.33333
+theme_override_fonts/font = ExtResource("4_2r86q")
+text = "Body Augments"
+
+[node name="Back" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.2, 0.2)
+
+[node name="BackButton" type="Button" parent="Back"]
+offset_left = -57.5
+offset_top = 67.5
+offset_right = -27.5
+offset_bottom = 88.5
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_2r86q")
+text = "Back"
+
+[node name="Augment List" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="ItemList" type="ItemList" parent="Augment List"]
+texture_filter = 1
+offset_left = -48.0
+offset_top = -13.0
+offset_right = 48.0
+offset_bottom = 53.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_2r86q")
+
+[node name="Accept" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.2, 0.2)
+
+[node name="AcceptButton" type="Button" parent="Accept"]
+offset_left = 6.25
+offset_top = 67.5
+offset_right = 58.25
+offset_bottom = 88.5
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_2r86q")
+text = "AUGMENT"
+
+[connection signal="mouse_entered" from="Head" to="Head" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Head" to="Head" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Body" to="Body" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Body" to="Body" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Left arm" to="Left arm" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Left arm" to="Left arm" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Right arm" to="Right arm" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Right arm" to="Right arm" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Left leg" to="Left leg" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Left leg" to="Left leg" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Right leg" to="Right leg" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Right leg" to="Right leg" method="_on_mouse_exited"]
+[connection signal="button_down" from="Back/BackButton" to="." method="_on_back_button_button_down"]
+[connection signal="item_selected" from="Augment List/ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="button_down" from="Accept/AcceptButton" to="." method="_on_accept_button_button_down"]

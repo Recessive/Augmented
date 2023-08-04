@@ -19,7 +19,9 @@ var locked : bool = false
 
 var hp : float
 
-var augments = {
+var headAugments : Array[Node] # CONTINUE HERE
+
+var bodyParts : Dictionary = {
 	"head":"none",
 	"body":"none",
 	"leftarm":"none",
@@ -28,7 +30,7 @@ var augments = {
 	"rightleg":"none"
 }
 
-var inventory = {
+var inventory : Dictionary = {
 	"battery":3,
 	"tube":2,
 	"plate":1,
@@ -37,6 +39,9 @@ var inventory = {
 
 func _ready():
 	hp = maxHP
+	
+func add_augment(augment : Node):
+	pass
 
 static func delete_children(node):
 	for n in node.get_children():

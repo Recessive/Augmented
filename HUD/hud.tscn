@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8anhn5n048yx"]
+[gd_scene load_steps=7 format=3 uid="uid://b8anhn5n048yx"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_7vhrk"]
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="2_2rdo1"]
 [ext_resource type="Script" path="res://HUD/TopInfo.gd" id="2_kulc8"]
-[ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Entities/UI/healthbar.tscn" id="3_1wfya"]
+[ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Nodes/UI/healthbar.tscn" id="3_1wfya"]
 [ext_resource type="Script" path="res://HUD/SliderSelector.gd" id="4_b7grq"]
+[ext_resource type="PackedScene" uid="uid://j8f5knkplolj" path="res://Nodes/UI/augment_menu.tscn" id="6_2p8m3"]
 
 [node name="HUD" type="Control"]
 process_mode = 3
@@ -24,7 +25,6 @@ offset_bottom = 216.0
 color = Color(0, 1, 1, 1)
 
 [node name="Game" type="Node2D" parent="."]
-visible = false
 
 [node name="TopInfo" type="ColorRect" parent="Game"]
 offset_right = 72.0
@@ -40,16 +40,17 @@ offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("2_2rdo1")
 theme_override_font_sizes/font_size = 16
 text = "DEPTH: 100
-HEAT: 10
-GEAR: 99
-COIL: 99
-PLATE: 99
-BATTERY: 99"
+
+"
 clip_text = true
 
 [node name="Healthbar" parent="Game/TopInfo" instance=ExtResource("3_1wfya")]
 position = Vector2(36, 97)
 scale = Vector2(1.8, 0.994)
+
+[node name="Augment Menu" parent="Game/TopInfo" instance=ExtResource("6_2p8m3")]
+position = Vector2(36, 62)
+scale = Vector2(2, 2)
 
 [node name="PauseMenu" type="Node2D" parent="."]
 visible = false
@@ -170,6 +171,7 @@ text = "OPTIONS"
 horizontal_alignment = 1
 
 [node name="UpgradeMenu" type="Node2D" parent="."]
+visible = false
 
 [node name="Background3" type="ColorRect" parent="UpgradeMenu"]
 offset_right = 384.0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnqriy0as571y"]
+
+[ext_resource type="Script" path="res://Scripts/Globals/AugmentData.gd" id="1_rf7ca"]
+
+[node name="augment_data" type="Node"]
+script = ExtResource("1_rf7ca")
+armPackedAugments = Array[String](["res://Nodes/Augments/temposhift.tscn"])

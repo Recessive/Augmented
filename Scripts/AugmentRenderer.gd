@@ -15,6 +15,7 @@ func _ready():
 	update()
 
 func update():
+	return
 	for limb in limbs:
 		var augment_name = PlayerStats.augments[limb]
 		var augment = AugmentData.AUGMENTS[augment_name]
