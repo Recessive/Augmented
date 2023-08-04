@@ -50,8 +50,8 @@ func _on_area_2d_body_entered(body):
 func die():
 	dead = true
 	disable_collision()
-	$Sprite2D.visible = false
-	$DeathAnimation.visible = true
+	$Sprite2D.hide()
+	$DeathAnimation.show()
 	$DeathAnimation.play()
 	await $DeathAnimation.animation_finished
 	emit_signal("died", self)

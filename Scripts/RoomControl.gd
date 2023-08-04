@@ -20,10 +20,12 @@ var fadeOut : bool = true
 
 func _ready():
 	
-	get_child(0).new_room.connect(new_room)
+	var child = get_child(0)
+	child.new_room.connect(new_room)
 	Conductor.onBeat.connect(beat)
 	fade.modulate.a = 0
 	current_room.play_door_ani()
+	room_ready()
 
 var make_room : Room = null
 
@@ -56,6 +58,7 @@ func new_room(room : Room):
 		# Make the room fade out and fade in
 	
 func room_ready():
+	
 	player.position = current_room.spawn
 	
 	$/root/main/HUD.update_camera()

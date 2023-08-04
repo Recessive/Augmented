@@ -51,6 +51,7 @@ SPEED = 3.0
 PROC_CHANCE = 1.0
 DAMAGE = 5.0
 KNOCKBACK = 50.0
+targetGroup = "Enemies"
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1
