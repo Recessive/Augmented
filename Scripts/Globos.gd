@@ -86,9 +86,10 @@ func _ready():
 	
 
 func reset_laserCharge():
-	animation.play('charge')
 	laserChargeLine.set_point_position(0, Vector2(0, 0))
 	laserChargeLine.set_point_position(1, Vector2(0, 0))
+	animation.play('charge')
+	animation.set_frame_and_progress(0,0.0)
 	
 func fire_laser(start : Vector2, end : Vector2):
 	var laserLine = load(laserScene).instantiate()
@@ -130,7 +131,7 @@ func die():
 	$LaserCharge.visible = false
 	$DeathAnimation.global_position = $Sprite2D.global_position
 	$DeathAnimation.visible = true
-	$DeathAnimation.play()
+	animation.play("death")
 	await $DeathAnimation.animation_finished
 	emit_signal("died", self)
 	queue_free()
