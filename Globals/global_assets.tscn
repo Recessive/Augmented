@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bals66wdt0bx2"]
 
 [ext_resource type="Script" path="res://Scripts/GlobalAssets.gd" id="1_n2bjq"]
-[ext_resource type="PackedScene" uid="uid://cygd35thsjc33" path="res://Entities/damage_indicator.tscn" id="2_p60e2"]
+[ext_resource type="PackedScene" uid="uid://cygd35thsjc33" path="res://Nodes/damage_indicator.tscn" id="2_p60e2"]
 
 [node name="Global Assets" type="Node2D"]
 script = ExtResource("1_n2bjq")

@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_j3h4u"]
 [ext_resource type="Resource" uid="uid://56mmdpbyv7bk" path="res://Rooms/cyber_room.tres" id="2_1gwmg"]
 [ext_resource type="Script" path="res://Scripts/Pulse.gd" id="3_rt40i"]
-[ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Entities/door.tscn" id="4_jpfw7"]
-[ext_resource type="PackedScene" uid="uid://be25arkmfs6t6" path="res://Entities/Enemies/globos.tscn" id="4_o8geq"]
+[ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Nodes/door.tscn" id="4_jpfw7"]
+[ext_resource type="PackedScene" uid="uid://be25arkmfs6t6" path="res://Nodes/Enemies/globos.tscn" id="4_o8geq"]
 
 [sub_resource type="Curve" id="Curve_4ysei"]
 _data = [Vector2(0, 1), 0.0, -1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

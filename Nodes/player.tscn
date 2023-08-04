@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3 uid="uid://dhe4du707gwjv"]
 
-[ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Entities/Base/entity_base.tscn" id="1_x372u"]
-[ext_resource type="PackedScene" uid="uid://c0gpqyxi6mtd" path="res://Entities/Projectiles/player_bullet_1.tscn" id="2_jvlmm"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="2_kk13b"]
-[ext_resource type="Texture2D" uid="uid://cyy6ul3pibhrs" path="res://Sprites/Player/player.png" id="4_03fmv"]
-[ext_resource type="AudioStream" uid="uid://6fgwu2868c1t" path="res://Sounds/blast_1_mod.ogg" id="5_irbg8"]
-[ext_resource type="Texture2D" uid="uid://bexo7posda35h" path="res://Sprites/Effects/torso_blast_instant.png" id="6_shwbg"]
-[ext_resource type="PackedScene" uid="uid://c0v34jigfgcac" path="res://Entities/player_augment_renderer.tscn" id="7_j3o57"]
+[ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Nodes/Base/entity_base.tscn" id="1_wcgtj"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_elaan"]
+[ext_resource type="PackedScene" uid="uid://c0gpqyxi6mtd" path="res://Nodes/Projectiles/player_bullet_1.tscn" id="3_7qqe1"]
+[ext_resource type="Texture2D" uid="uid://cyy6ul3pibhrs" path="res://Sprites/Player/player.png" id="4_kqr38"]
+[ext_resource type="PackedScene" uid="uid://c0v34jigfgcac" path="res://Nodes/player_augment_renderer.tscn" id="5_gi8ir"]
+[ext_resource type="Texture2D" uid="uid://bexo7posda35h" path="res://Sprites/Effects/torso_blast_instant.png" id="6_ne6va"]
+[ext_resource type="AudioStream" uid="uid://6fgwu2868c1t" path="res://Sounds/blast_1_mod.ogg" id="7_5iyd1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmhog"]
 size = Vector2(12.8545, 11.8839)
@@ -167,11 +167,11 @@ _data = {
 "shoot_idle": SubResource("Animation_6oy48")
 }
 
-[node name="Player" groups=["Player"] instance=ExtResource("1_x372u")]
+[node name="Player" groups=["Player"] instance=ExtResource("1_wcgtj")]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-script = ExtResource("2_kk13b")
-bullet = ExtResource("2_jvlmm")
+script = ExtResource("2_elaan")
+bullet = ExtResource("3_7qqe1")
 fireBeats = 1
 fireBeatIndex = 3
 playerHealth = 10.0
@@ -179,12 +179,12 @@ maxHP = 100.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1
-texture = ExtResource("4_03fmv")
+texture = ExtResource("4_kqr38")
 hframes = 8
 vframes = 3
 frame = 1
 
-[node name="PlayerAugmentRenderer" parent="." index="1" instance=ExtResource("7_j3o57")]
+[node name="PlayerAugmentRenderer" parent="." index="1" instance=ExtResource("5_gi8ir")]
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(-0.333333, 7.33333)
@@ -193,7 +193,7 @@ shape = SubResource("RectangleShape2D_vmhog")
 
 [node name="FireSprite" type="Sprite2D" parent="." index="3"]
 texture_filter = 1
-texture = ExtResource("6_shwbg")
+texture = ExtResource("6_ne6va")
 hframes = 5
 frame = 3
 
@@ -213,5 +213,5 @@ libraries = {
 wait_time = 2.0
 
 [node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="8"]
-stream = ExtResource("5_irbg8")
+stream = ExtResource("7_5iyd1")
 volume_db = -13.467

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dshfbwn7mbb0c"]
 
-[ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Entities/Base/entity_base.tscn" id="1_d03md"]
+[ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Nodes/Base/entity_base.tscn" id="1_d03md"]
 [ext_resource type="Script" path="res://Scripts/Base/ProjectileBase.gd" id="2_00rf2"]
 
 [node name="ProjectileBase" instance=ExtResource("1_d03md")]

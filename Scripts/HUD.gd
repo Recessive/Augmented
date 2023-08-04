@@ -11,7 +11,7 @@ const PLURAL_ITEM : Dictionary = {
 	"gear":"gears",
 	"plate":"plates",
 	"battery":"batteries",
-	"coil":"coils"
+	"tube":"tubes"
 }
 
 func hide_menus():

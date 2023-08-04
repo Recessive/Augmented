@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_rpkxy"]
 [ext_resource type="Resource" uid="uid://56mmdpbyv7bk" path="res://Rooms/cyber_room.tres" id="2_pkwra"]
-[ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Entities/door.tscn" id="3_e4vn4"]
+[ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Nodes/door.tscn" id="3_e4vn4"]
 [ext_resource type="Texture2D" uid="uid://dqd0lljntsf6x" path="res://Sprites/UI/mousecontrols.png" id="4_6ip1o"]
 [ext_resource type="Script" path="res://Scripts/Enemies/ghost.gd" id="5_en26w"]
 [ext_resource type="Texture2D" uid="uid://c3lesrwmr0mwt" path="res://Sprites/Enemies/ghost.png" id="6_0vfnl"]
-[ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Entities/UI/healthbar.tscn" id="7_ckgd4"]
+[ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Nodes/UI/healthbar.tscn" id="7_ckgd4"]
 [ext_resource type="Texture2D" uid="uid://dgosuefilu87x" path="res://Sprites/UI/arrow.png" id="8_swmpo"]
 [ext_resource type="Script" path="res://Rooms/ArrowMove.gd" id="9_fh1ct"]
-[ext_resource type="SpriteFrames" uid="uid://c88li6al26hkn" path="res://Entities/Enemies/death_animation.tres" id="10_vm6ak"]
+[ext_resource type="SpriteFrames" uid="uid://c88li6al26hkn" path="res://Nodes/Enemies/death_animation.tres" id="10_vm6ak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don04"]
 size = Vector2(16, 18)

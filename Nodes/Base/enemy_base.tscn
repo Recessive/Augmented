@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c18l67hrw44kr"]
+
+[ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Nodes/Base/entity_base.tscn" id="1_grq3h"]
+[ext_resource type="Script" path="res://Scripts/Base/EnemyBase.gd" id="2_p4ph6"]
+[ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Nodes/UI/healthbar.tscn" id="3_et6ok"]
+
+[node name="EnemyBase" groups=["Enemies"] instance=ExtResource("1_grq3h")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_p4ph6")
+SPEED = 0.0
+ACCELERATION = 0.0
+CONTACT_DAMAGE = 0.0
+CONTACT_PENETRATION = 0.0
+CONTACT_KNOCKBACK = 0.0
+
+[node name="Healthbar" parent="Sprite2D" index="0" instance=ExtResource("3_et6ok")]
+position = Vector2(0, -16)
+
+[node name="Area2D" parent="." index="3"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="DeathAnimation" type="AnimatedSprite2D" parent="." index="4"]
+visible = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

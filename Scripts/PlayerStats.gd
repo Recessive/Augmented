@@ -20,17 +20,17 @@ var locked : bool = false
 var hp : float
 
 var augments = {
-	"head":"basic",
+	"head":"none",
 	"body":"none",
-	"leftarm":"basic",
+	"leftarm":"none",
 	"rightarm":"none",
 	"leftleg":"none",
-	"rightleg":"basic"
+	"rightleg":"none"
 }
 
 var inventory = {
 	"battery":3,
-	"coil":2,
+	"tube":2,
 	"plate":1,
 	"gear":0,
 }

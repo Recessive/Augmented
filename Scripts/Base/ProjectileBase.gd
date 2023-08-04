@@ -23,7 +23,7 @@ var fireBeats : int = 1
 
 var isCrit : bool
 
-var projectileDeathScene = preload("res://Entities/Projectiles/projectile_death.tscn")
+var projectileDeathScene = preload("res://Nodes/Projectiles/projectile_death.tscn")
 
 func animate_death():
 	var projectileDeath : Node2D = projectileDeathScene.instantiate()

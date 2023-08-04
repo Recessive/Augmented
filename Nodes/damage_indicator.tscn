@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cygd35thsjc33"]
 
-[ext_resource type="Script" path="res://Entities/DamageIndicator.gd" id="1_mnjtf"]
+[ext_resource type="Script" path="res://Nodes/DamageIndicator.gd" id="1_mnjtf"]
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="2_g8oem"]
 
 [sub_resource type="Gradient" id="Gradient_oaext"]

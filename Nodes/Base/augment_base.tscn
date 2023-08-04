@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://87fxiplh3kdf"]
+
+[ext_resource type="Script" path="res://Scripts/Augments/Augment.gd" id="1_r755g"]
+
+[node name="Augment" type="Node"]
+script = ExtResource("1_r755g")

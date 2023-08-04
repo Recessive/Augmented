@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqc4p2rn8shah"]
+
+[ext_resource type="PackedScene" uid="uid://d2ey818lwqyif" path="res://Nodes/Base/status_effect.tscn" id="1_nlwyd"]
+[ext_resource type="Script" path="res://Scripts/Status Effects/Slow.gd" id="2_6is4x"]
+
+[node name="Slow" instance=ExtResource("1_nlwyd")]
+script = ExtResource("2_6is4x")
+
+[node name="Timer" parent="." index="1"]
+wait_time = 2.0

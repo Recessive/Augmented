@@ -1,8 +1,10 @@
-[gd_scene load_steps=54 format=3 uid="uid://vi1xhrb7cshw"]
+[gd_scene load_steps=61 format=3 uid="uid://vi1xhrb7cshw"]
 
 [ext_resource type="Texture2D" uid="uid://02j74222t2g7" path="res://Sprites/Objects/capsule.png" id="1_8eff5"]
-[ext_resource type="Script" path="res://Entities/Objects/upgrade_station.gd" id="1_m34ab"]
+[ext_resource type="Script" path="res://Nodes/Objects/upgrade_station.gd" id="1_m34ab"]
 [ext_resource type="Texture2D" uid="uid://duw76hlgi82ac" path="res://Sprites/Objects/capsule_upgrade.png" id="2_w3fyl"]
+[ext_resource type="Texture2D" uid="uid://dm6ty2hxpo3vt" path="res://Sprites/Objects/capsule_waiting.png" id="4_sl7mt"]
+[ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="4_u00rw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pqwo"]
 atlas = ExtResource("1_8eff5")
@@ -192,6 +194,22 @@ region = Rect2(2496, 0, 64, 64)
 atlas = ExtResource("2_w3fyl")
 region = Rect2(2560, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh3bq"]
+atlas = ExtResource("4_sl7mt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib3w5"]
+atlas = ExtResource("4_sl7mt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oabw"]
+atlas = ExtResource("4_sl7mt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycmfw"]
+atlas = ExtResource("4_sl7mt")
+region = Rect2(192, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4i6u7"]
 animations = [{
 "frames": [{
@@ -341,9 +359,26 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p8ilf")
 }],
-"loop": true,
+"loop": false,
 "name": &"upgrade",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh3bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib3w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oabw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycmfw")
+}],
+"loop": true,
+"name": &"waiting",
+"speed": 2.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cmq5r"]
@@ -353,22 +388,42 @@ height = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_xx4j2"]
 radius = 51.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_lq30h"]
+font = ExtResource("4_u00rw")
+
 [node name="UpgradeStation" type="StaticBody2D"]
 script = ExtResource("1_m34ab")
+labelText = "Press %s to AUGMENT"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4i6u7")
 animation = &"upgrade"
 autoplay = "default"
-frame_progress = 0.309419
+frame = 40
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_cmq5r")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_xx4j2")
 
+[node name="Label" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -52.0
+offset_top = -46.0
+offset_right = 53.0
+offset_bottom = -30.0
+text = "Press E to AUGMENT"
+label_settings = SubResource("LabelSettings_lq30h")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_interact_area_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

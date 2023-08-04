@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0gpqyxi6mtd"]
 
-[ext_resource type="PackedScene" uid="uid://dshfbwn7mbb0c" path="res://Entities/Base/projectile_base.tscn" id="1_1r1id"]
+[ext_resource type="PackedScene" uid="uid://dshfbwn7mbb0c" path="res://Nodes/Base/projectile_base.tscn" id="1_1r1id"]
 [ext_resource type="Texture2D" uid="uid://e8nxp22wrusq" path="res://Sprites/Projectiles/bullet.png" id="2_ubooh"]
 
 [sub_resource type="Animation" id="Animation_iyf4m"]

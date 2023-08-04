@@ -8,6 +8,8 @@ var maxHP : float
 @onready
 var hp = maxHP : set = set_hp
 
+var statusEffects : Dictionary
+
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var collShape : CollisionShape2D = $CollisionShape2D
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
@@ -41,3 +43,10 @@ func set_hp(value):
 		return
 	if typeof(value) != TYPE_NIL:
 		hp = min(hp + value, maxHP)
+
+func apply_status(status : Node):
+	if statusEffects.has(status.name):
+		statusEffects[status.name].add_stack()
+	else:
+		statusEffects[status.name] = status
+

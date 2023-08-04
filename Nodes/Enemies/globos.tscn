@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://be25arkmfs6t6"]
 
-[ext_resource type="PackedScene" uid="uid://c18l67hrw44kr" path="res://Entities/Base/enemy_base.tscn" id="1_ee8lh"]
+[ext_resource type="PackedScene" uid="uid://c18l67hrw44kr" path="res://Nodes/Base/enemy_base.tscn" id="1_ee8lh"]
 [ext_resource type="Script" path="res://Scripts/Globos.gd" id="2_l14rr"]
 [ext_resource type="Texture2D" uid="uid://cdhfu5ubhuqgp" path="res://Sprites/Enemies/enemy.png" id="3_ulhjp"]
 [ext_resource type="AudioStream" uid="uid://ciye41cfa1s2c" path="res://Sounds/lockon_one.wav" id="4_qem80"]
-[ext_resource type="SpriteFrames" uid="uid://c88li6al26hkn" path="res://Entities/Enemies/death_animation.tres" id="4_y4qrf"]
+[ext_resource type="SpriteFrames" uid="uid://c88li6al26hkn" path="res://Nodes/Enemies/death_animation.tres" id="4_y4qrf"]
 [ext_resource type="AudioStream" uid="uid://k8mnp2eg43ga" path="res://Sounds/bop2.wav" id="5_iarec"]
 
 [sub_resource type="Curve" id="Curve_cr62t"]

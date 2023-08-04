@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_akxrm"]
 [ext_resource type="Resource" uid="uid://56mmdpbyv7bk" path="res://Rooms/cyber_room.tres" id="2_2bp4f"]
-[ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Entities/door.tscn" id="2_lwmia"]
+[ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Nodes/door.tscn" id="2_lwmia"]
 [ext_resource type="Texture2D" uid="uid://dgosuefilu87x" path="res://Sprites/UI/arrow.png" id="3_ok07s"]
 [ext_resource type="Texture2D" uid="uid://dty2mpiqd2xrs" path="res://Sprites/UI/cross.png" id="4_k7s5r"]
 [ext_resource type="Script" path="res://Rooms/ArrowMove.gd" id="5_216hp"]
 [ext_resource type="Texture2D" uid="uid://kyon4jqwnji4" path="res://Sprites/UI/controls.png" id="5_px1la"]
-[ext_resource type="PackedScene" uid="uid://vi1xhrb7cshw" path="res://Entities/Objects/upgrade_station.tscn" id="8_5r82v"]
+[ext_resource type="PackedScene" uid="uid://vi1xhrb7cshw" path="res://Nodes/Objects/upgrade_station.tscn" id="8_5r82v"]
 
 [node name="Room" node_paths=PackedStringArray("doorNodes") instance=ExtResource("1_akxrm")]
 layer_0/tile_data = PackedInt32Array(0, 1114113, 2, 65536, 1114113, 0, 1, 983041, 2, 65537, 983041, 0, 2, 65537, 1, 65538, 1048577, 0, 3, 65537, 1, 65539, 1114113, 0, -65540, 65537, 1, -4, 65537, 1, 65532, 1048577, 2, 131068, 1048577, 0, -65539, 1114113, 0, -3, 1114113, 1, 65533, 65537, 1, 131069, 1114113, 0, -65538, 983041, 0, -2, 983041, 1, 65534, 65537, 1, 131070, 983041, 0, -65537, 1048577, 0, -1, 1048577, 1, 65535, 1048577, 2, 131071, 1048577, 0, -131072, 65537, 1, -65536, 65537, 1, -131071, 983041, 0, -65535, 65537, 1, -131070, 1048577, 0, -65534, 65537, 1, -131069, 1114113, 0, -65533, 1114113, 1, -131077, 65537, 0, -196604, 65537, 0, 131077, 131073, 2, -196603, 131073, 0, 196602, 1, 2, -131078, 1, 0, -65542, 1, 1, -131067, 131073, 1, 65541, 131073, 1, 131076, 65537, 2, 196603, 65537, 2, 131066, 1, 1, 65530, 1, 1, -6, 1, 1, 5, 131073, 1, -65531, 131073, 1, 196604, 65537, 2, 196605, 65537, 2, 196606, 65537, 2, 131072, 65537, 2, 131073, 65537, 2, 131074, 65537, 2, 131075, 65537, 2, -131076, 65537, 0, -131075, 65537, 0, -131074, 65537, 0, -196608, 65537, 0, -196607, 65537, 0, -196606, 65537, 0, -196605, 65537, 0, -65541, 983041, 0, -131068, 983041, 0, 65540, 983041, 0, 131067, 983041, 0, -5, 983041, 1, 65531, 983041, 2, -65532, 983041, 1, 4, 983041, 2, 196607, 65537, 2)

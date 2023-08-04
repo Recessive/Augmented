@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd5b55x3ni1tv"]
+
+[ext_resource type="PackedScene" uid="uid://b1w5v4d7lusbn" path="res://Nodes/Base/drop_base.tscn" id="1_hm04d"]
+[ext_resource type="Texture2D" uid="uid://b2es5g24jooy" path="res://Sprites/Drops/plate.png" id="2_x5ns4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6iut1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x5ns4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Plate" instance=ExtResource("1_hm04d")]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6iut1")
+dropName = "plate"
+weight = 5.0

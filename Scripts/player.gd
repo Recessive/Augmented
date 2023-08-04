@@ -19,8 +19,6 @@ var playerHealth : float = 10.0
 var invi : Node = $Invincibility
 @onready
 var canTakeDmg : bool = invi.is_stopped()
-@onready
-var healthProgress : float = get_node("../Healthbar/ProgressBar").value
 @onready 
 var healthSprite : Node = get_node("../Healthbar/HealthbarSprite")
 
@@ -108,14 +106,13 @@ func hurt(attack : Attack):
 		PlayerStats.hp -= attack.damage
 		velocity = (global_position - attack.pos).normalized() * attack.knockback
 		GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
-		healthProgress -= attack.damage
 		healthSprite.play("DmgTaken")
 		await healthSprite.is_playing() == false
-		if healthProgress >= 66 and healthSprite.is_playing() == false:
+		if PlayerStats.hp >= 66 and healthSprite.is_playing() == false:
 			healthSprite.play("Normal")
-		elif healthProgress < 66 and healthProgress >= 33 and healthSprite.is_playing() == false:
+		elif PlayerStats.hp < 66 and PlayerStats.hp >= 33 and healthSprite.is_playing() == false:
 			healthSprite.play("Cracked")
-		elif healthProgress < 33 and healthSprite.is_playing() == false:
+		elif PlayerStats.hp < 33 and healthSprite.is_playing() == false:
 			healthSprite.play("VeryCracked")
 
 func beat(enabled : Array[bool], beat : int):

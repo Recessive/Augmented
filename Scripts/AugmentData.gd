@@ -7,7 +7,7 @@ AUGMENT DATA STRUCTURE:
 	<AUGMENT NAME>  # e.g. predator
 		COST        # crafting requirements
 			BATTERY # for blast
-			COIL    # for shoot
+			TUBE    # for shoot
 			GEAR    # for movement
 			PLATE   # for health
 		COLOR       # e.g. Color(1.0, 0.0, 0.0)
@@ -24,7 +24,7 @@ const AUGMENTS = {
 	"none": { # always used in a slot where there is no augment equipped
 		"cost": {
 			"battery": 0,
-			"coil": 0,
+			"tube": 0,
 			"gear": 0,
 			"plate": 0,
 		},
@@ -39,7 +39,7 @@ const AUGMENTS = {
 	"basic": {
 		"cost": {
 			"battery": 1,
-			"coil": 1,
+			"tube": 1,
 			"gear": 1,
 			"plate": 1,
 		},
@@ -54,7 +54,7 @@ const AUGMENTS = {
 	"predator": {
 		"cost": {
 			"battery": 2,
-			"coil": 1,
+			"tube": 1,
 			"gear": 0,
 			"plate": 0,
 		},

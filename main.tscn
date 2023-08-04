@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/AudioController.gd" id="2_n4i6r"]
 [ext_resource type="Script" path="res://Scripts/RoomControl.gd" id="3_cwx3v"]
 [ext_resource type="PackedScene" uid="uid://n1jt1t3tea4i" path="res://Rooms/Tutorial/TutorialRoom.tscn" id="4_ryk4n"]
-[ext_resource type="PackedScene" uid="uid://dhe4du707gwjv" path="res://Entities/player.tscn" id="5_5l5kb"]
+[ext_resource type="PackedScene" uid="uid://dhe4du707gwjv" path="res://Nodes/player.tscn" id="5_5l5kb"]
 [ext_resource type="Resource" uid="uid://dl736i1tgrnn6" path="res://Rooms/tutorial_room.tres" id="5_cs656"]
 [ext_resource type="PackedScene" uid="uid://buq3sqi80kr25" path="res://Sprites/UI/PlayerHealth/node_2d.tscn" id="7_gqoks"]
 [ext_resource type="PackedScene" uid="uid://b8anhn5n048yx" path="res://HUD/hud.tscn" id="7_yfyk6"]
@@ -46,6 +46,7 @@ volume_db = -80.0
 autoplay = true
 
 [node name="Healthbar" parent="." instance=ExtResource("7_gqoks")]
+visible = false
 
 [node name="ProgressBar" parent="Healthbar" index="0"]
 offset_left = 112.0
@@ -56,6 +57,8 @@ scale = Vector2(0.5, 0.5)
 
 [node name="HealthbarSprite" parent="Healthbar" index="1"]
 position = Vector2(140, -75)
+animation = &"VeryCracked"
+frame_progress = 0.624201
 
 [node name="HUD" parent="." instance=ExtResource("7_yfyk6")]
 

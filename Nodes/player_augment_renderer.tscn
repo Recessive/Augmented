@@ -833,7 +833,7 @@ script = ExtResource("1_qq7u5")
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nddgn")
-animation = &"up"
+animation = &"down"
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ty0i6")
