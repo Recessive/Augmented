@@ -219,7 +219,7 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("4_2r86q")
 
 [node name="Accept" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0)
+visible = false
 scale = Vector2(0.2, 0.2)
 
 [node name="AcceptButton" type="Button" parent="Accept"]

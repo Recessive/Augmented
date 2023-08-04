@@ -14,6 +14,9 @@ var cost : Dictionary
 @export
 var procChance : float = 1
 
+@export
+var chance : float  = 0
+
 var stacks : int = 1
 
 func _ready():

@@ -17,25 +17,29 @@ var startingPos : Vector2 = position
 @onready
 var startingScale : Vector2 = scale
 
-var pairActive : bool = false
 func _process(delta):
+	if pair and !pair.mouseIn:
+		modulate.g = 1
+		modulate.b = 1
+		
+	if !get_parent().selectable:
+		modulate.g = 1
+		modulate.b = 1
+		return
 	if mouseIn and Input.is_action_just_pressed("shoot"):
 		emit_signal("clicked", self)
-	if pair:
-		if pair.mouseIn:
-			pairActive = true
-			modulate.g = 0
-			modulate.b = 0
-		elif pairActive and !mouseIn:
-			pairActive = false
-			modulate.g = 1
-			modulate.b = 1
+	if modulate.g != 0 and mouseIn :
+		modulate.g = 0
+		modulate.b = 0
+	if pair and pair.mouseIn:
+		modulate.g = 0
+		modulate.b = 0
 	
 
 var mouseIn : bool = false
 func _on_mouse_entered():
-	if get_parent().selectable == true:
-		mouseIn = true
+	mouseIn = true
+	if get_parent().selectable:
 		modulate.g = 0
 		modulate.b = 0
 

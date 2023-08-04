@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Base/EnemyBase.gd" id="2_p4ph6"]
 [ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Nodes/UI/healthbar.tscn" id="3_et6ok"]
 
-[node name="EnemyBase" groups=["Enemies"] instance=ExtResource("1_grq3h")]
+[node name="EnemyBase" groups=["Enemies", "Entity"] instance=ExtResource("1_grq3h")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_p4ph6")

@@ -34,6 +34,8 @@ func _physics_process(delta):
 	move_and_collide(velocity)
 
 func damage_body(pos : Vector2, body : Node):
+	if randf() < PROC_CHANCE:
+		PlayerStats.proc_hit(body)
 	var attack = Attack.new()
 	attack.damage = DAMAGE * (1 + int(isCrit))
 	attack.penetration = PENETRATION

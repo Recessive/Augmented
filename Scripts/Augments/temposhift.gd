@@ -4,4 +4,5 @@ extends "res://Scripts/Augments/Augment.gd"
 var slowDebuff : PackedScene
 
 func proc_hit(body : Node):
-	body.apply_status(slowDebuff.instantiate())
+	if randf() < chance:
+		body.apply_status(slowDebuff.instantiate())

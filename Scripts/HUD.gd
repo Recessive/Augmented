@@ -82,7 +82,6 @@ func _process(delta):
 			get_tree().paused = true
 
 func set_master_volume(volume : float):
-	print('Volume set to ',volume)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)
 
 # When buttons pressed:

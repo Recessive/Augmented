@@ -20,6 +20,7 @@ var statusEffects : Dictionary
 
 @onready var tColMask : int = collision_mask
 @onready var tAreaColMask : int = $Area2D.collision_mask
+
 func disable_collision():
 	tColLayers = collision_layer
 	tAreaColLayers = $Area2D.collision_layer
@@ -43,10 +44,17 @@ func set_hp(value):
 		return
 	if typeof(value) != TYPE_NIL:
 		hp = min(hp + value, maxHP)
+		
+func remove_status(status : Node):
+	statusEffects.erase(status.name)
 
 func apply_status(status : Node):
+	status.entity = self
 	if statusEffects.has(status.name):
 		statusEffects[status.name].add_stack()
 	else:
+		add_child(status)
 		statusEffects[status.name] = status
+		status.removed.connect(remove_status)
+		status.apply()
 

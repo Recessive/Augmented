@@ -19,7 +19,12 @@ var locked : bool = false
 
 var hp : float
 
-var headAugments : Array[Node] # CONTINUE HERE
+var headAugments : int = 0
+var bodyAugments : int = 0
+var armAugments : int = 0
+var legAugments : int = 0
+
+var augments : Array[Node] # All body part augments combined
 
 var bodyParts : Dictionary = {
 	"head":"none",
@@ -40,8 +45,29 @@ var inventory : Dictionary = {
 func _ready():
 	hp = maxHP
 	
-func add_augment(augment : Node):
-	pass
+func add_augment(augment : Node, bodyPart : String):
+	if bodyPart == "Head":
+		headAugments += 1
+	if bodyPart == "Body":
+		bodyAugments += 1
+	if bodyPart == "Arms":
+		armAugments += 1
+	if bodyPart == "Legs":
+		legAugments += 1
+	
+	if augments.has(augment):
+		augments[augments.find(augment)].add_stack()
+	else:
+		augments.append(augment)
+
+func proc_hit(body : Node):
+	for aug in augments:
+		aug.proc_hit(body)
+
+func proc_death(body : Node):
+	for aug in augments:
+		aug.proc_death(body)
+
 
 static func delete_children(node):
 	for n in node.get_children():

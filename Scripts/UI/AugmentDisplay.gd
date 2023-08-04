@@ -1,5 +1,6 @@
 extends Node2D
 
+signal augment_selected
 
 var selectable : bool = false
 
@@ -19,6 +20,7 @@ var list : ItemList = $"Augment List/ItemList"
 
 var partAugments : Array[Node]
 
+var selectedPart : String
 var selectedAugment : Node
 
 var selected : Node
@@ -38,9 +40,10 @@ func expand():
 	selectable = true
 
 func part_clicked(part : Node):
-	populate_list(part.partName)
-	var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
 	selectable = false
+	selectedPart = part.partName
+	populate_list(selectedPart)
+	var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
 	selected = part
 	if part.pair:
 		tween.tween_property(part.pair, "global_position", $"Selected Pos".global_position + part.pair.offset, tweenTime)
@@ -51,32 +54,37 @@ func part_clicked(part : Node):
 	for child in get_children():
 		if child is Area2D and child != selected and child != selected.pair:
 			tween.tween_property(child.get_child(1), "modulate", Color(1, 1, 1, 0), tweenTime)
-	$Text/Label.text = "%s Augments" % part.partName
+	$Text/Label.text = "%s Augments" % selectedPart
 	tween.tween_property($Text, "modulate", Color(1, 1, 1, 1), tweenTime)
 	tween.tween_property($"Augment List", "modulate", Color(1, 1, 1, 1), tweenTime)
 	tween.tween_property($DescriptionRect, "modulate", Color(1, 1, 1, 1), tweenTime)
+
+func reset_ui(tween : Tween):
+	if selected.pair:
+		tween.tween_property(selected.pair, "position", selected.pair.startingPos, tweenTime)
+		tween.tween_property(selected.pair, "scale", selected.pair.startingScale, tweenTime)
+	tween.tween_property(selected, "position", selected.startingPos, tweenTime)
+	tween.tween_property(selected, "scale", selected.startingScale, tweenTime)
+	for child in get_children():
+		if child is Area2D and child != selected and child != selected.pair:
+			tween.tween_property(child.get_child(1), "modulate", Color(1, 1, 1, 1), tweenTime)
+	tween.tween_property($Text, "modulate", Color(1, 1, 1, 0), tweenTime)
+	tween.tween_property($"Augment List", "modulate", Color(1, 1, 1, 0), tweenTime)
+	tween.tween_property($DescriptionRect, "modulate", Color(1, 1, 1, 0), tweenTime)
+	$DescriptionRect/Title/Label.text = ""
+	$DescriptionRect/Description/Label.text = ""
+	$Accept.visible = false
 
 
 func _on_back_button_button_down():
 	var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
 	if selected:
-		if selected.pair:
-			tween.tween_property(selected.pair, "position", selected.pair.startingPos, tweenTime)
-			tween.tween_property(selected.pair, "scale", selected.pair.startingScale, tweenTime)
-		tween.tween_property(selected, "position", selected.startingPos, tweenTime)
-		tween.tween_property(selected, "scale", selected.startingScale, tweenTime)
-		for child in get_children():
-			if child is Area2D and child != selected and child != selected.pair:
-				tween.tween_property(child.get_child(1), "modulate", Color(1, 1, 1, 1), tweenTime)
-		tween.tween_property($Text, "modulate", Color(1, 1, 1, 0), tweenTime)
-		tween.tween_property($"Augment List", "modulate", Color(1, 1, 1, 0), tweenTime)
-		tween.tween_property($DescriptionRect, "modulate", Color(1, 1, 1, 0), tweenTime)
-		$DescriptionRect/Title/Label.text = ""
-		$DescriptionRect/Description/Label.text = ""
+		reset_ui(tween)
 		await tween.finished
 		selected = null
 		selectable = true
 		list.clear()
+
 
 func populate_list(partName : String):
 	if partName == "Head":
@@ -92,6 +100,7 @@ func populate_list(partName : String):
 
 
 func _on_item_list_item_selected(index):
+	$Accept.visible = true
 	selectedAugment = partAugments[index]
 	$DescriptionRect/Title/Label.text = selectedAugment.augmentName
 	$DescriptionRect/Description/Label.text = selectedAugment.augmentDesc
@@ -99,4 +108,16 @@ func _on_item_list_item_selected(index):
 
 
 func _on_accept_button_button_down():
-	pass # Replace with function body.
+	if $Accept.visible:
+		emit_signal("augment_selected")
+		PlayerStats.add_augment(selectedAugment, selectedPart)
+		var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
+		$Accept.visible = false
+		reset_ui(tween)
+		tween.tween_property(self, "scale", baseScale, tweenTime)
+		tween.tween_property(self, "position", basePosition, tweenTime)
+		tween.tween_property($ColorRect, "color", Color(0, 0, 0, 0), tweenTime)
+		tween.tween_property($Back, "modulate", Color(1, 1, 1, 0), tweenTime)
+		await tween.finished
+		selectable = false
+		

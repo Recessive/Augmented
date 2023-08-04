@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cnke24mc1elql"]
 
-[ext_resource type="AudioStream" uid="uid://dnlsjmsjhydgv" path="res://Songs/Back1/AREATHEME.wav" id="1_7vy7n"]
+[ext_resource type="AudioStream" uid="uid://cupdml0m1es7u" path="res://Songs/FINALBATTLE.wav" id="1_3n8eb"]
 [ext_resource type="Script" path="res://Scripts/AudioController.gd" id="2_n4i6r"]
 [ext_resource type="Script" path="res://Scripts/RoomControl.gd" id="3_cwx3v"]
 [ext_resource type="PackedScene" uid="uid://n1jt1t3tea4i" path="res://Rooms/Tutorial/TutorialRoom.tscn" id="4_ryk4n"]
@@ -12,11 +12,11 @@
 [node name="main" type="Node"]
 
 [node name="BasicComponents" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_7vy7n")
+stream = ExtResource("1_3n8eb")
 volume_db = -20.0
 autoplay = true
 script = ExtResource("2_n4i6r")
-beatFilePath = "res://Songs/Back1/back1.txt"
+beatFilePath = "res://Songs/boss1.txt"
 
 [node name="RoomControl" type="Node" parent="." node_paths=PackedStringArray("disposables", "player", "fade")]
 script = ExtResource("3_cwx3v")

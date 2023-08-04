@@ -13,6 +13,7 @@ var player : Node
 func _ready():
 	var key = str(InputMap.action_get_events("interact")[0].as_text().split(" ")[0])
 	label.text = labelText % key
+	$"/root/main/HUD/Game/TopInfo/Augment Menu".augment_selected.connect(augment_ani)
 	print(ui)
 
 
@@ -27,10 +28,13 @@ func _process(delta):
 		augmenting = true
 		ui.augmentDisplay.expand()
 		
-	if Input.is_action_just_pressed("test") and augmenting:
-		$AnimatedSprite2D.play("upgrade")
-		await $AnimatedSprite2D.animation_finished
-		$AnimatedSprite2D.play("default")
+func augment_ani():
+	$AnimatedSprite2D.play("upgrade")
+	await $AnimatedSprite2D.animation_finished
+	$AnimatedSprite2D.play("default")
+	augmenting = false
+	player.visible = true
+	PlayerStats.locked = false
 
 func _on_interact_area_entered(body):
 	if body.is_in_group('Player'):

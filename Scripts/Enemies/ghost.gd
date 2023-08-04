@@ -17,7 +17,7 @@ func _ready():
 func _physics_process(delta):
 	if dead: return
 	global_position.angle_to_point(player.global_position)
-	velocity = velocity.move_toward(direc * PlayerStats.maxSpeed, PlayerStats.acceleration * delta)
+	velocity = velocity.move_toward(direc * SPEED, ACCELERATION * delta)
 	move_and_slide()
 	
 func beat(enabled : Array[bool], beat : int):

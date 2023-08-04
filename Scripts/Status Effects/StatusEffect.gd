@@ -1,11 +1,12 @@
 extends Node
 
+signal removed
+
 var entity : Node
 
 var stacks : int
 
-@onready
-var timer : Timer = $Timer
+# @onready var timer : Timer = $Timer
 
 var active : bool = false
 func apply():

@@ -1,22 +1,26 @@
 extends "res://Scripts/Status Effects/StatusEffect.gd"
 
+
+
 @onready
 var originalSpeed : float = entity.SPEED
-	
 
 func apply():
 	active = true
 	entity.SPEED /= 2
-	timer.start()
-	await timer.timeout
+	$Timer.start()
+	await $Timer.timeout
 	remove()
 
 func add_stack():
-	timer.start()
+	$Timer.start()
 	stacks += 1
 
 func remove():
 	if active:
+		stacks = 0
 		active = false
-		timer.stop()
+		$Timer.stop()
 		entity.SPEED *= 2
+		emit_signal("removed", self)
+		queue_free()
