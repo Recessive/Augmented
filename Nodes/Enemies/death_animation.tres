@@ -90,6 +90,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_gjfs2")
 }],
 "loop": false,
-"name": &"default",
-"speed": 20.0
+"name": &"death",
+"speed": 10.0
 }]

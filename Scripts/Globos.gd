@@ -68,6 +68,8 @@ var target : Vector2 = global_position
 @onready
 var pivot : Vector2 = global_position
 
+var animation : AnimatedSprite2D
+
 # Kind of yuck, but have to move the sprite and area2d instead of the parent, because if
 # I moved the parent the telegraph lines would move too
 
@@ -78,10 +80,13 @@ func _ready():
 	laserChargeLine.add_point(Vector2(0, 0))
 	laserChargeLine.add_point(Vector2(0, 0))
 	
+	animation = $DeathAnimation
+	
 	
 	
 
 func reset_laserCharge():
+	animation.play('charge')
 	laserChargeLine.set_point_position(0, Vector2(0, 0))
 	laserChargeLine.set_point_position(1, Vector2(0, 0))
 	
@@ -97,6 +102,7 @@ func fire_laser(start : Vector2, end : Vector2):
 	laserTween.tween_callback(laserLine.queue_free)
 
 func _physics_process(delta):
+	animation.global_position = $Sprite2D.global_position
 	if dead: return
 	# Take next enabled beat on responseBeat index and gradually increase laser size
 	# If there exists more than 2 points in the telegraphLine that is
