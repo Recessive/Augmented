@@ -97,16 +97,11 @@ func _on_back_button_button_down():
 
 
 func populate_list(partName : String):
-	if partName == "Head":
-		partAugments = AugmentData.headAugments
-	if partName == "Body":
-		partAugments = AugmentData.bodyAugments
-	if partName == "Arms":
-		partAugments = AugmentData.armAugments
-	if partName == "Legs":
-		partAugments = AugmentData.legAugments
-	for aug in partAugments:
-		list.add_item(aug.augmentName)
+	partAugments = []
+	for recipe in AugmentData.recipes:
+		if recipe.bodyPart == partName and recipe.can_afford():
+			partAugments.append(AugmentData.name_to_augment(recipe.productName))
+			list.add_item(recipe.productName)
 
 
 func _on_item_list_item_selected(index):

@@ -35,20 +35,13 @@ var player : Node = $"/root/main/Player"
 # tube
 # plate
 # gear
-var tier1Inventory : Dictionary = {}
+var tier1Inventory : Dictionary = {"gear" : 2, "tube" : 1}
 
 # Only 1 slot in tier 2
 # Tier 2 components:
 # Circuit
 # Tranceiver
-var tier2Inventory : Dictionary = {}
-
-var inventory : Dictionary = {
-	"battery":3,
-	"tube":2,
-	"plate":1,
-	"gear":0,
-}
+var tier2Inventory : Dictionary = {"circuit" : 1}
 
 func _ready():
 	hp = maxHP

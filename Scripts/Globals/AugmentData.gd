@@ -5,11 +5,13 @@ extends Node
 @export var armPackedAugments : Array[String]
 @export var legPackedAugments : Array[String]
 
+@export var recipes : Array[Recipe]
+
 
 var headAugments : Array[Node]
 var bodyAugments : Array[Node]
-var armAugments : Array[Node]
-var legAugments : Array[Node]
+var armsAugments : Array[Node]
+var legsAugments : Array[Node]
 
 func _ready():
 	for path in headPackedAugments:
@@ -17,6 +19,20 @@ func _ready():
 	for path in bodyPackedAugments:
 		bodyAugments.append(load(path).instantiate())
 	for path in armPackedAugments:
-		armAugments.append(load(path).instantiate())
+		armsAugments.append(load(path).instantiate())
 	for path in legPackedAugments:
-		legAugments.append(load(path).instantiate())
+		legsAugments.append(load(path).instantiate())
+
+func name_to_augment(name : String):
+	for aug in headAugments:
+		if aug.augmentName == name:
+			return aug
+	for aug in bodyAugments:
+		if aug.augmentName == name:
+			return aug
+	for aug in armsAugments:
+		if aug.augmentName == name:
+			return aug
+	for aug in legsAugments:
+		if aug.augmentName == name:
+			return aug
