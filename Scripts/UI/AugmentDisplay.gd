@@ -1,6 +1,7 @@
 extends Node2D
 
 signal augment_selected
+signal augment_cancelled
 
 var selectable : bool = false
 
@@ -75,6 +76,11 @@ func reset_ui(tween : Tween):
 	$DescriptionRect/Description/Label.text = ""
 	$Accept.visible = false
 
+func minimize(tween : Tween):
+	tween.tween_property(self, "scale", baseScale, tweenTime)
+	tween.tween_property(self, "position", basePosition, tweenTime)
+	tween.tween_property($ColorRect, "color", Color(0, 0, 0, 0), tweenTime)
+	tween.tween_property($Back, "modulate", Color(1, 1, 1, 0), tweenTime)
 
 func _on_back_button_button_down():
 	var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
@@ -84,6 +90,10 @@ func _on_back_button_button_down():
 		selected = null
 		selectable = true
 		list.clear()
+	else:
+		minimize(tween)
+		selectable = false
+		emit_signal("augment_cancelled")
 
 
 func populate_list(partName : String):
@@ -114,10 +124,7 @@ func _on_accept_button_button_down():
 		var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
 		$Accept.visible = false
 		reset_ui(tween)
-		tween.tween_property(self, "scale", baseScale, tweenTime)
-		tween.tween_property(self, "position", basePosition, tweenTime)
-		tween.tween_property($ColorRect, "color", Color(0, 0, 0, 0), tweenTime)
-		tween.tween_property($Back, "modulate", Color(1, 1, 1, 0), tweenTime)
+		minimize(tween)
 		await tween.finished
 		selectable = false
 		

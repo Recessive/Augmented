@@ -26,14 +26,22 @@ var legAugments : int = 0
 
 var augments : Array[Node] # All body part augments combined
 
-var bodyParts : Dictionary = {
-	"head":"none",
-	"body":"none",
-	"leftarm":"none",
-	"rightarm":"none",
-	"leftleg":"none",
-	"rightleg":"none"
-}
+@onready
+var player : Node = $"/root/main/Player"
+
+# Only 2 slots in tier 1
+# Tier 1 components:
+# battery
+# tube
+# plate
+# gear
+var tier1Inventory : Dictionary = {}
+
+# Only 1 slot in tier 2
+# Tier 2 components:
+# Circuit
+# Tranceiver
+var tier2Inventory : Dictionary = {}
 
 var inventory : Dictionary = {
 	"battery":3,
