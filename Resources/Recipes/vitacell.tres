@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://bjgo3wpqx32bm"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.gd" id="1_4dr87"]
+
+[resource]
+script = ExtResource("1_4dr87")
+tier1requirements = {
+"plate": 1
+}
+tier2requirements = {
+"circuit": 1
+}
+bodyPart = "Body"
+productName = "Vitacell"
+quality = 0

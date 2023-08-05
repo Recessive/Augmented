@@ -19,7 +19,7 @@ var critChance : float
 
 var locked : bool = false
 
-var hp : float
+var hp : float : set = set_hp
 
 var headAugments : int = 0
 var bodyAugments : int = 0
@@ -47,6 +47,14 @@ var tier2Inventory : Dictionary = {}
 
 func _ready():
 	hp = maxHP
+	
+func set_hp(value):
+	hp = value
+	update_healthbar()
+
+func update_healthbar():
+	$"/root/main/HUD/Game/TopInfo/Healthbar".maxHP = maxHP
+	$"/root/main/HUD/Game/TopInfo/Healthbar".updateHP(hp)
 
 func can_add_item(tier : int, itemName : String):
 	if tier == 1:
@@ -133,6 +141,9 @@ func proc_hit(body : Node):
 func proc_death(body : Node):
 	for aug in augments:
 		aug.proc_death(body)
+
+func proc_player_death():
+	pass
 
 
 static func delete_children(node):

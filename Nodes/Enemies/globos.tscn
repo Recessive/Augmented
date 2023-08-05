@@ -181,6 +181,7 @@ CONTACT_DAMAGE = 5.0
 CONTACT_KNOCKBACK = 300.0
 tier1drops = Array[String](["gear", "plate"])
 tier2drops = Array[String](["circuit"])
+tier2chance = 1.0
 maxHP = 20.0
 
 [node name="Sprite2D" parent="." index="0"]

@@ -26,12 +26,16 @@ var tier2chance : float
 
 var dead : bool = false
 
+
+func _ready():
+	$"Sprite2D/Healthbar".maxHP = maxHP
+
 func set_hp(value):
 	if hp == null:
 		hp = value
 	elif typeof(value) != TYPE_NIL:
 		hp = min(value, maxHP)
-		$"Sprite2D/Healthbar".updateHP(hp / maxHP)
+		$"Sprite2D/Healthbar".updateHP(hp)
 	
 	if hp <= 0:
 		die()
@@ -63,6 +67,7 @@ func die():
 	$DeathAnimation.show()
 	$DeathAnimation.play()
 	await $DeathAnimation.animation_finished
+	drop()
 	emit_signal("died", self)
 	queue_free()
 

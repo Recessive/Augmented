@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdlflkt5q3yx0"]
+[gd_scene load_steps=17 format=3 uid="uid://cdlflkt5q3yx0"]
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_rpkxy"]
-[ext_resource type="Resource" uid="uid://56mmdpbyv7bk" path="res://Rooms/cyber_room.tres" id="2_6jb7k"]
+[ext_resource type="Resource" uid="uid://d3r0h7qydwj0j" path="res://Rooms/cyber_aug_room.tres" id="2_7mimh"]
 [ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Nodes/door.tscn" id="3_e4vn4"]
 [ext_resource type="Texture2D" uid="uid://dqd0lljntsf6x" path="res://Sprites/UI/mousecontrols.png" id="4_6ip1o"]
 [ext_resource type="Script" path="res://Scripts/Enemies/ghost.gd" id="5_en26w"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dgosuefilu87x" path="res://Sprites/UI/arrow.png" id="8_swmpo"]
 [ext_resource type="Script" path="res://Rooms/ArrowMove.gd" id="9_fh1ct"]
 [ext_resource type="SpriteFrames" uid="uid://c88li6al26hkn" path="res://Nodes/Enemies/death_animation.tres" id="10_vm6ak"]
+[ext_resource type="Script" path="res://Scripts/Pulse.gd" id="11_cfut0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don04"]
 size = Vector2(16, 18)
@@ -51,11 +52,15 @@ _data = {
 "idle": SubResource("Animation_kurk0")
 }
 
+[sub_resource type="Curve" id="Curve_lupsu"]
+_data = [Vector2(0, 1), 0.0, -1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Room" node_paths=PackedStringArray("enemies", "doorNodes") instance=ExtResource("1_rpkxy")]
-layer_0/tile_data = PackedInt32Array(0, 65537, 1, 65536, 1114113, 0, 1, 65537, 1, 65537, 983041, 0, 2, 65537, 1, 65538, 1048577, 0, 3, 458753, 1, 65539, 458753, 1, -65540, 1048577, 0, -4, 1048577, 1, 65532, 1048577, 2, 131068, 1048577, 0, -65539, 1114113, 0, -3, 65537, 1, 65533, 65537, 1, 131069, 65537, 1, -65538, 983041, 0, -2, 65537, 1, 65534, 65537, 1, 131070, 983041, 0, -65537, 1048577, 0, -1, 65537, 1, 65535, 65537, 1, 131071, 1048577, 0, -65536, 1114113, 1, -131071, 983041, 0, -65535, 983041, 1, -131070, 1048577, 0, -65534, 65537, 1, -131069, 458753, 1, -65533, 458753, 1, -131077, 65537, 0, -196604, 65537, 0, 131077, 131073, 2, -196603, 131073, 0, 196602, 1, 2, -131078, 1, 0, -65542, 1, 1, -131067, 131073, 1, 65541, 131073, 1, 131076, 65537, 2, 196603, 65537, 2, 131066, 1, 1, 65530, 1, 1, -6, 1, 1, 5, 131073, 1, -65531, 131073, 1, 196604, 65537, 2, 196605, 65537, 2, 196606, 65537, 2, 196607, 65537, 2, 131073, 65537, 2, 131074, 65537, 2, 131075, 65537, 2, -131075, 65537, 0, -131074, 65537, 0, -196608, 65537, 0, -196607, 65537, 0, -196606, 65537, 0, -196605, 65537, 0, -65541, 983041, 0, -131068, 458753, 1, 65540, 458753, 1, 131067, 983041, 0, -5, 983041, 1, 65531, 983041, 2, -65532, 458753, 1, 4, 458753, 1, -131073, 65537, 0, 131072, 65537, 2, -131072, 1114113, 0)
+layer_0/tile_data = PackedInt32Array(0, 65537, 1, 65536, 1114113, 0, 1, 65537, 1, 65537, 983041, 0, 2, 65537, 1, 65538, 1048577, 0, 3, 1048577, 2, 65539, 983041, 1, -65540, 1048577, 0, -4, 1048577, 1, 65532, 1048577, 2, 131068, 1048577, 0, -65539, 1114113, 0, -3, 65537, 1, 65533, 65537, 1, 131069, 65537, 1, -65538, 983041, 0, -2, 65537, 1, 65534, 65537, 1, 131070, 983041, 0, -65537, 1048577, 0, -1, 65537, 1, 65535, 65537, 1, 131071, 1048577, 0, -65536, 1114113, 1, -131071, 983041, 0, -65535, 983041, 1, -131070, 1048577, 0, -65534, 65537, 1, -131069, 1048577, 1, -65533, 1048577, 0, -131077, 65537, 0, -196604, 65537, 0, 131077, 131073, 2, -196603, 131073, 0, 196602, 1, 2, -131078, 1, 0, -65542, 1, 1, -131067, 131073, 1, 65541, 131073, 1, 131076, 65537, 2, 196603, 65537, 2, 131066, 1, 1, 65530, 1, 1, -6, 1, 1, 5, 131073, 1, -65531, 131073, 1, 196604, 65537, 2, 196605, 65537, 2, 196606, 65537, 2, 196607, 65537, 2, 131073, 65537, 2, 131074, 65537, 2, 131075, 65537, 2, -131075, 65537, 0, -131074, 65537, 0, -196608, 65537, 0, -196607, 65537, 0, -196606, 65537, 0, -196605, 65537, 0, -65541, 983041, 0, -131068, 1048577, 0, 65540, 983041, 2, 131067, 983041, 0, -5, 983041, 1, 65531, 983041, 2, -65532, 1048577, 0, 4, 1114113, 2, -131073, 65537, 0, 131072, 65537, 2, -131072, 1114113, 0)
 enemies = [NodePath("Ghost")]
 doorNodes = [NodePath("Door")]
-roomTypeList = Array[Resource("res://Scripts/Room.gd")]([ExtResource("2_6jb7k")])
+roomTypeList = Array[Resource("res://Scripts/Room.gd")]([ExtResource("2_7mimh")])
 
 [node name="Spawn" parent="." index="1"]
 frame = 0
@@ -79,6 +84,9 @@ SPEED = 100.0
 ACCELERATION = 300.0
 CONTACT_DAMAGE = 5.0
 CONTACT_KNOCKBACK = 300.0
+tier1drops = Array[String](["plate"])
+tier2drops = Array[String](["circuit"])
+tier2chance = 1.0
 maxHP = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Ghost" index="0"]
@@ -119,5 +127,17 @@ shape = SubResource("RectangleShape2D_don04")
 visible = false
 sprite_frames = ExtResource("10_vm6ak")
 animation = &"death"
+
+[node name="ColorRect" type="ColorRect" parent="." index="5"]
+z_index = -1
+offset_left = -188.0
+offset_top = -94.0
+offset_right = 188.0
+offset_bottom = 92.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("11_cfut0")
+beatIndex = 2
+pulseColor = Color(0, 0.6, 0.776471, 1)
+pulseCurve = SubResource("Curve_lupsu")
 
 [connection signal="body_entered" from="Ghost/Area2D" to="Ghost" method="_on_area_2d_body_entered" flags=18]

@@ -39,10 +39,6 @@ func update_camera():
 
 func _ready():
 	PlayerStats.updated_inventory.connect(updated_inventory)
-	PlayerStats.add_item(1, "gear")
-	PlayerStats.add_item(1, "gear")
-	PlayerStats.add_item(1, "tube")
-	PlayerStats.add_item(2, "circuit")
 	$HelperWindowRect.hide()
 	
 	menus = {

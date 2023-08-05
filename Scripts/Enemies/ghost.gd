@@ -11,6 +11,7 @@ var player : Node = $"/root/main/Player"
 var direc : Vector2 = Vector2()
 
 func _ready():
+	$"Sprite2D/Healthbar".maxHP = maxHP
 	Conductor.onBeat.connect(beat)
 	add_to_group('Enemies')
 	

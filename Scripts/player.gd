@@ -21,6 +21,8 @@ var invi : Node = $Invincibility
 var canTakeDmg : bool = invi.is_stopped()
 @onready 
 var healthSprite : Node = get_node("../Healthbar/HealthbarSprite")
+@onready
+var hud : Node = $"../HUD"
 
 @onready
 var weaponShootSound : AudioStreamPlayer = $WeaponShoot
@@ -28,6 +30,7 @@ var weaponShootSound : AudioStreamPlayer = $WeaponShoot
 var AugmentRenderer
 
 func _ready():
+	$"../HUD/Game/TopInfo/Healthbar".maxHP = PlayerStats.maxHP
 	AugmentRenderer = $PlayerAugmentRenderer
 	Conductor.onBeat.connect(beat)
 
@@ -97,25 +100,26 @@ func shoot():
 	if !playingUp:
 		$ShootAnimator.play("shoot")
 
-####################
-#MAIN CHANGES HERE #
-####################
-
 func hurt(attack : Attack):
 	if canTakeDmg == true:
 		PlayerStats.hp -= attack.damage
+		PlayerStats.update_healthbar()
 		velocity = (global_position - attack.pos).normalized() * attack.knockback
 		GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
 		
-		# Damghar's code
-		healthSprite.play("DmgTaken")
-		await healthSprite.is_playing() == false
-		if PlayerStats.hp >= 66 and healthSprite.is_playing() == false:
-			healthSprite.play("Normal")
-		elif PlayerStats.hp < 66 and PlayerStats.hp >= 33 and healthSprite.is_playing() == false:
-			healthSprite.play("Cracked")
-		elif PlayerStats.hp < 33 and healthSprite.is_playing() == false:
-			healthSprite.play("VeryCracked")
+		if PlayerStats.hp <= 0:
+			disable_collision()
+			$Sprite2D.visible = false
+			$PlayerAugmentRenderer.visible = false
+			$DeathAni.visible = true
+			$DeathAni.play()
+			PlayerStats.locked = true
+			PlayerStats.proc_player_death()
+			var tween = create_tween().parallel()
+			tween.tween_property($"../BasicComponents", "volume_db", -80, 2)
+			tween.tween_property(hud.get_node("Game"), "modulate", Color(0, 0, 0, 0), 2)
+			$DeathSound.play()
+			
 
 func beat(enabled : Array[bool], beat : int):
 	if PlayerStats.locked:

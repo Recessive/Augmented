@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4amnsn2jqnoj"]
+
+[ext_resource type="PackedScene" uid="uid://87fxiplh3kdf" path="res://Nodes/Base/augment_base.tscn" id="1_iexw4"]
+[ext_resource type="Script" path="res://Scripts/Augments/vitacell.gd" id="2_1y5ru"]
+
+[node name="Augment" instance=ExtResource("1_iexw4")]
+script = ExtResource("2_1y5ru")
+stackHealth = 25.0
+augmentName = "Vitacell"
+augmentDesc = "Increase max hp by 25"

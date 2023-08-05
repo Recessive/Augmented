@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs537kilmspuc"]
+[gd_scene load_steps=7 format=3 uid="uid://bs537kilmspuc"]
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_a6o0d"]
 [ext_resource type="Resource" uid="uid://56mmdpbyv7bk" path="res://Rooms/cyber_room.tres" id="2_gwibe"]
 [ext_resource type="PackedScene" uid="uid://vi1xhrb7cshw" path="res://Nodes/Objects/upgrade_station.tscn" id="2_ttppr"]
 [ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Nodes/door.tscn" id="3_nctdd"]
+[ext_resource type="Script" path="res://Scripts/Pulse.gd" id="5_rxmi3"]
+
+[sub_resource type="Curve" id="Curve_4n68m"]
+_data = [Vector2(0, 1), 0.0, -1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Room" node_paths=PackedStringArray("doorNodes") instance=ExtResource("1_a6o0d")]
 layer_0/tile_data = PackedInt32Array(0, 65537, 1, 65536, 65537, 1, 1, 983041, 1, 65537, 65537, 1, 2, 65537, 1, 65538, 1114113, 0, 3, 65537, 1, 65539, 65537, 1, -65540, 65537, 1, -4, 1048577, 2, 65532, 65537, 1, 131068, 65537, 1, -65539, 1114113, 2, -3, 65537, 1, 65533, 1114113, 0, 131069, 1048577, 0, -65538, 983041, 1, -2, 65537, 1, 65534, 65537, 1, 131070, 65537, 1, -65537, 65537, 1, -1, 65537, 1, 65535, 65537, 1, 131071, 65537, 1, -131072, 65537, 1, -65536, 65537, 1, -131071, 65537, 1, -65535, 983041, 2, -131070, 1048577, 2, -65534, 65537, 1, -131069, 65537, 1, -65533, 1048577, 2, -131077, 65537, 0, -196604, 65537, 0, 131077, 131073, 2, -196603, 131073, 0, 196602, 1, 2, -131078, 1, 0, -65542, 1, 1, -131067, 131073, 1, 65541, 131073, 1, 131076, 65537, 2, 196603, 65537, 2, 131066, 1, 1, 65530, 1, 1, -6, 1, 1, 5, 131073, 1, -65531, 131073, 1, 196604, 65537, 2, 196605, 65537, 2, 196606, 65537, 2, 196607, 65537, 2, 131073, 65537, 2, 131074, 65537, 2, 131075, 65537, 2, -131076, 65537, 0, -131075, 65537, 0, -131074, 65537, 0, -131073, 65537, 0, -196607, 65537, 0, -196606, 65537, 0, -196605, 65537, 0, -65541, 65537, 1, -131068, 65537, 1, 65540, 65537, 1, 131067, 1048577, 0, -5, 65537, 1, 65531, 983041, 1, -65532, 65537, 1, 4, 1114113, 0)
@@ -15,3 +20,15 @@ position = Vector2(-64, 0)
 
 [node name="Door" parent="." index="3" instance=ExtResource("3_nctdd")]
 position = Vector2(16, -80)
+
+[node name="ColorRect" type="ColorRect" parent="." index="4"]
+z_index = -1
+offset_left = -188.0
+offset_top = -94.0
+offset_right = 188.0
+offset_bottom = 92.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("5_rxmi3")
+beatIndex = 2
+pulseColor = Color(0, 0.6, 0.776471, 1)
+pulseCurve = SubResource("Curve_4n68m")
