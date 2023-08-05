@@ -22,13 +22,24 @@ var tier1drops : Array[String]
 var tier2drops : Array[String]
 
 @export
+var tier1chance : float = 1
+
+@export
 var tier2chance : float
 
 var dead : bool = false
 
 
-func _ready():
+func _parent_ready():
+	var h = PlayerStats.get_heat_scale()
+	SPEED *= min(h, 1.5)
+	ACCELERATION *= h
+	CONTACT_PENETRATION *= h
+	CONTACT_DAMAGE *= h
+	maxHP *= h
 	$"Sprite2D/Healthbar".maxHP = maxHP
+	hp = maxHP
+	
 
 func set_hp(value):
 	if hp == null:
@@ -75,20 +86,22 @@ func drop():
 	var weights : Array[float] = []
 	var nodes : Array[Node] = []
 	var node : Node
-	for i in tier1drops:
-		node = load(AugmentData.dropsPacked[i]).instantiate()
-		weights.append(node.weight)
-		nodes.append(node)
-	var ind : int = RandPlus.SampleWeighted(weights)
-	var tier1drop : Node = nodes[ind]
-	nodes.remove_at(ind)
-	
-	for i in nodes:
-		i.queue_free()
-	
-	tier1drop.global_position = global_position
+	var ind : int
+	if randf() < tier1chance:
+		for i in tier1drops:
+			node = load(AugmentData.dropsPacked[i]).instantiate()
+			weights.append(node.weight)
+			nodes.append(node)
+		ind = RandPlus.SampleWeighted(weights)
+		var tier1drop : Node = nodes[ind]
+		nodes.remove_at(ind)
+		
+		for i in nodes:
+			i.queue_free()
+		
+		tier1drop.global_position = global_position
 
-	get_tree().get_root().get_node("main/Disposables").call_deferred("add_child", tier1drop)
+		get_tree().get_root().get_node("main/Disposables").call_deferred("add_child", tier1drop)
 	
 	if randf() < tier2chance:
 		nodes.clear()

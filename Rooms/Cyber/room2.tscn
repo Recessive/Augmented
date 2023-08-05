@@ -1,18 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://buu6e7c5jllha"]
+[gd_scene load_steps=7 format=3 uid="uid://buu6e7c5jllha"]
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_7tqtx"]
 [ext_resource type="Resource" uid="uid://56mmdpbyv7bk" path="res://Rooms/cyber_room.tres" id="2_ckcyq"]
 [ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Nodes/door.tscn" id="2_kcoc0"]
 [ext_resource type="Resource" uid="uid://d3r0h7qydwj0j" path="res://Rooms/cyber_aug_room.tres" id="3_s35bm"]
-[ext_resource type="Script" path="res://Scripts/Pulse.gd" id="4_sc8md"]
+[ext_resource type="PackedScene" uid="uid://b0haj3q3nlx6p" path="res://Nodes/Enemies/ghost.tscn" id="6_cqw0a"]
 [ext_resource type="PackedScene" uid="uid://crlvcbxewxomd" path="res://Nodes/Enemies/death_flower.tscn" id="6_pxdg7"]
 
-[sub_resource type="Curve" id="Curve_xrlve"]
-_data = [Vector2(0, 1), 0.0, -1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[node name="Room" node_paths=PackedStringArray("doorNodes") instance=ExtResource("1_7tqtx")]
+[node name="Room" node_paths=PackedStringArray("enemies", "doorNodes") instance=ExtResource("1_7tqtx")]
 layer_0/tile_data = PackedInt32Array(0, 65537, 1, 65536, 983041, 0, 1, 65537, 1, 65537, 65537, 1, 2, 1048577, 2, 65538, 65537, 1, 3, 65537, 1, 65539, 65537, 1, 4, 1114113, 0, 65540, 983041, 1, -65541, 1114113, 1, -5, 65537, 1, 65531, 1114113, 0, 131067, 65537, 1, -65540, 65537, 1, -4, 65537, 1, 65532, 65537, 1, 131068, 65537, 1, -65539, 65537, 1, -3, 65537, 1, 65533, 65537, 1, 131069, 983041, 1, -65538, 65537, 1, -2, 983041, 0, 65534, 65537, 1, 131070, 65537, 1, -65537, 65537, 1, -1, 65537, 1, 65535, 65537, 1, 131071, 65537, 1, -131072, 1114113, 1, -65536, 65537, 1, -131071, 65537, 1, -65535, 65537, 1, -131070, 65537, 1, -65534, 1114113, 2, -131069, 65537, 1, -65533, 65537, 1, -131068, 983041, 2, -65532, 65537, 1, -131078, 589825, 0, -196603, 720897, 0, 131077, 720897, 2, 196602, 589825, 2, 131066, 786433, 1, -65542, 786433, 1, -131077, 851969, 0, -196604, 851969, 0, -131067, 917505, 1, 65541, 917505, 1, 131076, 851969, 2, 131075, 851969, 2, 131074, 851969, 2, 131073, 655361, 2, 131072, 851969, 2, 196607, 655361, 2, 196606, 851969, 2, 196605, 851969, 2, 196604, 851969, 2, 196603, 851969, 2, 65530, 786433, 1, -6, 786433, 1, -131076, 851969, 0, -131075, 851969, 0, -131074, 655361, 0, -196608, 655361, 0, -196607, 851969, 0, -196606, 851969, 0, -196605, 851969, 0, -65531, 917505, 1, 5, 917505, 1)
+enemies = [NodePath("Ghost")]
 doorNodes = [NodePath("Door")]
 roomTypeList = Array[Resource("res://Scripts/Room.gd")]([ExtResource("2_ckcyq"), ExtResource("3_s35bm")])
 
@@ -23,23 +20,22 @@ frame_progress = 0.0
 [node name="Door" parent="." index="2" instance=ExtResource("2_kcoc0")]
 position = Vector2(-16, -80)
 
-[node name="ColorRect" type="ColorRect" parent="." index="3"]
-z_index = -1
-offset_left = -188.0
-offset_top = -94.0
-offset_right = 188.0
-offset_bottom = 92.0
-color = Color(0, 0, 0, 1)
-script = ExtResource("4_sc8md")
-beatIndex = 2
-pulseColor = Color(0, 0.6, 0.776471, 1)
-pulseCurve = SubResource("Curve_xrlve")
+[node name="DeathFlower" parent="." index="3" instance=ExtResource("6_pxdg7")]
+position = Vector2(-128, 0)
 
-[node name="DeathFlower" parent="." index="4" instance=ExtResource("6_pxdg7")]
-position = Vector2(-97, -3)
+[node name="DeathFlower2" parent="." index="4" instance=ExtResource("6_pxdg7")]
+position = Vector2(-64, 0)
 
-[node name="DeathFlower2" parent="." index="5" instance=ExtResource("6_pxdg7")]
-position = Vector2(-25, -3)
+[node name="DeathFlower3" parent="." index="5" instance=ExtResource("6_pxdg7")]
 
-[node name="DeathFlower3" parent="." index="6" instance=ExtResource("6_pxdg7")]
-position = Vector2(56, -4)
+[node name="DeathFlower4" parent="." index="6" instance=ExtResource("6_pxdg7")]
+position = Vector2(64, 0)
+
+[node name="DeathFlower5" parent="." index="7" instance=ExtResource("6_pxdg7")]
+position = Vector2(128, 0)
+
+[node name="Ghost" parent="." index="8" instance=ExtResource("6_cqw0a")]
+position = Vector2(128, -48)
+
+[node name="Ghost2" parent="." index="9" instance=ExtResource("6_cqw0a")]
+position = Vector2(-128, -48)

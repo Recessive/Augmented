@@ -1,5 +1,8 @@
 extends Node
 
+signal enemies_dead
+signal entered_combat
+
 @export
 var disposables : Node
 
@@ -63,11 +66,19 @@ func room_ready():
 	$/root/main/HUD.update_camera()
 	
 	# increase depth for each room
-	depth += 1
-	heat = depth / 10 # temporary increase heat once for each 10 rooms you go through
+	PlayerStats.depth += 1
+	if PlayerStats.depth % 10 == 0:
+		PlayerStats.heat += 1# increase heat once for each 10 rooms you go through
+	print(PlayerStats.heat)
 	
 	if depth != 1:
 		GlobalAssets.SpawnText("Depth +1", Vector2(-16, 0))
+
+func all_enemies_dead():
+	emit_signal("enemies_dead")
+
+func start_combat():
+	emit_signal("entered_combat")
 
 func beat(enabled : Array[bool], beat : int):
 	if enabled[fadeBeatIndex] and fading:

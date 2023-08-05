@@ -75,7 +75,7 @@ var animation : AnimatedSprite2D
 
 var laserTween : Tween
 func _ready():
-	$"Sprite2D/Healthbar".maxHP = maxHP
+	_parent_ready()
 	Conductor.onBeat.connect(beat)
 	telegraphLine.add_point(Vector2(0, 0))
 	laserChargeLine.add_point(Vector2(0, 0))

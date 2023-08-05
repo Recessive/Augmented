@@ -237,6 +237,7 @@ CONTACT_DAMAGE = 20.0
 CONTACT_KNOCKBACK = 300.0
 tier1drops = Array[String](["tube"])
 tier2drops = Array[String](["circuit"])
+tier1chance = 0.1
 tier2chance = 0.05
 maxHP = 25.0
 
@@ -250,6 +251,7 @@ animation = &"explode"
 
 [node name="Area2D" parent="." index="3"]
 position = Vector2(0, 6)
+collision_mask = 2
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_h7473")

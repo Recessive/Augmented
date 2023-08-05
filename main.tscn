@@ -124,6 +124,8 @@ offset_right = 196.0
 offset_bottom = 109.0
 color = Color(0, 0, 0, 1)
 
+[connection signal="enemies_dead" from="RoomControl" to="HUD" method="_on_room_control_enemies_dead"]
+[connection signal="entered_combat" from="RoomControl" to="HUD" method="_on_room_control_entered_combat"]
 [connection signal="button_down" from="GameOver/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_button_down"]
 
 [editable path="Healthbar"]

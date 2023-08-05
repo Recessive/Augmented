@@ -55,27 +55,12 @@ func _ready():
 	
 	update_camera()
 
-func check_for_enemies():
-	var currentRoom = roomControl.get_children()[-1]
-	for child in currentRoom.get_children():
-		if child.is_in_group("Enemies"):
-			return true
-	return false
-
-var wasEnemyActive = true
-var isEnemyActive = false
-
 func _process(delta):
-	
-	isEnemyActive = check_for_enemies()
-	if wasEnemyActive!=isEnemyActive:
-		if isEnemyActive: $Game/TopInfo._on_combat_start()
-		else: $Game/TopInfo._on_combat_end()
-	wasEnemyActive = isEnemyActive
+
 	
 	# update the game menu
 	if activeMenu == 'game':
-		var depth = roomControl.depth
+		var depth = PlayerStats.depth
 		$Game/TopInfo/Label.text = "%s / 250" % depth
 
 	if Input.is_action_just_pressed('pause'):
@@ -125,4 +110,9 @@ func _on_back_pressed():
 func _on_options_pressed():
 	switch_menu('options')
 
+func _on_room_control_enemies_dead():
+	$Game/TopInfo._on_combat_end()
 
+
+func _on_room_control_entered_combat():
+	$Game/TopInfo._on_combat_start()

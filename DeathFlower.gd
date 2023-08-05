@@ -1,5 +1,8 @@
 extends "res://Scripts/Base/EnemyBase.gd"
 
+func _ready():
+	_parent_ready()
+
 func _on_area_2d_body_entered(body):
 	contact_damage(body,global_position)
 	explode()

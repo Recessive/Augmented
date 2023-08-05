@@ -361,7 +361,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"upgrade",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,

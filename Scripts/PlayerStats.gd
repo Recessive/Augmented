@@ -18,6 +18,9 @@ var startAcceleration : float
 @export
 var startCritChance : float
 
+@export
+var heatScaling : float
+
 var maxHP : float
 var maxArmor : float
 var maxSpeed : float
@@ -34,6 +37,9 @@ var armAugments : int = 0
 var legAugments : int = 0
 
 var augments : Array[Node] # All body part augments combined
+
+var depth : int = 0
+var heat : int = 0
 
 @onready
 var player : Node
@@ -60,9 +66,14 @@ func start():
 	critChance = startCritChance
 	hp = maxHP
 	
+	depth = 0
+	heat = 0
 	locked = false
 	
 	player = $"/root/main/Player"
+
+func get_heat_scale() -> float:
+	return 1 + heat * heatScaling
 	
 func set_hp(value):
 	hp = value

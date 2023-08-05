@@ -91,10 +91,11 @@ func _physics_process(delta):
 
 func shoot():
 	var b : Node = bullet.instantiate()
-	var vel = global_position.direction_to(get_global_mouse_position()).normalized() * b.SPEED
+	var direc = global_position.direction_to(get_global_mouse_position()).normalized()
+	var vel = direc * b.SPEED
 	disposables.add_child(b)
 	b.isCrit = randf() < PlayerStats.critChance
-	b.global_position = global_position
+	b.global_position = global_position + direc * 4
 	b.velocity = vel
 	weaponShootSound.play()
 	if !playingUp:

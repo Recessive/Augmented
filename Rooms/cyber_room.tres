@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_ku7l5")
-rooms = Array[String](["res://Rooms/Cyber/room1.tscn", "res://Rooms/Cyber/room2.tscn"])
+rooms = Array[String](["res://Rooms/Cyber/room1.tscn", "res://Rooms/Cyber/room2.tscn", "res://Rooms/Cyber/room3.tscn"])
 weight = 10.0
 type = "cyber"

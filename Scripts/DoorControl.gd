@@ -49,10 +49,13 @@ func _ready():
 	spawn.y -= 32
 	
 	emit_signal("room_ready")
+	if enemies.size() != 0:
+		get_parent().start_combat()
 
 func enemy_died(enemy : Node):
 	enemies.remove_at(enemies.find(enemy))
 	if enemies.size() == 0:
+		get_parent().all_enemies_dead()
 		for doorNode in doorNodes:
 			doorNode.get_child(0).play()
 

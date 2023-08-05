@@ -41,8 +41,8 @@ _data = {
 "idle": SubResource("Animation_4uwvh")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1rvio"]
-radius = 5.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vd03"]
+size = Vector2(4.43837, 5.25498)
 
 [node name="PlayerBullet1" instance=ExtResource("1_1r1id")]
 collision_layer = 0
@@ -70,4 +70,5 @@ collision_layer = 0
 collision_mask = 5
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource("CircleShape2D_1rvio")
+position = Vector2(-2.64547e-07, 0)
+shape = SubResource("RectangleShape2D_0vd03")

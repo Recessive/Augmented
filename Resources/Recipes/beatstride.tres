@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_k2fa1")
 tier1requirements = {
-"plate": 3
+"plate": 2
 }
 tier2requirements = {}
 bodyPart = "Legs"

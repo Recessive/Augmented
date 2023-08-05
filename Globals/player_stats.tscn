@@ -8,3 +8,4 @@ startMaxHP = 100.0
 startMaxSpeed = 100.0
 startAcceleration = 1000.0
 startCritChance = 0.1
+heatScaling = 0.1
