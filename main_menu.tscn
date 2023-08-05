@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://57xnv58pfpw0"]
+[gd_scene load_steps=9 format=3 uid="uid://57xnv58pfpw0"]
 
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="1_bly87"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_jds5u"]
+[ext_resource type="PackedScene" uid="uid://cnke24mc1elql" path="res://main.tscn" id="2_5ouoy"]
+[ext_resource type="AudioStream" uid="uid://dnlsjmsjhydgv" path="res://Songs/Back1/AREATHEME.wav" id="2_h1h26"]
+[ext_resource type="Script" path="res://Scripts/AudioController.gd" id="3_u5h4x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubk13"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -24,6 +28,8 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_jds5u")
+mainScene = ExtResource("2_5ouoy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
@@ -50,7 +56,7 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
@@ -116,3 +122,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ubk13")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0cy0w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ppjui")
 text = "Credits"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_h1h26")
+volume_db = -40.0
+script = ExtResource("3_u5h4x")
+beatFilePath = "res://Songs/Back1/back1.txt"
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/Play" to="." method="_on_play_button_down"]

@@ -89,8 +89,6 @@ func _ready():
 func reset_laserCharge():
 	laserChargeLine.set_point_position(0, Vector2(0, 0))
 	laserChargeLine.set_point_position(1, Vector2(0, 0))
-	animation.play('charge')
-	animation.set_frame_and_progress(0,0.0)
 	
 func fire_laser(start : Vector2, end : Vector2):
 	var laserLine = load(laserScene).instantiate()

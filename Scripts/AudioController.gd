@@ -9,5 +9,6 @@ func _ready():
 	play_song()
 
 func play_song():
+	play()
 	await finished
 	Conductor.next_song()

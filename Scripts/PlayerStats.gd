@@ -2,19 +2,26 @@ extends Node
 
 signal updated_inventory
 
+
 @export
+var startMaxHP : float
+
+@export
+var startMaxArmor : float
+
+@export
+var startMaxSpeed : float
+
+@export
+var startAcceleration : float
+
+@export
+var startCritChance : float
+
 var maxHP : float
-
-@export
 var maxArmor : float
-
-@export
 var maxSpeed : float
-
-@export
 var acceleration : float
-
-@export
 var critChance : float
 
 var locked : bool = false
@@ -45,7 +52,12 @@ var tier1Inventory : Dictionary = {}
 # Tranceiver
 var tier2Inventory : Dictionary = {}
 
-func _ready():
+func start():
+	maxHP = startMaxHP 
+	maxArmor = startMaxArmor 
+	maxSpeed = startMaxSpeed 
+	acceleration = startAcceleration 
+	critChance = startCritChance
 	hp = maxHP
 	
 func set_hp(value):

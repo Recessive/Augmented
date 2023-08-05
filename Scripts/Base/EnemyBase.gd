@@ -87,8 +87,8 @@ func drop():
 		i.queue_free()
 	
 	tier1drop.global_position = global_position
-	
-	get_tree().get_root().get_node("main/Disposables").add_child(tier1drop)
+
+	get_tree().get_root().get_node("main/Disposables").call_deferred("add_child", tier1drop)
 	
 	if randf() < tier2chance:
 		nodes.clear()
@@ -106,4 +106,4 @@ func drop():
 		
 		tier2drop.global_position = global_position + Vector2(16, 0)
 		
-		get_tree().get_root().get_node("main/Disposables").add_child(tier2drop)
+		get_tree().get_root().get_node("main/Disposables").call_deferred("add_child", tier2drop)

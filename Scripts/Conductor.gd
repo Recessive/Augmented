@@ -27,6 +27,9 @@ func init(aud : AudioStreamPlayer, beatFile : String):
 	audioPlayer = aud
 	beatFilePath = beatFile
 	
+	beats = []
+	leftEnabled = []
+	rightEnabled = []
 	
 	var file = FileAccess.open(beatFilePath, FileAccess.READ)
 	var content = file.get_as_text()
@@ -35,6 +38,8 @@ func init(aud : AudioStreamPlayer, beatFile : String):
 	for i in beats.size():
 		enabledBeats.append(false)
 		percentEnabled.append(0)
+	beatNumber = 0
+	lastBeatPosition = 0
 	
 	
 func preprocessing(content):
