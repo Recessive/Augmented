@@ -101,7 +101,8 @@ func fire_laser(start : Vector2, end : Vector2):
 	laserTween.tween_property(laserLine, "width", 0, laserFireDuration)
 	laserTween.tween_interval(laserParticleDuration)
 	laserTween.tween_callback(laserLine.queue_free)
-
+@onready
+var chargeAniLength : float = $AnimationPlayer.get_animation("charge").length
 func _physics_process(delta):
 	animation.global_position = $Sprite2D.global_position
 	if dead: return
@@ -113,7 +114,10 @@ func _physics_process(delta):
 		laserChargeLine.set_point_position(0, p1)
 		laserChargeLine.set_point_position(1, p2)
 		laserChargeLine.width = laserChargeWidth * laserChargeCurve.sample(Conductor.percentage_enabled(responseBeat))
-	pass
+	
+	if !prepping:
+		var p : float = Conductor.percentage_enabled(responseBeat)
+		$AnimationPlayer.seek(p * chargeAniLength)
 	
 func _on_player_hurt_body_entered(body : Node):
 	if body.is_in_group("Player"):
@@ -175,6 +179,11 @@ func beat(enabled : Array[bool], beat : int):
 			telegraphLine.add_point(telegraphLine.to_local(result.position - direc.normalized()*(minShootDist/8)))
 			direc = direc.bounce(result.normal)
 		
+		if Conductor.rightEnabled[callBeat][beat] > Conductor.rightEnabled[responseBeat][beat]:
+			prepping = false
+			$AnimationPlayer.play("charge")
+		
+		
 	if(enabled[responseBeat]):
 		
 		# "Shoot" along the drawn path
@@ -201,3 +210,4 @@ func beat(enabled : Array[bool], beat : int):
 			angle = sprite.global_position.angle_to_point(player.global_position)
 			direc = Vector2(cos(angle), sin(angle))
 			prepping = true
+			$AnimationPlayer.play("idle")

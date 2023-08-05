@@ -118,5 +118,6 @@ shape = SubResource("RectangleShape2D_don04")
 [node name="DeathAnimation" type="AnimatedSprite2D" parent="Ghost" index="4"]
 visible = false
 sprite_frames = ExtResource("10_vm6ak")
+animation = &"death"
 
 [connection signal="body_entered" from="Ghost/Area2D" to="Ghost" method="_on_area_2d_body_entered" flags=18]

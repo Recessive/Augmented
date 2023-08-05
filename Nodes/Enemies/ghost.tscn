@@ -81,3 +81,4 @@ shape = SubResource("RectangleShape2D_don04")
 
 [node name="DeathAnimation" parent="." index="4"]
 sprite_frames = ExtResource("3_055c6")
+animation = &"death"
