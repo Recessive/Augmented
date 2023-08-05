@@ -15,7 +15,7 @@ func _ready():
 	$Label.text = $Label.text % key
 
 func _process(delta):
-	if Input.is_action_just_pressed("interact") and playerIn:
+	if Input.is_action_pressed("interact") and playerIn:
 		if PlayerStats.can_add_item(tier, dropName):
 			PlayerStats.add_item(tier, dropName)
 			queue_free()

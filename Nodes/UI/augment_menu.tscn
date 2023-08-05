@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://j8f5knkplolj"]
+[gd_scene load_steps=22 format=3 uid="uid://j8f5knkplolj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Highlight.gd" id="1_04fd2"]
 [ext_resource type="Script" path="res://Scripts/UI/AugmentDisplay.gd" id="1_7hi6m"]
@@ -14,6 +14,59 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uduu"]
 size = Vector2(10, 4)
+
+[sub_resource type="Animation" id="Animation_l28oi"]
+resource_name = "Pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xd2id"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5adp4"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl38j"]
+_data = {
+"Idle": SubResource("Animation_5adp4"),
+"Pulse": SubResource("Animation_l28oi"),
+"RESET": SubResource("Animation_xd2id")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0khgq"]
 size = Vector2(10, 11)
@@ -31,12 +84,15 @@ size = Vector2(6, 9)
 size = Vector2(6, 9)
 
 [node name="Augment Menu" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 script = ExtResource("1_7hi6m")
 tweenTime = 1.0
 scaleUp = 3.0
 qualityIcons = Array[CompressedTexture2D]([ExtResource("2_ewqm8"), ExtResource("3_imhv3"), ExtResource("4_adkyo"), ExtResource("5_6erho"), ExtResource("6_l2406"), ExtResource("7_128sl")])
 installedAugmentFGColor = Color(0.305882, 1, 1, 1)
+craftableAugmentBGColor = Color(0, 0.156863, 0, 0.615686)
+craftableAugmentFGColor = Color(0, 0.752941, 0, 1)
 
 [node name="DescriptionRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -159,9 +215,9 @@ theme_override_fonts/font = ExtResource("4_2r86q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -12.0
-offset_top = -11.5
+offset_top = -11.0
 offset_right = 12.0
-offset_bottom = 18.5
+offset_bottom = 19.0
 color = Color(0, 0, 0, 0)
 
 [node name="Head" type="Area2D" parent="."]
@@ -180,6 +236,11 @@ texture = ExtResource("1_woc1p")
 hframes = 8
 vframes = 6
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
+libraries = {
+"": SubResource("AnimationLibrary_vl38j")
+}
+
 [node name="Body" type="Area2D" parent="."]
 collision_layer = 512
 collision_mask = 0
@@ -196,6 +257,11 @@ texture = ExtResource("1_woc1p")
 hframes = 8
 vframes = 6
 frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
+libraries = {
+"": SubResource("AnimationLibrary_vl38j")
+}
 
 [node name="Left arm" type="Area2D" parent="." node_paths=PackedStringArray("pair")]
 position = Vector2(-2, 2)
@@ -216,6 +282,11 @@ hframes = 8
 vframes = 6
 frame = 20
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Left arm"]
+libraries = {
+"": SubResource("AnimationLibrary_vl38j")
+}
+
 [node name="Right arm" type="Area2D" parent="." node_paths=PackedStringArray("pair")]
 position = Vector2(2, 2)
 collision_layer = 512
@@ -234,6 +305,11 @@ texture = ExtResource("1_woc1p")
 hframes = 8
 vframes = 6
 frame = 24
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Right arm"]
+libraries = {
+"": SubResource("AnimationLibrary_vl38j")
+}
 
 [node name="Left leg" type="Area2D" parent="." node_paths=PackedStringArray("pair")]
 position = Vector2(0, 2)
@@ -254,6 +330,11 @@ hframes = 8
 vframes = 6
 frame = 32
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Left leg"]
+libraries = {
+"": SubResource("AnimationLibrary_vl38j")
+}
+
 [node name="Right leg" type="Area2D" parent="." node_paths=PackedStringArray("pair")]
 position = Vector2(0, 2)
 collision_layer = 512
@@ -272,6 +353,11 @@ texture = ExtResource("1_woc1p")
 hframes = 8
 vframes = 6
 frame = 40
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Right leg"]
+libraries = {
+"": SubResource("AnimationLibrary_vl38j")
+}
 
 [node name="Timer" type="Timer" parent="."]
 

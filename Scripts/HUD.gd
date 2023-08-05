@@ -44,8 +44,7 @@ func _ready():
 	menus = {
 		'game':$Game,
 		'pause':$PauseMenu,
-		'options':$OptionsMenu,
-		'upgrade':$UpgradeMenu
+		'options':$OptionsMenu
 	}
 	
 	healthBar = $Game/TopInfo/Healthbar
@@ -77,7 +76,7 @@ func _process(delta):
 	# update the game menu
 	if activeMenu == 'game':
 		var depth = roomControl.depth
-		$Game/TopInfo/Label.text = "DEPTH: %s" % depth
+		$Game/TopInfo/Label.text = "%s / 250" % depth
 
 	if Input.is_action_just_pressed('pause'):
 		if activeMenu == 'pause':

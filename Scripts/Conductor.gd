@@ -46,7 +46,7 @@ func preprocessing(content):
 	bpm = int(content.split(",")[0])
 	crotchet = SECONDS_PER_MIN / bpm
 	offset = float(content.split(",")[1].split("\n")[0])
-	print("Bpm is: ", bpm, ", Offset is: ", offset)
+	# print("Bpm is: ", bpm, ", Offset is: ", offset)
 	
 	read_beats(content)
 	get_left_enabled()

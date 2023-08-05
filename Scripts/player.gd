@@ -113,12 +113,10 @@ func hurt(attack : Attack):
 			$PlayerAugmentRenderer.visible = false
 			$DeathAni.visible = true
 			$DeathAni.play()
-			PlayerStats.locked = true
-			PlayerStats.proc_player_death()
-			var tween = create_tween().parallel()
-			tween.tween_property($"../BasicComponents", "volume_db", -80, 2)
-			tween.tween_property(hud.get_node("Game"), "modulate", Color(0, 0, 0, 0), 2)
 			$DeathSound.play()
+			$/root/main.dead()
+			
+			
 			
 
 func beat(enabled : Array[bool], beat : int):

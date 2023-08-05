@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c77t0d7uduh4f" path="res://Sounds/GAMEOVER.wav" id="8_8k41l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmhog"]
-size = Vector2(12.8545, 11.8839)
+size = Vector2(12.8545, 14.8548)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djxvw"]
 atlas = ExtResource("6_fqvwr")
@@ -281,7 +281,7 @@ frame = 1
 [node name="PlayerAugmentRenderer" parent="." index="1" instance=ExtResource("5_gi8ir")]
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(-0.333333, 7.33333)
+position = Vector2(-0.333333, 5.66668)
 scale = Vector2(0.777935, 1.12197)
 shape = SubResource("RectangleShape2D_vmhog")
 

@@ -36,7 +36,7 @@ var legAugments : int = 0
 var augments : Array[Node] # All body part augments combined
 
 @onready
-var player : Node = $"/root/main/Player"
+var player : Node
 
 # Only 2 slots in tier 1
 # Tier 1 components:
@@ -59,6 +59,10 @@ func start():
 	acceleration = startAcceleration 
 	critChance = startCritChance
 	hp = maxHP
+	
+	locked = false
+	
+	player = $"/root/main/Player"
 	
 func set_hp(value):
 	hp = value

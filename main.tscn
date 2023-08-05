@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnke24mc1elql"]
+[gd_scene load_steps=11 format=3 uid="uid://cnke24mc1elql"]
 
 [ext_resource type="AudioStream" uid="uid://cupdml0m1es7u" path="res://Songs/FINALBATTLE.wav" id="1_3n8eb"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_uqpfq"]
@@ -8,13 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://dhe4du707gwjv" path="res://Nodes/player.tscn" id="5_5l5kb"]
 [ext_resource type="PackedScene" uid="uid://buq3sqi80kr25" path="res://Sprites/UI/PlayerHealth/node_2d.tscn" id="7_gqoks"]
 [ext_resource type="PackedScene" uid="uid://b8anhn5n048yx" path="res://HUD/hud.tscn" id="7_yfyk6"]
+[ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="8_oiae0"]
+[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="9_otxni"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_uqpfq")
+mainMenuScenePath = "res://main_menu.tscn"
 
 [node name="BasicComponents" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_3n8eb")
-volume_db = -20.0
+volume_db = -80.0
 script = ExtResource("2_n4i6r")
 beatFilePath = "res://Songs/boss1.txt"
 
@@ -33,7 +36,7 @@ scale = Vector2(1, 1)
 disposables = NodePath("../Disposables")
 
 [node name="Fade" type="ColorRect" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = -1083.0
 offset_top = -614.0
 offset_right = 1041.0
@@ -60,5 +63,67 @@ animation = &"VeryCracked"
 frame_progress = 0.624201
 
 [node name="HUD" parent="." instance=ExtResource("7_yfyk6")]
+
+[node name="GameOver" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+offset_left = -196.0
+offset_top = -110.0
+offset_right = 196.0
+offset_bottom = 111.0
+color = Color(0.176471, 0.168627, 0.352941, 1)
+script = ExtResource("9_otxni")
+messages = Array[String](["Game Over", "get good", "Definitely your fault", "Shots 1-5: Clearly Missed", "GG F7", "BRO WHAT IS THAT", "Uninstall.", "ez", "Alt + F4 to lower the diffuclty", "Genuinely sorry for that one, that wasn't fair", "HE'S CHEATING", "Awww so close", "lmao", "The consequences of the industrial revolution"])
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+layout_mode = 0
+offset_right = 392.0
+offset_bottom = 221.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_oiae0")
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Death Message" type="Label" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.223529, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("8_oiae0")
+text = "Death message here"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Button" type="Button" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_oiae0")
+text = "Continue"
+
+[node name="SceneFade" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -196.0
+offset_top = -110.0
+offset_right = 196.0
+offset_bottom = 109.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="button_down" from="GameOver/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_button_down"]
 
 [editable path="Healthbar"]

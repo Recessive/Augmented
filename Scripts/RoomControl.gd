@@ -23,7 +23,6 @@ func _ready():
 	var child = get_child(0)
 	child.new_room.connect(new_room)
 	Conductor.onBeat.connect(beat)
-	fade.modulate.a = 0
 	current_room.play_door_ani()
 	room_ready()
 
@@ -66,6 +65,9 @@ func room_ready():
 	# increase depth for each room
 	depth += 1
 	heat = depth / 10 # temporary increase heat once for each 10 rooms you go through
+	
+	if depth != 1:
+		GlobalAssets.SpawnText("Depth +1", Vector2(-16, 0))
 
 func beat(enabled : Array[bool], beat : int):
 	if enabled[fadeBeatIndex] and fading:

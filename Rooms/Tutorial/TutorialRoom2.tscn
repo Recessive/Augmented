@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdlflkt5q3yx0"]
+[gd_scene load_steps=18 format=3 uid="uid://cdlflkt5q3yx0"]
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_rpkxy"]
 [ext_resource type="Resource" uid="uid://d3r0h7qydwj0j" path="res://Rooms/cyber_aug_room.tres" id="2_7mimh"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Rooms/ArrowMove.gd" id="9_fh1ct"]
 [ext_resource type="SpriteFrames" uid="uid://c88li6al26hkn" path="res://Nodes/Enemies/death_animation.tres" id="10_vm6ak"]
 [ext_resource type="Script" path="res://Scripts/Pulse.gd" id="11_cfut0"]
+[ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="12_57sj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don04"]
 size = Vector2(16, 18)
@@ -76,13 +77,13 @@ position = Vector2(128, -31)
 texture = ExtResource("4_6ip1o")
 
 [node name="Ghost" type="CharacterBody2D" parent="." index="4"]
-position = Vector2(-105, -11)
+position = Vector2(-64, 6)
 collision_layer = 0
 collision_mask = 5
 script = ExtResource("5_en26w")
 SPEED = 100.0
 ACCELERATION = 300.0
-CONTACT_DAMAGE = 5.0
+CONTACT_DAMAGE = 25.0
 CONTACT_KNOCKBACK = 300.0
 tier1drops = Array[String](["plate"])
 tier2drops = Array[String](["circuit"])
@@ -139,5 +140,22 @@ script = ExtResource("11_cfut0")
 beatIndex = 2
 pulseColor = Color(0, 0.6, 0.776471, 1)
 pulseCurve = SubResource("Curve_lupsu")
+
+[node name="Arrow" type="Sprite2D" parent="." index="6"]
+self_modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-113, -48)
+texture = ExtResource("8_swmpo")
+script = ExtResource("9_fh1ct")
+
+[node name="Label" type="Label" parent="Arrow" index="0"]
+self_modulate = Color(1, 1, 1, 0.784314)
+offset_left = -38.0
+offset_top = 14.0
+offset_right = 36.0
+offset_bottom = 37.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("12_57sj7")
+text = "Augment Room"
 
 [connection signal="body_entered" from="Ghost/Area2D" to="Ghost" method="_on_area_2d_body_entered" flags=18]

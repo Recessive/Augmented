@@ -19,7 +19,7 @@ func _ready():
 
 var augmenting
 func _process(delta):
-	if Input.is_action_just_pressed("interact") and label.visible:
+	if Input.is_action_pressed("interact") and label.visible:
 		GlobalAssets.atUpgradeStation = true
 		player.visible = false
 		PlayerStats.locked = true

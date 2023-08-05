@@ -17,6 +17,12 @@ var qualityIcons : Array[CompressedTexture2D]
 @export
 var installedAugmentFGColor : Color
 
+@export
+var craftableAugmentBGColor : Color
+
+@export
+var craftableAugmentFGColor : Color
+
 @onready
 var baseScale : Vector2 = scale
 @onready
@@ -41,12 +47,46 @@ func _ready():
 
 func expand():
 	var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
+	pulse_parts()
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), tweenTime)
 	tween.tween_property(self, "scale", baseScale * scaleUp, tweenTime)
 	tween.tween_property(self, "global_position", Vector2(0, -25), tweenTime)
 	tween.tween_property($ColorRect, "color", Color(0, 0, 0, 172/255.0), tweenTime)
 	tween.tween_property($Back, "modulate", Color(1, 1, 1, 1), tweenTime)
 	await tween.finished
+	
 	selectable = true
+
+func part_can_craft(bodyPart : String):
+	for recipe in AugmentData.recipes:
+		if recipe.bodyPart == bodyPart and recipe.can_afford():
+			return true
+	return false
+
+func pulse_parts():
+	if part_can_craft("Head"):
+		$Head/AnimationPlayer.play("Pulse")
+	else:
+		$Head/AnimationPlayer.play("Idle")
+		
+	if part_can_craft("Body"):
+		$Body/AnimationPlayer.play("Pulse")
+	else:
+		$Body/AnimationPlayer.play("Idle")
+		
+	if part_can_craft("Arms"):
+		$"Left arm/AnimationPlayer".play("Pulse")
+		$"Right arm/AnimationPlayer".play("Pulse")
+	else:
+		$"Left arm/AnimationPlayer".play("Idle")
+		$"Right arm/AnimationPlayer".play("Idle")
+		
+	if part_can_craft("Legs"):
+		$"Left leg/AnimationPlayer".play("Pulse")
+		$"Right leg/AnimationPlayer".play("Pulse")
+	else:
+		$"Left leg/AnimationPlayer".play("Idle")
+		$"Right leg/AnimationPlayer".play("Idle")
 
 func part_clicked(part : Node):
 	selectable = false
@@ -89,10 +129,19 @@ func reset_ui(tween : Tween):
 	$Accept.visible = false
 
 func minimize(tween : Tween):
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 0), tweenTime)
 	tween.tween_property(self, "scale", baseScale, tweenTime)
 	tween.tween_property(self, "global_position", basePosition, tweenTime)
 	tween.tween_property($ColorRect, "color", Color(0, 0, 0, 0), tweenTime)
 	tween.tween_property($Back, "modulate", Color(1, 1, 1, 0), tweenTime)
+	
+	$Head/AnimationPlayer.play("Idle")
+	$Body/AnimationPlayer.play("Idle")
+	$"Left arm/AnimationPlayer".play("Idle")
+	$"Right arm/AnimationPlayer".play("Idle")
+	$"Left leg/AnimationPlayer".play("Idle")
+	$"Right leg/AnimationPlayer".play("Idle")
+	
 
 func _on_back_button_button_down():
 	var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
@@ -118,6 +167,8 @@ func populate_list(partName : String):
 			partRecipes.append(recipe)
 			ind = recipe.quality*2
 			list.add_item(recipe.productName, qualityIcons[ind])
+			list.set_item_custom_bg_color(-1, craftableAugmentBGColor)
+			list.set_item_custom_fg_color(-1, craftableAugmentFGColor)
 	
 	for recipe in AugmentData.recipes:
 		if recipe.bodyPart == partName and !recipe.can_afford():
