@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://crlvcbxewxomd"]
+[gd_scene load_steps=38 format=3 uid="uid://crlvcbxewxomd"]
 
 [ext_resource type="PackedScene" uid="uid://c18l67hrw44kr" path="res://Nodes/Base/enemy_base.tscn" id="1_5a508"]
 [ext_resource type="Script" path="res://DeathFlower.gd" id="2_eqpui"]
@@ -6,41 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b2qmxbs2t6vjv" path="res://Sprites/Effects/death.png" id="4_73o1e"]
 [ext_resource type="Texture2D" uid="uid://cd0dllhg525a6" path="res://Sprites/Enemies/wiltflower.png" id="4_moa05"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijekq"]
-atlas = ExtResource("4_moa05")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e5of"]
+atlas = ExtResource("3_vjrxe")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4uydw"]
-atlas = ExtResource("4_moa05")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bbdh"]
-atlas = ExtResource("4_moa05")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_smfqq"]
-atlas = ExtResource("4_moa05")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ce5vs"]
-atlas = ExtResource("4_moa05")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rd2gl"]
-atlas = ExtResource("4_moa05")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q5dhy"]
-atlas = ExtResource("4_moa05")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n0efm"]
-atlas = ExtResource("4_moa05")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6i6fw"]
-atlas = ExtResource("4_moa05")
-region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqdkq"]
 atlas = ExtResource("4_moa05")
@@ -106,47 +74,11 @@ region = Rect2(736, 0, 32, 32)
 atlas = ExtResource("4_moa05")
 region = Rect2(768, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s322y"]
-atlas = ExtResource("4_moa05")
-region = Rect2(800, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gk1x7"]
-atlas = ExtResource("4_moa05")
-region = Rect2(832, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4e5of"]
-atlas = ExtResource("3_vjrxe")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_m1v62"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ijekq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4uydw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5bbdh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_smfqq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ce5vs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rd2gl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q5dhy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n0efm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6i6fw")
+"texture": SubResource("AtlasTexture_4e5of")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qqdkq")
@@ -195,19 +127,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1m0o4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s322y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gk1x7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4e5of")
 }],
 "loop": false,
 "name": &"explode",
-"speed": 10.0
+"speed": 25.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7473"]
@@ -310,8 +233,15 @@ animations = [{
 
 [node name="DeathFlower" instance=ExtResource("1_5a508")]
 script = ExtResource("2_eqpui")
+CONTACT_DAMAGE = 20.0
+CONTACT_KNOCKBACK = 300.0
+tier1drops = Array[String](["tube"])
+tier2drops = Array[String](["circuit"])
+tier2chance = 0.05
+maxHP = 25.0
 
 [node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
 texture = ExtResource("3_vjrxe")
 
 [node name="Animation" type="AnimatedSprite2D" parent="Sprite2D" index="0"]

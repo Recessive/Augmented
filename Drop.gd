@@ -19,11 +19,12 @@ func _process(delta):
 		if PlayerStats.can_add_item(tier, dropName):
 			PlayerStats.add_item(tier, dropName)
 			queue_free()
-		else:
+		elif $Timer.is_stopped():
 			if tier == 1:
 				GlobalAssets.SpawnText("No room in tier 1 inventory!", $Label.global_position)
 			else:
 				GlobalAssets.SpawnText("No room in tier 2 inventory!", $Label.global_position)
+			$Timer.start()
 
 
 var playerIn : bool = false
