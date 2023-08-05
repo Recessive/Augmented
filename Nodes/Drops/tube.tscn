@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://beku665bvrb8u"]
+[gd_scene load_steps=6 format=3 uid="uid://beku665bvrb8u"]
 
 [ext_resource type="PackedScene" uid="uid://b1w5v4d7lusbn" path="res://Nodes/Base/drop_base.tscn" id="1_2n2ns"]
-[ext_resource type="Texture2D" uid="uid://depo5dfqkf4n7" path="res://Sprites/Drops/tube.png" id="2_i5lmq"]
+[ext_resource type="Texture2D" uid="uid://cmf5to642mb4n" path="res://Sprites/Objects/items.png" id="2_xnxc6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6qwk"]
+atlas = ExtResource("2_xnxc6")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2rb51"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_i5lmq")
+"texture": SubResource("AtlasTexture_d6qwk")
 }],
 "loop": true,
 "name": &"default",
@@ -15,12 +19,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6cus"]
-size = Vector2(280, 260)
+size = Vector2(13, 13)
 
 [node name="Tube" instance=ExtResource("1_2n2ns")]
 sprite_frames = SubResource("SpriteFrames_2rb51")
 dropName = "tube"
 weight = 2.0
+tier = 1
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_x6cus")

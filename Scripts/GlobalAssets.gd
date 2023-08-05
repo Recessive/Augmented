@@ -14,3 +14,10 @@ func SpawnDamageNumber(damage : float, pos : Vector2):
 	e.global_position = pos
 	
 	e.label.text = str(damage)
+
+func SpawnText(text : String, pos : Vector2):
+	var e = damageNumber.instantiate()
+	get_tree().get_root().add_child(e)
+	e.global_position = pos
+	
+	e.label.text = text

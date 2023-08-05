@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://begjvs5pofvwn"]
+
+[ext_resource type="PackedScene" uid="uid://b1w5v4d7lusbn" path="res://Nodes/Base/drop_base.tscn" id="1_la2xq"]
+[ext_resource type="Texture2D" uid="uid://cmf5to642mb4n" path="res://Sprites/Objects/items.png" id="2_udrym"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5uvu"]
+atlas = ExtResource("2_udrym")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rlsy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5uvu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kytap"]
+size = Vector2(16, 16)
+
+[node name="Circuit" instance=ExtResource("1_la2xq")]
+sprite_frames = SubResource("SpriteFrames_rlsy4")
+dropName = "circuit"
+weight = 2.0
+tier = 2
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_kytap")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

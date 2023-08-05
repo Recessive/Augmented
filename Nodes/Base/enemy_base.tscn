@@ -13,6 +13,9 @@ ACCELERATION = 0.0
 CONTACT_DAMAGE = 0.0
 CONTACT_PENETRATION = 0.0
 CONTACT_KNOCKBACK = 0.0
+tier1drops = Array[String]([])
+tier2drops = Array[String]([])
+tier2chance = 0.0
 
 [node name="Healthbar" parent="Sprite2D" index="0" instance=ExtResource("3_et6ok")]
 position = Vector2(0, -16)

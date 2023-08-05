@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://d17cghpeviigo"]
+
+[ext_resource type="PackedScene" uid="uid://87fxiplh3kdf" path="res://Nodes/Base/augment_base.tscn" id="1_3i5vq"]
+[ext_resource type="Script" path="res://Scripts/Augments/synthflare.gd" id="2_h6dj8"]
+[ext_resource type="PackedScene" uid="uid://dchj3a6nudyws" path="res://Nodes/Status Effects/burn.tscn" id="3_t3q8t"]
+
+[node name="Augment" instance=ExtResource("1_3i5vq")]
+script = ExtResource("2_h6dj8")
+burnDebuff = ExtResource("3_t3q8t")
+augmentName = "Synthflare"
+augmentDesc = "Burn enemies on hit"
+chance = 0.1

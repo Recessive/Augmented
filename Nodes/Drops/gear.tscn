@@ -1,27 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://dugoa6bmejygy"]
+[gd_scene load_steps=6 format=3 uid="uid://dugoa6bmejygy"]
 
 [ext_resource type="PackedScene" uid="uid://b1w5v4d7lusbn" path="res://Nodes/Base/drop_base.tscn" id="1_dnf1h"]
-[ext_resource type="Texture2D" uid="uid://co6jxecgslrv3" path="res://Sprites/Drops/cog.png" id="2_oopix"]
+[ext_resource type="Texture2D" uid="uid://cmf5to642mb4n" path="res://Sprites/Objects/items.png" id="2_gxwwp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eguov"]
+atlas = ExtResource("2_gxwwp")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lntqi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_oopix")
+"texture": SubResource("AtlasTexture_eguov")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpwjs"]
-size = Vector2(280, 280)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wisf"]
+size = Vector2(16, 16)
 
 [node name="Gear" instance=ExtResource("1_dnf1h")]
-scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_lntqi")
 dropName = "gear"
 weight = 3.0
+tier = 1
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource("RectangleShape2D_dpwjs")
+position = Vector2(0, 1.52588e-05)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_0wisf")

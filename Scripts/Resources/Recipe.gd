@@ -18,6 +18,9 @@ var bodyPart : String
 @export
 var productName : String
 
+@export
+var quality : int
+
 func can_afford():
 	for key in tier1requirements:
 		if !PlayerStats.tier1Inventory.has(key) or PlayerStats.tier1Inventory[key] < tier1requirements[key]:

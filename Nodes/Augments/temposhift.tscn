@@ -9,8 +9,4 @@ script = ExtResource("2_2mvql")
 slowDebuff = ExtResource("3_ha0jn")
 augmentName = "Temposhift"
 augmentDesc = "Slow enemies on hit"
-cost = {
-"gear": 5,
-"plate": 3
-}
 chance = 1.0

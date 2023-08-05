@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dchj3a6nudyws"]
+
+[ext_resource type="PackedScene" uid="uid://d2ey818lwqyif" path="res://Nodes/Base/status_effect.tscn" id="1_q6nqp"]
+[ext_resource type="Script" path="res://Scripts/Status Effects/burn.gd" id="2_1n0sc"]
+
+[node name="Status Effect" instance=ExtResource("1_q6nqp")]
+script = ExtResource("2_1n0sc")
+damage = 1.0
+frequency = 4
+
+[node name="Timer" parent="." index="1"]
+wait_time = 4.0

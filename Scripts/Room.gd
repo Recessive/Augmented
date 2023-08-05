@@ -11,4 +11,7 @@ var rooms : Array[String]
 @export
 var weight : float
 
+@export
+var type : String
+
 

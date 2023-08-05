@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnqriy0as571y"]
+[gd_scene load_steps=5 format=3 uid="uid://cnqriy0as571y"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/AugmentData.gd" id="1_rf7ca"]
 [ext_resource type="Resource" uid="uid://ct7ugsr0d1pj6" path="res://Resources/Recipes/temposhift.tres" id="2_ym4ct"]
+[ext_resource type="Resource" uid="uid://cxifhipfgu5n6" path="res://Resources/Recipes/synthflare.tres" id="3_7aoaw"]
+[ext_resource type="Resource" uid="uid://bjlwvrf51yypp" path="res://Resources/Recipes/beatstride.tres" id="4_keud3"]
 
 [node name="augment_data" type="Node"]
 script = ExtResource("1_rf7ca")
-armPackedAugments = Array[String](["res://Nodes/Augments/temposhift.tscn"])
-recipes = Array[Resource("res://Scripts/Resources/Recipe.gd")]([ExtResource("2_ym4ct")])
+armPackedAugments = Array[String](["res://Nodes/Augments/temposhift.tscn", "res://Nodes/Augments/synthflare.tscn"])
+legPackedAugments = Array[String](["res://Nodes/Augments/beatstride.tscn"])
+recipes = Array[Resource("res://Scripts/Resources/Recipe.gd")]([ExtResource("2_ym4ct"), ExtResource("3_7aoaw"), ExtResource("4_keud3")])
+dropsPacked = {
+"circuit": "res://Nodes/Drops/circuit.tscn",
+"gear": "res://Nodes/Drops/gear.tscn",
+"plate": "res://Nodes/Drops/plate.tscn",
+"tube": "res://Nodes/Drops/tube.tscn"
+}
+dropFrameMapping = Array[String](["circuit", "gear", "tube", "plate"])

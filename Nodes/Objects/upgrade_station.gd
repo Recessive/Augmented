@@ -35,12 +35,14 @@ func augment_ani():
 	augmenting = false
 	player.visible = true
 	PlayerStats.locked = false
+	label.visible = true
 
 func augment_cancelled():
 	$AnimatedSprite2D.play("default")
 	augmenting = false
 	player.visible = true
 	PlayerStats.locked = false
+	label.visible = true
 
 func _on_interact_area_entered(body):
 	if body.is_in_group('Player'):

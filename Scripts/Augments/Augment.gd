@@ -5,11 +5,6 @@ var augmentName : String
 
 @export
 var augmentDesc : String
- 
-# Should be format
-# drop name : amount
-@export
-var cost : Dictionary
 
 @export
 var procChance : float = 1
@@ -17,10 +12,7 @@ var procChance : float = 1
 @export
 var chance : float  = 0
 
-var stacks : int = 1
-
-func _ready():
-	add_stack()
+var stacks : int = 0
 
 func add_stack():
 	stacks += 1

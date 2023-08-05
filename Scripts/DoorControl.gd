@@ -6,7 +6,7 @@ var enemies : Array[Node]
 @export
 var doorNodes : Array[StaticBody2D]
 
-# Godot is a fucking piece of shit, if this variable is called "roomTypes" it doesnt work in the export
+# Godot is a piece of shit, if this variable is called "roomTypes" it doesnt work in the export
 # menu. LITERALLY ANY OTHER NAME WORKS THOUGH
 @export
 var roomTypeList : Array[Room]
@@ -33,6 +33,12 @@ func _ready():
 		
 		ind = RandPlus.SampleWeighted(roomWeights)
 		doorDestinations.append(roomTypeList[ind])
+		match roomTypeList[ind].type:
+			"cyber":
+				doorNodes[i].get_node("AnimatedSprite2D").animation = "open"
+			"cyber_aug":
+				doorNodes[i].get_node("AnimatedSprite2D").animation = "open_aug"
+			
 		# TODO: Change the sprite to reflect its room type
 	
 	# Connect parent to signals emitted from children (call down, signal up)

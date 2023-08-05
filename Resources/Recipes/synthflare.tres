@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://cxifhipfgu5n6"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.gd" id="1_8yt7p"]
+
+[resource]
+script = ExtResource("1_8yt7p")
+tier1requirements = {
+"plate": 6,
+"tube": 1
+}
+tier2requirements = {
+"circuit": 2
+}
+bodyPart = "Arms"
+productName = "Synthflare"
+quality = 1

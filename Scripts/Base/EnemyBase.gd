@@ -15,6 +15,15 @@ var CONTACT_PENETRATION : float
 @export
 var CONTACT_KNOCKBACK : float
 
+@export
+var tier1drops : Array[String]
+
+@export
+var tier2drops : Array[String]
+
+@export
+var tier2chance : float
+
 var dead : bool = false
 
 func set_hp(value):
@@ -56,3 +65,40 @@ func die():
 	await $DeathAnimation.animation_finished
 	emit_signal("died", self)
 	queue_free()
+
+func drop():
+	var weights : Array[float] = []
+	var nodes : Array[Node] = []
+	var node : Node
+	for i in tier1drops:
+		node = load(AugmentData.dropsPacked[i]).instantiate()
+		weights.append(node.weight)
+		nodes.append(node)
+	var ind : int = RandPlus.SampleWeighted(weights)
+	var tier1drop : Node = nodes[ind]
+	nodes.remove_at(ind)
+	
+	for i in nodes:
+		i.queue_free()
+	
+	tier1drop.global_position = global_position
+	
+	get_tree().get_root().get_node("main/Disposables").add_child(tier1drop)
+	
+	if randf() < tier2chance:
+		nodes.clear()
+		weights = []
+		for i in tier2drops:
+			node = load(AugmentData.dropsPacked[i]).instantiate()
+			weights.append(node.weight)
+			nodes.append(node)
+		ind = RandPlus.SampleWeighted(weights)
+		var tier2drop : Node = nodes[ind]
+		nodes.remove_at(ind)
+		
+		for i in nodes:
+			i.queue_free()
+		
+		tier2drop.global_position = global_position + Vector2(16, 0)
+		
+		get_tree().get_root().get_node("main/Disposables").add_child(tier2drop)

@@ -124,19 +124,25 @@ func _on_player_hurt_body_entered(body : Node):
 		damage_player(sprite.global_position, body)
 
 func hurt(attack : Attack):
+	if dead:
+		return
 	hp -= attack.damage
 	GlobalAssets.SpawnDamageNumber(attack.damage, sprite.global_position)
 	
 func die():
 	dead = true
 	disable_collision()
+	
 	$Sprite2D.visible = false
 	$TelegraphLine.visible = false
 	$LaserCharge.visible = false
-	$DeathAnimation.global_position = $Sprite2D.global_position
+	global_position = $Sprite2D.global_position
+	$Sprite2D.position = Vector2()
 	$DeathAnimation.visible = true
+	drop()
 	animation.play("death")
 	await $DeathAnimation.animation_finished
+	
 	emit_signal("died", self)
 	queue_free()
 

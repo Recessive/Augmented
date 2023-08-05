@@ -7,6 +7,10 @@ extends Node
 
 @export var recipes : Array[Recipe]
 
+@export var dropsPacked : Dictionary
+
+@export var dropFrameMapping : Array[String]
+
 
 var headAugments : Array[Node]
 var bodyAugments : Array[Node]
@@ -22,8 +26,10 @@ func _ready():
 		armsAugments.append(load(path).instantiate())
 	for path in legPackedAugments:
 		legsAugments.append(load(path).instantiate())
+	
+	recipes.sort_custom(sort_recipes)
 
-func name_to_augment(name : String):
+func name_to_augment(name : String) -> Node:
 	for aug in headAugments:
 		if aug.augmentName == name:
 			return aug
@@ -36,3 +42,8 @@ func name_to_augment(name : String):
 	for aug in legsAugments:
 		if aug.augmentName == name:
 			return aug
+	return null
+	
+func sort_recipes(a, b) -> bool:
+	return a.quality > b.quality
+

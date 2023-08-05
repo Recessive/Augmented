@@ -393,7 +393,7 @@ font = ExtResource("4_u00rw")
 
 [node name="UpgradeStation" type="StaticBody2D"]
 script = ExtResource("1_m34ab")
-labelText = "Press %s to AUGMENT"
+labelText = "Press [%s] to AUGMENT"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

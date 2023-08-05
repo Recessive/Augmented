@@ -38,6 +38,11 @@ func update_camera():
 	switch_menu('game')
 
 func _ready():
+	PlayerStats.updated_inventory.connect(updated_inventory)
+	PlayerStats.add_item(1, "gear")
+	PlayerStats.add_item(1, "gear")
+	PlayerStats.add_item(1, "tube")
+	PlayerStats.add_item(2, "circuit")
 	$HelperWindowRect.hide()
 	
 	menus = {
@@ -85,6 +90,31 @@ func _process(delta):
 		else:
 			switch_menu('pause')
 			get_tree().paused = true
+
+func updated_inventory():
+	var t1 = PlayerStats.tier1Inventory
+	var t2 = PlayerStats.tier2Inventory
+	if t1.size() > 0:
+		$Game/TopInfo/T1I1.visible = true
+		$Game/TopInfo/T1I1.frame = AugmentData.dropFrameMapping.find(t1.keys()[0])
+		$Game/TopInfo/T1I1/Label.text = "x%s" % t1[t1.keys()[0]]
+	else:
+		$Game/TopInfo/T1I1.visible = false
+	
+	if t1.size() > 1:
+		$Game/TopInfo/T1I2.visible = true
+		$Game/TopInfo/T1I2.frame = AugmentData.dropFrameMapping.find(t1.keys()[1])
+		$Game/TopInfo/T1I2/Label.text = "x%s" % t1[t1.keys()[1]]
+	else:
+		$Game/TopInfo/T1I2.visible = false
+	
+	if t2.size() > 0:
+		$Game/TopInfo/T2I1.visible = true
+		$Game/TopInfo/T2I1.frame = AugmentData.dropFrameMapping.find(t2.keys()[0])
+		$Game/TopInfo/T2I1/Label.text = "x%s" % t2[t2.keys()[0]]
+	else:
+		$Game/TopInfo/T2I1.visible = false
+	
 
 func set_master_volume(volume : float):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)

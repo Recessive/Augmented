@@ -5,6 +5,7 @@
 
 [node name="Slow" instance=ExtResource("1_nlwyd")]
 script = ExtResource("2_6is4x")
+strength = 2.0
 
 [node name="Timer" parent="." index="1"]
 wait_time = 2.0
