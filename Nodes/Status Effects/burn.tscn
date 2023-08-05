@@ -1,12 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://dchj3a6nudyws"]
+[gd_scene load_steps=13 format=3 uid="uid://dchj3a6nudyws"]
 
 [ext_resource type="PackedScene" uid="uid://d2ey818lwqyif" path="res://Nodes/Base/status_effect.tscn" id="1_q6nqp"]
 [ext_resource type="Script" path="res://Scripts/Status Effects/burn.gd" id="2_1n0sc"]
+[ext_resource type="Texture2D" uid="uid://cipf7eovvn73p" path="res://Sprites/Stauts Effects/burn_TEMP.png" id="3_0u1wr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7as3"]
+atlas = ExtResource("3_0u1wr")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deubr"]
+atlas = ExtResource("3_0u1wr")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0welm"]
+atlas = ExtResource("3_0u1wr")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilto7"]
+atlas = ExtResource("3_0u1wr")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6s0c"]
+atlas = ExtResource("3_0u1wr")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wlyx"]
+atlas = ExtResource("3_0u1wr")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec3jr"]
+atlas = ExtResource("3_0u1wr")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bawgu"]
+atlas = ExtResource("3_0u1wr")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x72ji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7as3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deubr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0welm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilto7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6s0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wlyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec3jr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bawgu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="Status Effect" instance=ExtResource("1_q6nqp")]
 script = ExtResource("2_1n0sc")
 damage = 1.0
 frequency = 4
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_x72ji")
 
 [node name="Timer" parent="." index="1"]
 wait_time = 4.0

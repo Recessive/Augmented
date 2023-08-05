@@ -19,7 +19,7 @@ tier1chance = 1.0
 tier2chance = 0.0
 
 [node name="Healthbar" parent="Sprite2D" index="0" instance=ExtResource("3_et6ok")]
-position = Vector2(0, -16)
+position = Vector2(0, -18)
 
 [node name="Area2D" parent="." index="3"]
 collision_layer = 4
