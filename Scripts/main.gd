@@ -5,6 +5,7 @@ var mainMenuScenePath : String
 
 func _ready():
 	PlayerStats.start()
+	PlayerStats.locked = false
 	$Fade.modulate.a = 1
 	var tween = create_tween().set_parallel()
 	tween.tween_property($Fade, "modulate", Color(1,1,1,0), 1)
@@ -34,4 +35,5 @@ func _on_button_button_down():
 	tween.tween_property($SceneFade, "modulate", Color(1,1,1,1), 2)
 	
 	await tween.finished
+	PlayerStats.start()
 	get_tree().change_scene_to_file(mainMenuScenePath)

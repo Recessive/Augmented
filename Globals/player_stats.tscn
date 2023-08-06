@@ -5,10 +5,8 @@
 [node name="PlayerStats" type="Node"]
 script = ExtResource("1_5oy3t")
 startMaxHP = 100.0
-startMaxArmor = null
 startMaxSpeed = 75.0
 startAcceleration = 500.0
-startDamage = null
 startCritChance = 0.1
 startAttackSpeed = 4
 heatScaling = 0.1

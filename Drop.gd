@@ -14,10 +14,17 @@ func _ready():
 	var key = str(InputMap.action_get_events("interact")[0].as_text().split(" ")[0])
 	$Label.text = $Label.text % key
 
+var pickUp = false
 func _process(delta):
-	if Input.is_action_pressed("interact") and playerIn:
+	if !pickUp and Input.is_action_pressed("interact") and playerIn:
 		if PlayerStats.can_add_item(tier, dropName):
+			pickUp = true
 			PlayerStats.add_item(tier, dropName)
+			visible = false
+			$Area2D.collision_layer = 0
+			$Area2D.collision_mask = 0
+			$PickupSound.play()
+			await $PickupSound.finished
 			queue_free()
 		elif $Timer.is_stopped():
 			if tier == 1:

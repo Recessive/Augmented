@@ -43,6 +43,7 @@ offset_left = -20.0
 offset_top = 2.0
 offset_right = 20.0
 offset_bottom = 9.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cnke24mc1elql"]
 
-[ext_resource type="AudioStream" uid="uid://cupdml0m1es7u" path="res://Songs/FINALBATTLE.wav" id="1_3n8eb"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_uqpfq"]
+[ext_resource type="AudioStream" uid="uid://dfvqo2esmpao" path="res://Songs/COOLUPBEATSONG.wav" id="2_jr5ng"]
 [ext_resource type="Script" path="res://Scripts/AudioController.gd" id="2_n4i6r"]
 [ext_resource type="Script" path="res://Scripts/RoomControl.gd" id="3_cwx3v"]
 [ext_resource type="PackedScene" uid="uid://n1jt1t3tea4i" path="res://Rooms/Tutorial/TutorialRoom.tscn" id="4_ryk4n"]
@@ -16,10 +16,10 @@ script = ExtResource("1_uqpfq")
 mainMenuScenePath = "res://main_menu.tscn"
 
 [node name="BasicComponents" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_3n8eb")
+stream = ExtResource("2_jr5ng")
 volume_db = -80.0
 script = ExtResource("2_n4i6r")
-beatFilePath = "res://Songs/boss1.txt"
+beatFilePath = "res://Songs/cool.txt"
 
 [node name="RoomControl" type="Node" parent="." node_paths=PackedStringArray("disposables", "player", "fade")]
 script = ExtResource("3_cwx3v")
@@ -44,10 +44,6 @@ offset_right = 1041.0
 offset_bottom = 708.0
 color = Color(0, 0, 0, 1)
 
-[node name="BattleComponents" type="AudioStreamPlayer" parent="."]
-volume_db = -80.0
-autoplay = true
-
 [node name="Healthbar" parent="." instance=ExtResource("7_gqoks")]
 visible = false
 
@@ -64,18 +60,21 @@ animation = &"VeryCracked"
 frame_progress = 0.624201
 
 [node name="HUD" parent="." instance=ExtResource("7_yfyk6")]
+mouse_filter = 2
 
 [node name="GameOver" type="ColorRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
+top_level = true
 texture_filter = 1
 offset_left = -196.0
 offset_top = -110.0
 offset_right = 196.0
 offset_bottom = 111.0
+mouse_filter = 1
 color = Color(0.176471, 0.168627, 0.352941, 1)
 script = ExtResource("9_otxni")
-messages = Array[String](["Game Over", "get good", "Definitely your fault", "Shots 1-5: Clearly Missed", "GG F7", "BRO WHAT IS THAT", "Uninstall.", "ez", "Alt + F4 to lower the diffuclty", "Genuinely sorry for that one, that wasn't fair", "HE'S CHEATING", "Awww so close", "lmao", "The consequences of the industrial revolution"])
+messages = Array[String](["Game Over", "get good", "Definitely your fault", "LMB to shoot btw", "GG F7", "BRO WHAT IS THAT", "Uninstall.", "ez", "Alt + F4 to lower the diffuclty", "Genuinely sorry for that one, that wasn't fair", "HE'S CHEATING", "Awww so close", "lmao", "Maybe if you tried harder"])
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOver"]
 layout_mode = 0

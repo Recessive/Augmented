@@ -1,10 +1,12 @@
-[gd_scene load_steps=61 format=3 uid="uid://vi1xhrb7cshw"]
+[gd_scene load_steps=63 format=3 uid="uid://vi1xhrb7cshw"]
 
 [ext_resource type="Texture2D" uid="uid://02j74222t2g7" path="res://Sprites/Objects/capsule.png" id="1_8eff5"]
 [ext_resource type="Script" path="res://Nodes/Objects/upgrade_station.gd" id="1_m34ab"]
 [ext_resource type="Texture2D" uid="uid://duw76hlgi82ac" path="res://Sprites/Objects/capsule_upgrade.png" id="2_w3fyl"]
 [ext_resource type="Texture2D" uid="uid://dm6ty2hxpo3vt" path="res://Sprites/Objects/capsule_waiting.png" id="4_sl7mt"]
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="4_u00rw"]
+[ext_resource type="AudioStream" uid="uid://lfbhwcd8gcck" path="res://Sounds/augment.wav" id="6_ygb6k"]
+[ext_resource type="AudioStream" uid="uid://bv05hvebt1jva" path="res://Sounds/enter_augment.wav" id="7_a06qf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pqwo"]
 atlas = ExtResource("1_8eff5")
@@ -424,6 +426,14 @@ offset_right = 53.0
 offset_bottom = -30.0
 text = "Press E to AUGMENT"
 label_settings = SubResource("LabelSettings_lq30h")
+
+[node name="AugmentSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ygb6k")
+volume_db = -10.0
+
+[node name="AugmentEnter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_a06qf")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_interact_area_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

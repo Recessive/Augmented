@@ -26,9 +26,11 @@ func _process(delta):
 		$AnimatedSprite2D.play("waiting")
 		label.visible = false
 		augmenting = true
+		$AugmentEnter.play()
 		ui.augmentDisplay.expand()
 		
 func augment_ani():
+	$AugmentSound.play()
 	$AnimatedSprite2D.play("upgrade")
 	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.play("default")

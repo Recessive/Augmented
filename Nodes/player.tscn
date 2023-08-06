@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dhe4du707gwjv"]
+[gd_scene load_steps=35 format=3 uid="uid://dhe4du707gwjv"]
 
 [ext_resource type="PackedScene" uid="uid://y8uo76vxdcrx" path="res://Nodes/Base/entity_base.tscn" id="1_wcgtj"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="2_elaan"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bexo7posda35h" path="res://Sprites/Effects/torso_blast_instant.png" id="6_ne6va"]
 [ext_resource type="AudioStream" uid="uid://6fgwu2868c1t" path="res://Sounds/blast_1_mod.ogg" id="7_5iyd1"]
 [ext_resource type="AudioStream" uid="uid://c77t0d7uduh4f" path="res://Sounds/GAMEOVER.wav" id="8_8k41l"]
+[ext_resource type="AudioStream" uid="uid://bpov583106yin" path="res://Sounds/hurt.wav" id="10_l3vv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmhog"]
 size = Vector2(12.8545, 14.8548)
@@ -267,8 +268,8 @@ collision_layer = 2
 script = ExtResource("2_elaan")
 bullet = ExtResource("3_7qqe1")
 fireBeats = 1
-fireBeatIndex = 3
 playerHealth = 10.0
+critColor = Color(0, 0, 0, 1)
 maxHP = 100.0
 
 [node name="Sprite2D" parent="." index="0"]
@@ -321,3 +322,7 @@ volume_db = -13.467
 [node name="DeathSound" type="AudioStreamPlayer" parent="." index="10"]
 stream = ExtResource("8_8k41l")
 volume_db = -20.0
+
+[node name="HitSound" parent="." index="11"]
+stream = ExtResource("10_l3vv2")
+volume_db = -10.0

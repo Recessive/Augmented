@@ -104,6 +104,7 @@ func shoot():
 	if b.isCrit:
 		b.modulate = critColor
 	
+	weaponShootSound.pitch_scale = randf_range(0.9, 1.1)
 	weaponShootSound.play()
 	if !playingUp:
 		$ShootAnimator.play("shoot")
@@ -114,6 +115,8 @@ func hurt(attack : Attack):
 		PlayerStats.update_healthbar()
 		velocity = (global_position - attack.pos).normalized() * (attack.knockback * PlayerStats.knockbackResistance)
 		GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
+		$HitSound.pitch_scale = randf_range(0.7, 1.3)
+		$HitSound.play()
 		
 		if PlayerStats.hp <= 0:
 			disable_collision()

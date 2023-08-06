@@ -26,7 +26,6 @@ func _ready():
 var shootAniLength : float = $AnimationPlayer.get_animation("shoot").length
 func _process(delta):
 	var p : float = (Conductor.songPosition - lastShotTime) / (Conductor.BeatToTime(lastShot + attackSpeed) - lastShotTime)
-	print(p)
 	if p > 1:
 		return
 	$AnimationPlayer.seek(p * shootAniLength)

@@ -82,7 +82,15 @@ func start():
 	
 	depth = 0
 	heat = 0
-	locked = false
+	
+	headAugments = 0
+	bodyAugments = 0
+	armAugments = 0
+	legAugments = 0
+	
+	for aug in augments:
+		aug.reset_stacks()
+	augments = []
 	
 	player = $"/root/main/Player"
 	disposables = $"/root/main/Disposables"
@@ -92,7 +100,7 @@ func get_heat_scale() -> float:
 
 func heal(value):
 	hp = min(hp + value, maxHP)
-	GlobalAssets._SpawnText("+" + str(value) + " ", player.global_position, Color.GREEN)
+	GlobalAssets._SpawnText("+" + str(value) + " ", player.global_position, Color.GREEN, Vector2(1, 1))
 	
 func set_hp(value):
 	hp = value

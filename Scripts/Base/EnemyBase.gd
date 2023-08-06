@@ -57,8 +57,10 @@ func hurt(attack : Attack):
 	velocity = (global_position - attack.pos).normalized() * attack.knockback
 	GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
 	if attack.isCrit:
+		$CritSound.pitch_scale = randf_range(0.7, 1.3)
 		$CritSound.play()
 	else:
+		$HitSound.pitch_scale = randf_range(0.7, 1.3)
 		$HitSound.play()
 	
 

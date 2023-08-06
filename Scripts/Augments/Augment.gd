@@ -14,6 +14,9 @@ var chance : float  = 0
 
 var stacks : int = 0
 
+func reset_stacks():
+	stacks = 0
+
 func add_stack():
 	stacks += 1
 

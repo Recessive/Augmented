@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1w5v4d7lusbn"]
+[gd_scene load_steps=10 format=3 uid="uid://b1w5v4d7lusbn"]
 
 [ext_resource type="Script" path="res://Drop.gd" id="1_b1r8g"]
 [ext_resource type="Texture2D" uid="uid://cmf5to642mb4n" path="res://Sprites/Objects/items.png" id="1_q51oh"]
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="3_h6f2l"]
+[ext_resource type="AudioStream" uid="uid://by0dvf5sm1ujt" path="res://Sounds/pickup.wav" id="4_y8c5y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx5w7"]
 atlas = ExtResource("1_q51oh")
@@ -63,6 +64,10 @@ horizontal_alignment = 1
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y8c5y")
+volume_db = -20.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
