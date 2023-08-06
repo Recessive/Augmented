@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c18l67hrw44kr" path="res://Nodes/Base/enemy_base.tscn" id="1_ee8lh"]
 [ext_resource type="Script" path="res://Scripts/Globos.gd" id="2_l14rr"]
-[ext_resource type="Texture2D" uid="uid://cc5en7qoou76y" path="res://Sprites/Enemies/globos.png" id="3_pubgm"]
+[ext_resource type="Texture2D" uid="uid://blj1nyliu72ii" path="res://Sprites/Enemies/globos_small.png" id="3_ge57m"]
 [ext_resource type="AudioStream" uid="uid://ciye41cfa1s2c" path="res://Sounds/lockon_one.wav" id="4_qem80"]
 [ext_resource type="Texture2D" uid="uid://b2qmxbs2t6vjv" path="res://Sprites/Effects/death.png" id="4_qmimy"]
 [ext_resource type="AudioStream" uid="uid://k8mnp2eg43ga" path="res://Sounds/bop2.wav" id="5_iarec"]
@@ -187,7 +187,8 @@ maxHP = 20.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1
-texture = ExtResource("3_pubgm")
+scale = Vector2(2, 2)
+texture = ExtResource("3_ge57m")
 hframes = 21
 
 [node name="Healthbar" parent="Sprite2D" index="0"]

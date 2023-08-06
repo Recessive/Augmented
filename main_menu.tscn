@@ -84,12 +84,14 @@ theme_override_constants/margin_right = 50
 
 [node name="Gauntlet" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
+tooltip_text = "Coming soon!"
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_bly87")
 theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = SubResource("StyleBoxFlat_ubk13")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0cy0w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ppjui")
+disabled = true
 text = "Gauntlet"
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
@@ -100,12 +102,14 @@ theme_override_constants/margin_right = 50
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
+tooltip_text = "Coming soon!"
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_bly87")
 theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = SubResource("StyleBoxFlat_ubk13")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0cy0w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ppjui")
+disabled = true
 text = "Options"
 
 [node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
@@ -116,12 +120,14 @@ theme_override_constants/margin_right = 50
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer4"]
 layout_mode = 2
+tooltip_text = "Coming soon!"
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_bly87")
 theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = SubResource("StyleBoxFlat_ubk13")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0cy0w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ppjui")
+disabled = true
 text = "Credits"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
