@@ -18,9 +18,6 @@ var KNOCKBACK : float
 @export
 var targetGroup : String = "Enemies"
 
-@export
-var fireBeats : int = 1
-
 var isCrit : bool
 
 var projectileDeathScene = preload("res://Nodes/Projectiles/projectile_death.tscn")
@@ -41,6 +38,7 @@ func damage_body(pos : Vector2, body : Node):
 	attack.penetration = PENETRATION
 	attack.knockback = KNOCKBACK
 	attack.pos = pos
+	attack.isCrit = isCrit
 	body.hurt(attack)
 
 func _on_area_2d_body_entered(body):

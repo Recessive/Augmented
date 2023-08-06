@@ -16,7 +16,13 @@ var startMaxSpeed : float
 var startAcceleration : float
 
 @export
+var startDamage : float
+
+@export
 var startCritChance : float
+
+@export
+var startAttackSpeed : int # In beats
 
 @export
 var heatScaling : float
@@ -25,7 +31,10 @@ var maxHP : float
 var maxArmor : float
 var maxSpeed : float
 var acceleration : float
+var damage : float
 var critChance : float
+var attackSpeed : int : set = set_attack_speed
+var knockbackResistance : float
 
 var locked : bool = false
 
@@ -41,8 +50,10 @@ var augments : Array[Node] # All body part augments combined
 var depth : int = 0
 var heat : int = 0
 
-@onready
+
 var player : Node
+var disposables : Node
+
 
 # Only 2 slots in tier 1
 # Tier 1 components:
@@ -63,7 +74,10 @@ func start():
 	maxArmor = startMaxArmor 
 	maxSpeed = startMaxSpeed 
 	acceleration = startAcceleration 
+	damage = startDamage
 	critChance = startCritChance
+	attackSpeed = startAttackSpeed
+	knockbackResistance = 1
 	hp = maxHP
 	
 	depth = 0
@@ -71,13 +85,21 @@ func start():
 	locked = false
 	
 	player = $"/root/main/Player"
+	disposables = $"/root/main/Disposables"
 
 func get_heat_scale() -> float:
 	return 1 + heat * heatScaling
+
+func heal(value):
+	hp = min(hp + value, maxHP)
+	GlobalAssets._SpawnText("+" + str(value) + " ", player.global_position, Color.GREEN)
 	
 func set_hp(value):
 	hp = value
 	update_healthbar()
+
+func set_attack_speed(value):
+	attackSpeed = max(1, value)
 
 func update_healthbar():
 	$"/root/main/HUD/Game/TopInfo/Healthbar".maxHP = maxHP
@@ -168,6 +190,10 @@ func proc_hit(body : Node):
 func proc_death(body : Node):
 	for aug in augments:
 		aug.proc_death(body)
+
+func proc_new_room():
+	for aug in augments:
+		aug.proc_new_room()
 
 func proc_player_death():
 	pass

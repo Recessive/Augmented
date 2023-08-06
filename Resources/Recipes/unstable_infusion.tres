@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://dunxvn7qtwp08"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.gd" id="1_iumr2"]
+
+[resource]
+script = ExtResource("1_iumr2")
+tier1requirements = {
+"tube": 2
+}
+tier2requirements = {
+"circuit": 2
+}
+bodyPart = "Body"
+productName = "Unstable Infusion"
+quality = 1

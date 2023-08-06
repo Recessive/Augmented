@@ -69,10 +69,11 @@ func room_ready():
 	PlayerStats.depth += 1
 	if PlayerStats.depth % 10 == 0:
 		PlayerStats.heat += 1# increase heat once for each 10 rooms you go through
-	print(PlayerStats.heat)
 	
 	if depth != 1:
 		GlobalAssets.SpawnText("Depth +1", Vector2(-16, 0))
+	
+	PlayerStats.proc_new_room()
 
 func all_enemies_dead():
 	emit_signal("enemies_dead")

@@ -15,6 +15,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uduu"]
 size = Vector2(10, 4)
 
+[sub_resource type="Animation" id="Animation_5adp4"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_l28oi"]
 resource_name = "Pulse"
 loop_mode = 1
@@ -37,21 +52,6 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_5adp4"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -103,12 +103,15 @@ offset_bottom = 18.0
 color = Color(0, 0, 0, 0.67451)
 
 [node name="Title" type="Node2D" parent="DescriptionRect"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.15, 0.15)
 
 [node name="Label" type="Label" parent="DescriptionRect/Title"]
-offset_right = 90.0
+offset_right = 120.0
 offset_bottom = 16.0
+theme_override_colors/font_outline_color = Color(0.270588, 0, 0.690196, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_2r86q")
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 autowrap_mode = 3
 

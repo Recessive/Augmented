@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbn1323sa6sg4"]
+
+[ext_resource type="PackedScene" uid="uid://87fxiplh3kdf" path="res://Nodes/Base/augment_base.tscn" id="1_pya16"]
+[ext_resource type="Script" path="res://Scripts/Augments/overclock.gd" id="2_scppy"]
+
+[node name="Augment" instance=ExtResource("1_pya16")]
+script = ExtResource("2_scppy")
+speedMulti = 1.5
+speedScaling = 0.25
+augmentName = "Overclock"
+augmentDesc = "COME OUT SWINGIN"
+
+[node name="Timer" parent="." index="0"]
+wait_time = 4.0

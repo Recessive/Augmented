@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgfmgmybgr0fo"]
+
+[ext_resource type="PackedScene" uid="uid://87fxiplh3kdf" path="res://Nodes/Base/augment_base.tscn" id="1_yeog5"]
+[ext_resource type="Script" path="res://Scripts/Augments/syncshock.gd" id="2_jqvfg"]
+
+[node name="Augment" instance=ExtResource("1_yeog5")]
+script = ExtResource("2_jqvfg")
+augmentName = "Syncshock"
+augmentDesc = "Increase knockback resistance"

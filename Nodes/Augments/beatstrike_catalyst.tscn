@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b20pa4wgim3wo"]
+
+[ext_resource type="PackedScene" uid="uid://87fxiplh3kdf" path="res://Nodes/Base/augment_base.tscn" id="1_a0axw"]
+[ext_resource type="Script" path="res://Scripts/Augments/beatstrike_catalyst.gd" id="2_ospdd"]
+
+[node name="Augment" instance=ExtResource("1_a0axw")]
+script = ExtResource("2_ospdd")
+augmentName = "Beatstrike Catalyst"
+augmentDesc = "Increase critical strike chance by 10%"

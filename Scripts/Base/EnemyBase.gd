@@ -32,11 +32,11 @@ var dead : bool = false
 
 func _parent_ready():
 	var h = PlayerStats.get_heat_scale()
-	SPEED *= min(h, 1.5)
-	ACCELERATION *= h
-	CONTACT_PENETRATION *= h
-	CONTACT_DAMAGE *= h
-	maxHP *= h
+	SPEED = floor(SPEED * min(h, 1.5))
+	ACCELERATION = floor(ACCELERATION * h)
+	CONTACT_PENETRATION = floor(CONTACT_PENETRATION * h)
+	CONTACT_DAMAGE = floor(CONTACT_DAMAGE * h)
+	maxHP = floor(maxHP * h)
 	$"Sprite2D/Healthbar".maxHP = maxHP
 	hp = maxHP
 	
@@ -56,6 +56,10 @@ func hurt(attack : Attack):
 	hp -= attack.damage
 	velocity = (global_position - attack.pos).normalized() * attack.knockback
 	GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
+	if attack.isCrit:
+		$CritSound.play()
+	else:
+		$HitSound.play()
 	
 
 func contact_damage(body : Node, knockback_pos : Vector2):

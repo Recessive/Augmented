@@ -24,4 +24,10 @@ collision_mask = 3
 [node name="DeathAnimation" type="AnimatedSprite2D" parent="." index="4"]
 visible = false
 
+[node name="HitSound" parent="." index="5"]
+volume_db = -15.0
+
+[node name="CritSound" parent="." index="6"]
+volume_db = -15.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

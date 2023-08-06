@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdlflkt5q3yx0"]
+[gd_scene load_steps=18 format=3 uid="uid://cdlflkt5q3yx0"]
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_rpkxy"]
 [ext_resource type="Resource" uid="uid://d3r0h7qydwj0j" path="res://Rooms/cyber_aug_room.tres" id="2_7mimh"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dgosuefilu87x" path="res://Sprites/UI/arrow.png" id="8_swmpo"]
 [ext_resource type="Script" path="res://Rooms/ArrowMove.gd" id="9_fh1ct"]
 [ext_resource type="SpriteFrames" uid="uid://c88li6al26hkn" path="res://Nodes/Enemies/death_animation.tres" id="10_vm6ak"]
+[ext_resource type="AudioStream" uid="uid://cnyguejx5s4s" path="res://Sounds/hit1.wav" id="11_8odhk"]
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="12_57sj7"]
+[ext_resource type="AudioStream" uid="uid://dpiyysby6gdpc" path="res://Sounds/crit1.wav" id="12_q67p6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don04"]
 size = Vector2(16, 18)
@@ -122,6 +124,14 @@ shape = SubResource("RectangleShape2D_don04")
 visible = false
 sprite_frames = ExtResource("10_vm6ak")
 animation = &"death"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Ghost" index="5"]
+stream = ExtResource("11_8odhk")
+volume_db = -15.0
+
+[node name="CritSound" type="AudioStreamPlayer" parent="Ghost" index="6"]
+stream = ExtResource("12_q67p6")
+volume_db = -15.0
 
 [node name="Arrow" type="Sprite2D" parent="." index="5"]
 self_modulate = Color(1, 1, 1, 0.392157)

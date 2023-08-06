@@ -25,9 +25,9 @@ func _ready():
 func _process(delta):
 	global_position += SPEED * SHIFT_DIRECTION * delta
 	SPEED = max(SPEED - FRICTION * delta, 0)
-	
-	var p = float(label.text) / highDamage
-	
-	label.modulate = damageColor.sample(p)
-	var s = damageScale.sample(p) + 1
-	scale = Vector2(s, s)
+	if label.text.is_valid_float():
+		var p = float(label.text) / highDamage
+		
+		label.modulate = damageColor.sample(p)
+		var s = damageScale.sample(p) + 1
+		scale = Vector2(s, s)

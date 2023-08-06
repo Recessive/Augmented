@@ -34,6 +34,7 @@ fade = NodePath("../Fade")
 [node name="Player" parent="." node_paths=PackedStringArray("disposables") instance=ExtResource("5_5l5kb")]
 scale = Vector2(1, 1)
 disposables = NodePath("../Disposables")
+critColor = Color(1, 0.45098, 0.384314, 1)
 
 [node name="Fade" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

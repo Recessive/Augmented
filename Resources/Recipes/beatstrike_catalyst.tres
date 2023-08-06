@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://cf770gs5p4sgr"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.gd" id="1_oltmo"]
+
+[resource]
+script = ExtResource("1_oltmo")
+tier1requirements = {
+"tube": "3"
+}
+tier2requirements = {}
+bodyPart = "Head"
+productName = "Beatstrike Catalyst"
+quality = 0

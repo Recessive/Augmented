@@ -8,5 +8,5 @@
 script = ExtResource("2_h6dj8")
 burnDebuff = ExtResource("3_t3q8t")
 augmentName = "Synthflare"
-augmentDesc = "Burn enemies on hit"
+augmentDesc = "Chance to burn enemies on hit"
 chance = 0.1

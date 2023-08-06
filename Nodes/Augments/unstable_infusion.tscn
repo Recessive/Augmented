@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bis6sj4m4vbqy"]
+
+[ext_resource type="PackedScene" uid="uid://87fxiplh3kdf" path="res://Nodes/Base/augment_base.tscn" id="1_kpbxd"]
+[ext_resource type="Script" path="res://Scripts/Augments/unstable_infusion.gd" id="2_y7b8f"]
+
+[node name="Augment" instance=ExtResource("1_kpbxd")]
+script = ExtResource("2_y7b8f")
+baseHeal = 2.0
+augmentName = "Unstable Infusion"
+augmentDesc = "Regenerate health every room"

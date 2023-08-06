@@ -4,3 +4,6 @@
 
 [node name="Augment" type="Node"]
 script = ExtResource("1_r755g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0

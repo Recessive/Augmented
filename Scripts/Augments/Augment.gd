@@ -20,5 +20,8 @@ func add_stack():
 func proc_hit(body : Node):
 	pass
 
+func proc_new_room():
+	pass
+
 func proc_death(body : Node):
 	pass

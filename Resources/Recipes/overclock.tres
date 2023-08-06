@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://dnqry0d24nota"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.gd" id="1_ir7p8"]
+
+[resource]
+script = ExtResource("1_ir7p8")
+tier1requirements = {
+"gear": 3,
+"plate": 3
+}
+tier2requirements = {
+"circuit": 2
+}
+bodyPart = "Head"
+productName = "Overclock"
+quality = 1

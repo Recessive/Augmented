@@ -12,19 +12,8 @@ func _ready():
 	await tween.finished
 	
 	
-	
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms") 
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
-	
-	PlayerStats.add_augment(AugmentData.name_to_augment("Temposhift"), "Arms")
+	for i in range(1):
+		PlayerStats.add_augment(AugmentData.name_to_augment("Overclock"), "Head")
 	
 	
 
