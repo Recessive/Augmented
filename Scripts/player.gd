@@ -91,6 +91,12 @@ func _physics_process(delta):
 		shoot()
 		canClick = false
 
+func start_invi():
+	$Invincibility.start()
+	canTakeDmg = false
+	await $Invincibility.timeout
+	canTakeDmg = true
+
 func shoot():
 	var b : Node = bullet.instantiate()
 	var direc = global_position.direction_to(get_global_mouse_position()).normalized()

@@ -50,7 +50,7 @@ func room_pause(pause : bool):
 
 func new_room(room : Room):
 	if make_room == null and !fading:
-		player.canTakeDmg = false
+		player.start_invi()
 		$"../EnterRoom".play()
 		make_room = room
 		fade.show()
@@ -64,7 +64,7 @@ func room_ready():
 	
 	$/root/main/HUD.update_camera()
 	player.position = current_room.spawn
-	player.canTakeDmg = true
+	
 	# increase depth for each room
 	PlayerStats.depth += 1
 	if PlayerStats.depth % 10 == 0:

@@ -313,6 +313,7 @@ libraries = {
 }
 
 [node name="Invincibility" type="Timer" parent="." index="8"]
+wait_time = 2.0
 
 [node name="WeaponShoot" type="AudioStreamPlayer" parent="." index="9"]
 stream = ExtResource("7_5iyd1")
