@@ -27,6 +27,9 @@ var startAttackSpeed : int # In beats
 @export
 var heatScaling : float
 
+@export
+var highHeat : int
+
 var maxHP : float
 var maxArmor : float
 var maxSpeed : float

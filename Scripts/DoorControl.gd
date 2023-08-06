@@ -23,6 +23,8 @@ func _ready():
 		enemy.died.connect(enemy_died)
 	
 	# assign a room type to each door in this room
+	
+	
 	var roomWeights = []
 	for room in roomTypeList:
 		roomWeights.append(room.weight)

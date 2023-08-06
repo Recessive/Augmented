@@ -12,3 +12,4 @@ func play_song():
 	play()
 	await finished
 	Conductor.next_song()
+	play_song()

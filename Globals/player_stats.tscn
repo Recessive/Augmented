@@ -10,3 +10,4 @@ startAcceleration = 500.0
 startCritChance = 0.1
 startAttackSpeed = 4
 heatScaling = 0.1
+highHeat = 10

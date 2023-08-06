@@ -62,7 +62,7 @@ func _process(delta):
 	# update the game menu
 	if activeMenu == 'game':
 		var depth = PlayerStats.depth
-		$Game/TopInfo/Label.text = "%s / 250" % depth
+		$Game/TopInfo/Label.text = "%s / 100" % depth
 
 	if Input.is_action_just_pressed('pause'):
 		if activeMenu == 'pause':

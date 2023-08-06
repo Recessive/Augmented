@@ -9,6 +9,9 @@ class_name Room
 var rooms : Array[String]
 
 @export
+var highHeatRooms : Array[String]
+
+@export
 var weight : float
 
 @export

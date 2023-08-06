@@ -15,9 +15,6 @@ var fade : ColorRect
 @export
 var fadeBeatIndex : int = 3
 
-var depth : int = 0
-var heat : int = 0
-
 var fading : bool = false
 var fadeOut : bool = true
 
@@ -70,7 +67,7 @@ func room_ready():
 	if PlayerStats.depth % 10 == 0:
 		PlayerStats.heat += 1# increase heat once for each 10 rooms you go through
 	
-	if depth != 1:
+	if PlayerStats.depth != 1:
 		GlobalAssets.SpawnText("Depth +1", Vector2(-16, 0))
 	
 	PlayerStats.proc_new_room()
@@ -87,7 +84,11 @@ func beat(enabled : Array[bool], beat : int):
 			fadeOut = false
 			get_child(0).queue_free()
 			PlayerStats.delete_children(disposables)
-			var res = make_room.rooms[randi_range(0, make_room.rooms.size()-1)]
+			var res
+			if PlayerStats.heat >= PlayerStats.highHeat:
+				res = make_room.highHeatRooms[randi_range(0, make_room.highHeatRooms.size()-1)]
+			else:
+				res = make_room.rooms[randi_range(0, make_room.rooms.size()-1)]
 			var next_room = load(res).instantiate()
 			current_room = next_room
 			next_room.new_room.connect(new_room)
