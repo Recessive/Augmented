@@ -233,13 +233,13 @@ animations = [{
 
 [node name="DeathFlower" instance=ExtResource("1_5a508")]
 script = ExtResource("2_eqpui")
-CONTACT_DAMAGE = 20.0
+CONTACT_DAMAGE = 50.0
 CONTACT_KNOCKBACK = 300.0
 tier1drops = Array[String](["tube"])
 tier2drops = Array[String](["circuit"])
 tier1chance = 0.1
 tier2chance = 0.05
-maxHP = 25.0
+maxHP = 10.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1

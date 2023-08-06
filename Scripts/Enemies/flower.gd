@@ -10,7 +10,7 @@ var shootCount : int
 @export
 var projectile : PackedScene
 
-var lastShot : int = 0
+var lastShot : int
 var lastShotTime : float
 
 var player : Node
@@ -20,6 +20,8 @@ func _ready():
 	Conductor.onBeat.connect(beat)
 	player = PlayerStats.player
 	
+	lastShot = Conductor.beatNumber
+	lastShotTime = Conductor.songPosition
 	$AnimationPlayer.play("shoot")
 
 @onready

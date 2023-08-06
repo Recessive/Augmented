@@ -52,11 +52,11 @@ script = ExtResource("2_msisx")
 beatIndex = 2
 SPEED = 100.0
 ACCELERATION = 300.0
-CONTACT_DAMAGE = 20.0
+CONTACT_DAMAGE = 30.0
 CONTACT_KNOCKBACK = 150.0
 tier1drops = Array[String](["gear", "tube"])
 tier1chance = 0.5
-maxHP = 50.0
+maxHP = 30.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1

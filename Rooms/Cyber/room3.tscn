@@ -27,4 +27,4 @@ position = Vector2(-149, -54)
 position = Vector2(144, 47)
 
 [node name="Flower" parent="." index="7" instance=ExtResource("7_nq0nt")]
-position = Vector2(144, 17)
+position = Vector2(0, -52)

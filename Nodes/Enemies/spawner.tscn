@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://cayunu5p5orfa"]
+
+[ext_resource type="PackedScene" uid="uid://c18l67hrw44kr" path="res://Nodes/Base/enemy_base.tscn" id="1_r1wkq"]
+[ext_resource type="Script" path="res://Scripts/Enemies/spawner.gd" id="2_hrt2p"]
+[ext_resource type="Texture2D" uid="uid://rvji51cyy283" path="res://Sprites/Projectiles/bullet_1_charge.png" id="3_0mfw7"]
+[ext_resource type="AudioStream" uid="uid://b7alr8gx13j35" path="res://Sounds/spawn_sound.wav" id="4_74iqv"]
+
+[sub_resource type="Animation" id="Animation_fpntu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_5rxcy"]
+resource_name = "spawn"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75qy1"]
+_data = {
+"RESET": SubResource("Animation_fpntu"),
+"spawn": SubResource("Animation_5rxcy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x606q"]
+size = Vector2(36, 36)
+
+[node name="Spawner" instance=ExtResource("1_r1wkq")]
+texture_filter = 1
+script = ExtResource("2_hrt2p")
+toSpawn = null
+spawnSpeed = 16
+tier1drops = Array[String](["gear", "plate", "tube"])
+tier2drops = Array[String](["circuit"])
+tier1chance = 0.5
+tier2chance = 0.1
+maxHP = 30.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_0mfw7")
+hframes = 10
+frame = 1
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_75qy1")
+}
+
+[node name="Area2D" parent="." index="3"]
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_x606q")
+
+[node name="SpawnSound" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("4_74iqv")
+volume_db = -15.0

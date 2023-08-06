@@ -13,13 +13,14 @@ func _ready():
 	await tween.finished
 	
 	
-	for i in range(1):
-		PlayerStats.add_augment(AugmentData.name_to_augment("Overclock"), "Head")
+	#for i in range(1):
+	#	PlayerStats.add_augment(AugmentData.name_to_augment("Overclock"), "Head")
 	
 	
 
 func dead():
 	$"GameOver/MarginContainer/VBoxContainer/VBoxContainer2/Death Message".text = $GameOver.messages.pick_random()
+	$"GameOver/MarginContainer/VBoxContainer/VBoxContainer3/Depth Message".text = "You made it to a depth of %s" % PlayerStats.depth
 	PlayerStats.locked = true
 	PlayerStats.proc_player_death()
 	var tween = create_tween().set_parallel()

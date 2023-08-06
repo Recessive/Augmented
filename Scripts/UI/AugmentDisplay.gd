@@ -167,7 +167,7 @@ func populate_list(partName : String):
 			partRecipes.append(recipe)
 			ind = recipe.quality*2
 			list.add_item(recipe.productName, qualityIcons[ind])
-			list.set_item_custom_bg_color(-1, craftableAugmentBGColor)
+			# list.set_item_custom_bg_color(-1, craftableAugmentBGColor)
 			list.set_item_custom_fg_color(-1, craftableAugmentFGColor)
 	
 	for recipe in AugmentData.recipes:

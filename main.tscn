@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnke24mc1elql"]
+[gd_scene load_steps=12 format=3 uid="uid://cnke24mc1elql"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_uqpfq"]
 [ext_resource type="AudioStream" uid="uid://dfvqo2esmpao" path="res://Songs/COOLUPBEATSONG.wav" id="2_jr5ng"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/RoomControl.gd" id="3_cwx3v"]
 [ext_resource type="PackedScene" uid="uid://n1jt1t3tea4i" path="res://Rooms/Tutorial/TutorialRoom.tscn" id="4_ryk4n"]
 [ext_resource type="PackedScene" uid="uid://dhe4du707gwjv" path="res://Nodes/player.tscn" id="5_5l5kb"]
+[ext_resource type="AudioStream" uid="uid://myvixwgg3xvj" path="res://Sounds/door_enter.wav" id="6_pcpdx"]
 [ext_resource type="PackedScene" uid="uid://buq3sqi80kr25" path="res://Sprites/UI/PlayerHealth/node_2d.tscn" id="7_gqoks"]
 [ext_resource type="PackedScene" uid="uid://b8anhn5n048yx" path="res://HUD/hud.tscn" id="7_yfyk6"]
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="8_oiae0"]
@@ -20,6 +21,10 @@ stream = ExtResource("2_jr5ng")
 volume_db = -80.0
 script = ExtResource("2_n4i6r")
 beatFilePath = "res://Songs/cool.txt"
+
+[node name="EnterRoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pcpdx")
+volume_db = -10.0
 
 [node name="RoomControl" type="Node" parent="." node_paths=PackedStringArray("disposables", "player", "fade")]
 script = ExtResource("3_cwx3v")
@@ -102,6 +107,18 @@ theme_override_colors/font_outline_color = Color(0.223529, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("8_oiae0")
 text = "Death message here"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Depth Message" type="Label" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.631373, 0.470588, 1)
+theme_override_colors/font_outline_color = Color(0.223529, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("8_oiae0")
+text = "You made it to a depth of: %s"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer/VBoxContainer"]

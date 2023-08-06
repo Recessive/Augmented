@@ -27,6 +27,8 @@ var tier1chance : float = 1
 @export
 var tier2chance : float
 
+var dontDrop : bool = false
+
 var dead : bool = false
 
 
@@ -89,6 +91,8 @@ func die():
 	queue_free()
 
 func drop():
+	if dontDrop:
+		return
 	var weights : Array[float] = []
 	var nodes : Array[Node] = []
 	var node : Node

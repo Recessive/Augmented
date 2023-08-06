@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://deycqknmislcl" path="res://Nodes/Projectiles/enemy_bullet1.tscn" id="3_gjocr"]
 [ext_resource type="AudioStream" uid="uid://q6vmsrm2ecbn" path="res://Sounds/blast_2_mod.ogg" id="6_2rcwc"]
 
+[sub_resource type="Animation" id="Animation_qa6ks"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_ysoxq"]
 resource_name = "idle"
 tracks/0/type = "value"
@@ -38,9 +41,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_qa6ks"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qab5"]
 _data = {
 "RESET": SubResource("Animation_qa6ks"),
@@ -61,7 +61,7 @@ CONTACT_DAMAGE = 15.0
 CONTACT_KNOCKBACK = 100.0
 tier1drops = Array[String](["gear"])
 tier1chance = 0.8
-maxHP = 40.0
+maxHP = 30.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_eerc3")

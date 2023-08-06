@@ -64,13 +64,13 @@ var disposables : Node
 # tube
 # plate
 # gear
-var tier1Inventory : Dictionary = {}
+var tier1Inventory
 
 # Only 1 slot in tier 2
 # Tier 2 components:
 # Circuit
 # Tranceiver
-var tier2Inventory : Dictionary = {}
+var tier2Inventory
 
 func start():
 	maxHP = startMaxHP 

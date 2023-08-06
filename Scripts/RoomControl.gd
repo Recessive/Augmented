@@ -50,6 +50,7 @@ func room_pause(pause : bool):
 
 func new_room(room : Room):
 	if make_room == null and !fading:
+		$"../EnterRoom".play()
 		make_room = room
 		fade.show()
 		fading = true

@@ -91,7 +91,7 @@ tweenTime = 1.0
 scaleUp = 3.0
 qualityIcons = Array[CompressedTexture2D]([ExtResource("2_ewqm8"), ExtResource("3_imhv3"), ExtResource("4_adkyo"), ExtResource("5_6erho"), ExtResource("6_l2406"), ExtResource("7_128sl")])
 installedAugmentFGColor = Color(0.305882, 1, 1, 1)
-craftableAugmentBGColor = Color(0, 0.156863, 0, 0.615686)
+craftableAugmentBGColor = Color(1, 1, 1, 1)
 craftableAugmentFGColor = Color(0, 0.752941, 0, 1)
 
 [node name="DescriptionRect" type="ColorRect" parent="."]

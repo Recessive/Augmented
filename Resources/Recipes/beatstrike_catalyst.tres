@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_oltmo")
 tier1requirements = {
-"tube": "3"
+"tube": 3
 }
 tier2requirements = {}
 bodyPart = "Head"

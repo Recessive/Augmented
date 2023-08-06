@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://57xnv58pfpw0"]
+[gd_scene load_steps=10 format=3 uid="uid://57xnv58pfpw0"]
 
 [ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="1_bly87"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_jds5u"]
 [ext_resource type="PackedScene" uid="uid://cnke24mc1elql" path="res://main.tscn" id="2_5ouoy"]
 [ext_resource type="AudioStream" uid="uid://dnlsjmsjhydgv" path="res://Songs/Back1/AREATHEME.wav" id="2_h1h26"]
+[ext_resource type="Texture2D" uid="uid://bqb1eqcb5wjr1" path="res://Sprites/Banner.png" id="3_f2t1a"]
 [ext_resource type="Script" path="res://Scripts/AudioController.gd" id="3_u5h4x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubk13"]
@@ -31,10 +32,10 @@ corner_radius_bottom_left = 20
 script = ExtResource("1_jds5u")
 mainScene = ExtResource("2_5ouoy")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.0705882, 0, 0.196078, 1)
+texture = ExtResource("3_f2t1a")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 texture_filter = 1
