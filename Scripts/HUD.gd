@@ -22,6 +22,7 @@ func hide_menus():
 		menu.hide()
 
 func switch_menu(menu):
+	self.move_to_front()
 	if not switch_menu_func_enabled:return
 	hide_menus()
 	menus[menu].show()
