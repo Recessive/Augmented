@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://y8uo76vxdcrx"]
+[gd_scene load_steps=3 format=3 uid="uid://y8uo76vxdcrx"]
 
 [ext_resource type="Script" path="res://Scripts/Base/EntityBase.gd" id="1_7onik"]
+[ext_resource type="PackedScene" uid="uid://dlrmxl0g1gp22" path="res://Nodes/UI/healthbar.tscn" id="2_1lxqx"]
 
 [node name="EntityBase" type="CharacterBody2D"]
 script = ExtResource("1_7onik")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Healthbar" parent="Sprite2D" instance=ExtResource("2_1lxqx")]
+position = Vector2(0, -18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

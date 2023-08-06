@@ -5,7 +5,5 @@
 [node name="Status Effect" type="Node"]
 script = ExtResource("1_2ve7f")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

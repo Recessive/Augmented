@@ -278,6 +278,9 @@ hframes = 8
 vframes = 3
 frame = 1
 
+[node name="Healthbar" parent="Sprite2D" index="0"]
+visible = false
+
 [node name="PlayerAugmentRenderer" parent="." index="1" instance=ExtResource("5_gi8ir")]
 
 [node name="CollisionShape2D" parent="." index="2"]

@@ -92,7 +92,6 @@ hframes = 10
 frame = 1
 
 [node name="Healthbar" parent="Ghost/Sprite2D" index="0" instance=ExtResource("7_ckgd4")]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(0, -16)
 
 [node name="Arrow" type="Sprite2D" parent="Ghost/Sprite2D" index="1"]

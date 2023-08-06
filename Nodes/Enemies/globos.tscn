@@ -192,7 +192,6 @@ texture = ExtResource("3_ge57m")
 hframes = 21
 
 [node name="Healthbar" parent="Sprite2D" index="0"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(0, -20)
 
 [node name="AnimationPlayer" parent="." index="2"]

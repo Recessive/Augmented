@@ -58,6 +58,9 @@ texture_filter = 1
 texture = ExtResource("2_ubooh")
 hframes = 8
 
+[node name="Healthbar" parent="Sprite2D" index="0"]
+visible = false
+
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "idle"
 libraries = {

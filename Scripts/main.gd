@@ -10,6 +10,23 @@ func _ready():
 	tween.tween_property($Fade, "modulate", Color(1,1,1,0), 1)
 	tween.tween_property($BasicComponents, "volume_db", -20, 1)
 	await tween.finished
+	
+	
+	
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	
+	PlayerStats.add_augment(AugmentData.name_to_augment("Temposhift"), "Arms")
+	
+	
 
 func dead():
 	$"GameOver/MarginContainer/VBoxContainer/VBoxContainer2/Death Message".text = $GameOver.messages.pick_random()

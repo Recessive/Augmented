@@ -64,9 +64,6 @@ texture = ExtResource("2_6dkul")
 hframes = 10
 frame = 1
 
-[node name="Healthbar" parent="Sprite2D" index="0"]
-modulate = Color(0, 1, 0, 1)
-
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_don04")
 

@@ -47,6 +47,7 @@ func set_hp(value):
 		
 func remove_status(status : Node):
 	statusEffects.erase(status.name)
+	$Sprite2D/Healthbar.remove_status(status.statusName)
 
 func apply_status(status : Node):
 	status.entity = self
@@ -57,4 +58,5 @@ func apply_status(status : Node):
 		statusEffects[status.name] = status
 		status.removed.connect(remove_status)
 		status.apply()
+		$Sprite2D/Healthbar.add_status(status.statusName, status.animatedIcon)
 

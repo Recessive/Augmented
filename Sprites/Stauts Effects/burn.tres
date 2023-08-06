@@ -1,0 +1,29 @@
+[gd_resource type="AnimatedTexture" load_steps=9 format=3 uid="uid://bml0kikb6kkvt"]
+
+[ext_resource type="Texture2D" uid="uid://dlgq1hlhkv6ar" path="res://Sprites/Stauts Effects/burn/burn_TEMP_01.png" id="1_0xafw"]
+[ext_resource type="Texture2D" uid="uid://b5p7u06qs7s8t" path="res://Sprites/Stauts Effects/burn/burn_TEMP_02.png" id="2_0sg85"]
+[ext_resource type="Texture2D" uid="uid://dx5kyykxjptkf" path="res://Sprites/Stauts Effects/burn/burn_TEMP_03.png" id="3_j8gwk"]
+[ext_resource type="Texture2D" uid="uid://bviwvgc6qn1xf" path="res://Sprites/Stauts Effects/burn/burn_TEMP_04.png" id="4_s333f"]
+[ext_resource type="Texture2D" uid="uid://dinblorw4awbb" path="res://Sprites/Stauts Effects/burn/burn_TEMP_05.png" id="5_u1riq"]
+[ext_resource type="Texture2D" uid="uid://dhh5kup1sqbkq" path="res://Sprites/Stauts Effects/burn/burn_TEMP_06.png" id="6_h0jcw"]
+[ext_resource type="Texture2D" uid="uid://mhs8lxq8k26h" path="res://Sprites/Stauts Effects/burn/burn_TEMP_07.png" id="7_tll6k"]
+[ext_resource type="Texture2D" uid="uid://dqxurb7hhbsu0" path="res://Sprites/Stauts Effects/burn/burn_TEMP_08.png" id="8_xdxo0"]
+
+[resource]
+frames = 8
+speed_scale = 10.0
+frame_0/texture = ExtResource("1_0xafw")
+frame_1/texture = ExtResource("2_0sg85")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_j8gwk")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_s333f")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_u1riq")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_h0jcw")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_tll6k")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("8_xdxo0")
+frame_7/duration = 1.0
