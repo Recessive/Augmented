@@ -79,7 +79,7 @@ offset_bottom = 111.0
 mouse_filter = 1
 color = Color(0.176471, 0.168627, 0.352941, 1)
 script = ExtResource("9_otxni")
-messages = Array[String](["Game Over", "get good", "Definitely your fault", "LMB to shoot btw", "GG F7", "BRO WHAT IS THAT", "Uninstall.", "ez", "Alt + F4 to lower the diffuclty", "Genuinely sorry for that one, that wasn't fair", "HE'S CHEATING", "Awww so close", "lmao", "Maybe if you tried harder", "Do you have mechanical switches?", "Get out of my lobby", "That was like a normal run, but worse", "Send all compllaints to, nvm didn't ask", "Admin he's doing it sideways", "Green, green what is your problem"])
+messages = Array[String](["Game Over", "get good", "Definitely your fault", "LMB to shoot btw", "GG F7", "BRO WHAT IS THAT", "Uninstall.", "ez", "Alt + F4 to lower the diffuclty", "Genuinely sorry for that one, that wasn't fair", "HE'S CHEATING", "Awww so close", "lmao", "Maybe if you tried harder"])
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOver"]
 layout_mode = 0

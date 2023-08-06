@@ -201,6 +201,10 @@ func proc_hit(body : Node):
 	for aug in augments:
 		aug.proc_hit(body)
 
+func proc_crit(body : Node):
+	for aug in augments:
+		aug.proc_crit(body)
+
 func proc_death(body : Node):
 	for aug in augments:
 		aug.proc_death(body)

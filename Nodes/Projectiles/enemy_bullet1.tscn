@@ -52,6 +52,7 @@ PROC_CHANCE = 1.0
 DAMAGE = 15.0
 KNOCKBACK = 50.0
 targetGroup = "Player"
+playerBullet = false
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_h7217")

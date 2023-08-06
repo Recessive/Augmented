@@ -23,6 +23,9 @@ func add_stack():
 func proc_hit(body : Node):
 	pass
 
+func proc_crit(body : Node):
+	pass
+
 func proc_new_room():
 	pass
 

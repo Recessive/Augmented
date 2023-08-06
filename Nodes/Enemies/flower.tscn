@@ -59,8 +59,8 @@ shootCount = 3
 projectile = ExtResource("3_gjocr")
 CONTACT_DAMAGE = 15.0
 CONTACT_KNOCKBACK = 100.0
-tier1drops = Array[String](["gear"])
-tier1chance = 0.8
+tier1drops = Array[String](["gear", "plate"])
+tier1chance = 0.4
 maxHP = 30.0
 
 [node name="Sprite2D" parent="." index="0"]

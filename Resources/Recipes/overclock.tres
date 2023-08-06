@@ -6,7 +6,7 @@
 script = ExtResource("1_ir7p8")
 tier1requirements = {
 "gear": 3,
-"plate": 3
+"plate": 1
 }
 tier2requirements = {
 "circuit": 1

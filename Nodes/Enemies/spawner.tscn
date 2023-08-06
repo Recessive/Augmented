@@ -53,8 +53,7 @@ toSpawn = null
 spawnSpeed = 16
 tier1drops = Array[String](["gear", "plate", "tube"])
 tier2drops = Array[String](["circuit"])
-tier1chance = 0.5
-tier2chance = 0.1
+tier2chance = 0.3
 maxHP = 30.0
 
 [node name="Sprite2D" parent="." index="0"]

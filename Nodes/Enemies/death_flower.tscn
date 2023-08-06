@@ -134,7 +134,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7473"]
-radius = 17.0294
+radius = 9.21954
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6oho"]
 atlas = ExtResource("4_73o1e")
@@ -237,8 +237,8 @@ CONTACT_DAMAGE = 50.0
 CONTACT_KNOCKBACK = 300.0
 tier1drops = Array[String](["tube"])
 tier2drops = Array[String](["circuit"])
-tier1chance = 0.1
-tier2chance = 0.05
+tier1chance = 0.3
+tier2chance = 0.1
 maxHP = 10.0
 
 [node name="Sprite2D" parent="." index="0"]

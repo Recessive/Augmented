@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_b1eeh")
 tier1requirements = {
-"gear": 3,
+"gear": 5,
 "plate": 3
 }
 tier2requirements = {

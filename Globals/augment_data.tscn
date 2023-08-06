@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnqriy0as571y"]
+[gd_scene load_steps=12 format=3 uid="uid://cnqriy0as571y"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/AugmentData.gd" id="1_rf7ca"]
 [ext_resource type="Resource" uid="uid://ct7ugsr0d1pj6" path="res://Resources/Recipes/temposhift.tres" id="2_ym4ct"]
@@ -10,14 +10,15 @@
 [ext_resource type="Resource" uid="uid://dunxvn7qtwp08" path="res://Resources/Recipes/unstable_infusion.tres" id="8_vydyg"]
 [ext_resource type="Resource" uid="uid://dnqry0d24nota" path="res://Resources/Recipes/overclock.tres" id="9_7ps88"]
 [ext_resource type="Resource" uid="uid://d136l5d1sry65" path="res://Resources/Recipes/swiftblitz.tres" id="10_1dkg3"]
+[ext_resource type="Resource" uid="uid://c6eh50fowiif2" path="res://Resources/Recipes/lifestrike.tres" id="11_bloty"]
 
 [node name="augment_data" type="Node"]
 script = ExtResource("1_rf7ca")
 headPackedAugments = Array[String](["res://Nodes/Augments/beatstrike_catalyst.tscn", "res://Nodes/Augments/overclock.tscn", "res://Nodes/Augments/swiftblitz.tscn"])
-bodyPackedAugments = Array[String](["res://Nodes/Augments/vitacell.tscn", "res://Nodes/Augments/unstable_infusion.tscn"])
+bodyPackedAugments = Array[String](["res://Nodes/Augments/vitacell.tscn", "res://Nodes/Augments/unstable_infusion.tscn", "res://Nodes/Augments/lifestrike.tscn"])
 armPackedAugments = Array[String](["res://Nodes/Augments/temposhift.tscn", "res://Nodes/Augments/synthflare.tscn"])
 legPackedAugments = Array[String](["res://Nodes/Augments/beatstride.tscn", "res://Nodes/Augments/syncshock.tscn"])
-recipes = Array[Resource("res://Scripts/Resources/Recipe.gd")]([ExtResource("2_ym4ct"), ExtResource("3_7aoaw"), ExtResource("4_keud3"), ExtResource("5_1pf35"), ExtResource("6_t40ya"), ExtResource("7_x0240"), ExtResource("8_vydyg"), ExtResource("9_7ps88"), ExtResource("10_1dkg3")])
+recipes = Array[Resource("res://Scripts/Resources/Recipe.gd")]([ExtResource("2_ym4ct"), ExtResource("3_7aoaw"), ExtResource("4_keud3"), ExtResource("5_1pf35"), ExtResource("6_t40ya"), ExtResource("7_x0240"), ExtResource("8_vydyg"), ExtResource("9_7ps88"), ExtResource("10_1dkg3"), ExtResource("11_bloty")])
 dropsPacked = {
 "circuit": "res://Nodes/Drops/circuit.tscn",
 "gear": "res://Nodes/Drops/gear.tscn",

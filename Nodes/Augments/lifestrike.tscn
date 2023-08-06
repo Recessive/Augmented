@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dufnfnh5sqrqj"]
+
+[ext_resource type="PackedScene" uid="uid://87fxiplh3kdf" path="res://Nodes/Base/augment_base.tscn" id="1_b18hd"]
+[ext_resource type="Script" path="res://Scripts/Augments/lifestrike.gd" id="2_baa7q"]
+
+[node name="Augment" instance=ExtResource("1_b18hd")]
+script = ExtResource("2_baa7q")
+chanceAdd = 0.1
+augmentName = "Lifestrike"
+augmentDesc = "Chance to heal on critical strike"
+chance = 0.25

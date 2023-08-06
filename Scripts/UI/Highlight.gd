@@ -16,6 +16,7 @@ var startingPos : Vector2 = position
 
 @onready
 var startingScale : Vector2 = scale
+	
 
 func _process(delta):
 	if pair and !pair.mouseIn:
@@ -35,6 +36,9 @@ func _process(delta):
 		modulate.g = 0
 		modulate.b = 0
 	
+func reset_position():
+	position = startingPos
+	scale = startingScale
 
 var mouseIn : bool = false
 func _on_mouse_entered():

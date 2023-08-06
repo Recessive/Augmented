@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_hg5vt"]
 [ext_resource type="PackedScene" uid="uid://cayunu5p5orfa" path="res://Nodes/Enemies/spawner.tscn" id="2_8m4cp"]
-[ext_resource type="PackedScene" uid="uid://be25arkmfs6t6" path="res://Nodes/Enemies/globos.tscn" id="3_72tmy"]
+[ext_resource type="PackedScene" uid="uid://b0haj3q3nlx6p" path="res://Nodes/Enemies/ghost.tscn" id="3_p3fd5"]
 [ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Nodes/door.tscn" id="4_wkt30"]
 
 [node name="Room" instance=ExtResource("1_hg5vt")]
@@ -10,8 +10,7 @@ layer_0/tile_data = PackedInt32Array(0, 65537, 1, 65536, 65537, 1, 1, 983041, 1,
 
 [node name="Spawner" parent="." index="3" instance=ExtResource("2_8m4cp")]
 position = Vector2(0, -48)
-toSpawn = ExtResource("3_72tmy")
-spawnSpeed = 8
+toSpawn = ExtResource("3_p3fd5")
 
 [node name="Door" parent="." index="4" instance=ExtResource("4_wkt30")]
 position = Vector2(-16, -80)

@@ -18,6 +18,9 @@ var KNOCKBACK : float
 @export
 var targetGroup : String = "Enemies"
 
+@export
+var playerBullet : bool = true
+
 var isCrit : bool
 
 var projectileDeathScene = preload("res://Nodes/Projectiles/projectile_death.tscn")
@@ -31,14 +34,16 @@ func _physics_process(delta):
 	move_and_collide(velocity)
 
 func damage_body(pos : Vector2, body : Node):
-	if randf() < PROC_CHANCE:
-		PlayerStats.proc_hit(body)
 	var attack = Attack.new()
 	attack.damage = DAMAGE * (1 + int(isCrit))
 	attack.penetration = PENETRATION
 	attack.knockback = KNOCKBACK
 	attack.pos = pos
 	attack.isCrit = isCrit
+	if playerBullet and randf() < PROC_CHANCE:
+		PlayerStats.proc_hit(body)
+		if isCrit:
+			PlayerStats.proc_crit(body)
 	body.hurt(attack)
 
 func _on_area_2d_body_entered(body):

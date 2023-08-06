@@ -21,7 +21,7 @@ position = Vector2(-64, 0)
 [node name="Door" parent="." index="3" instance=ExtResource("3_nctdd")]
 position = Vector2(16, -80)
 
-[node name="ColorRect" type="ColorRect" parent="." index="4"]
+[node name="ColorRect2" type="ColorRect" parent="." index="4"]
 z_index = -1
 offset_left = -188.0
 offset_top = -94.0

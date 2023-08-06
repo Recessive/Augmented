@@ -142,6 +142,13 @@ func minimize(tween : Tween):
 	$"Left leg/AnimationPlayer".play("Idle")
 	$"Right leg/AnimationPlayer".play("Idle")
 	
+	$Head.reset_position()
+	$Body.reset_position()
+	$"Left arm".reset_position()
+	$"Right arm".reset_position()
+	$"Left leg".reset_position()
+	$"Right leg".reset_position()
+	
 
 func _on_back_button_button_down():
 	var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
