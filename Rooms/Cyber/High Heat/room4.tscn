@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c22icx8ppdf07"]
+[gd_scene load_steps=7 format=3 uid="uid://c22icx8ppdf07"]
 
 [ext_resource type="PackedScene" uid="uid://bkyai3ar0uoa1" path="res://Rooms/ParentRoom.tscn" id="1_hg5vt"]
 [ext_resource type="PackedScene" uid="uid://cayunu5p5orfa" path="res://Nodes/Enemies/spawner.tscn" id="2_8m4cp"]
+[ext_resource type="Resource" uid="uid://d3r0h7qydwj0j" path="res://Rooms/cyber_aug_room.tres" id="2_k7ys4"]
+[ext_resource type="Resource" uid="uid://56mmdpbyv7bk" path="res://Rooms/cyber_room.tres" id="3_7i1al"]
 [ext_resource type="PackedScene" uid="uid://b0haj3q3nlx6p" path="res://Nodes/Enemies/ghost.tscn" id="3_p3fd5"]
 [ext_resource type="PackedScene" uid="uid://bu06k3uu2stda" path="res://Nodes/door.tscn" id="4_wkt30"]
 
-[node name="Room" instance=ExtResource("1_hg5vt")]
+[node name="Room" node_paths=PackedStringArray("enemies", "doorNodes") instance=ExtResource("1_hg5vt")]
 layer_0/tile_data = PackedInt32Array(0, 65537, 1, 65536, 65537, 1, 1, 983041, 1, 65537, 65537, 1, 2, 65537, 1, 65538, 1114113, 0, 3, 65537, 1, 65539, 65537, 1, -65540, 65537, 1, -4, 1048577, 2, 65532, 65537, 1, 131068, 65537, 1, -65539, 1114113, 2, -3, 65537, 1, 65533, 1114113, 0, 131069, 1048577, 0, -65538, 983041, 1, -2, 65537, 1, 65534, 65537, 1, 131070, 65537, 1, -65537, 65537, 1, -1, 65537, 1, 65535, 65537, 1, 131071, 65537, 1, -131072, 65537, 1, -65536, 65537, 1, -131071, 65537, 1, -65535, 983041, 2, -131070, 1048577, 2, -65534, 65537, 1, -131069, 65537, 1, -65533, 1048577, 2, -196604, 65537, 0, 131077, 131073, 2, -196603, 131073, 0, 196602, 1, 2, -131078, 1, 0, -65542, 1, 1, -131067, 131073, 1, 65541, 131073, 1, 131076, 65537, 2, 196603, 65537, 2, 131066, 1, 1, 65530, 1, 1, -6, 1, 1, 5, 131073, 1, -65531, 131073, 1, 196604, 65537, 2, 196605, 65537, 2, 196606, 65537, 2, 196607, 65537, 2, 131073, 65537, 2, 131074, 65537, 2, 131075, 65537, 2, -131076, 65537, 0, -131075, 65537, 0, -131074, 65537, 0, -196607, 65537, 0, -196606, 65537, 0, -196605, 65537, 0, -65541, 65537, 1, -131068, 65537, 1, 65540, 65537, 1, 131067, 1048577, 0, -5, 65537, 1, 65531, 983041, 1, -65532, 65537, 1, 4, 1114113, 0, 131072, 65537, 2, -131077, 65537, 0)
+enemies = [NodePath("Spawner")]
+doorNodes = [NodePath("Door"), NodePath("Door2")]
+roomTypeList = Array[Resource("res://Scripts/Room.gd")]([ExtResource("2_k7ys4"), ExtResource("3_7i1al")])
 
 [node name="Spawner" parent="." index="3" instance=ExtResource("2_8m4cp")]
 position = Vector2(0, -48)

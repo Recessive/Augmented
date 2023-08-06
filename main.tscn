@@ -43,10 +43,10 @@ critColor = Color(1, 0.45098, 0.384314, 1)
 
 [node name="Fade" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = -1083.0
-offset_top = -614.0
-offset_right = 1041.0
-offset_bottom = 708.0
+offset_left = -1103.0
+offset_top = -574.0
+offset_right = 1021.0
+offset_bottom = 748.0
 color = Color(0, 0, 0, 1)
 
 [node name="Healthbar" parent="." instance=ExtResource("7_gqoks")]

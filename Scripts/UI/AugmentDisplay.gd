@@ -216,13 +216,16 @@ func _on_item_list_item_selected(index):
 		$DescriptionRect/T1I2.visible = true
 		$DescriptionRect/T1I2.frame = AugmentData.dropFrameMapping.find(t1Keys[1])
 		$DescriptionRect/T1I2/Label.text = "x%s %s" % [selectedRecipe.tier1requirements[t1Keys[1]], t1Keys[1]]
-	
+	else:
+		$DescriptionRect/T1I2.visible = false
+		
 	var t2Keys = selectedRecipe.tier2requirements.keys()
 	if t2Keys.size() > 0:
 		$DescriptionRect/T2I1.visible = true
 		$DescriptionRect/T2I1.frame = AugmentData.dropFrameMapping.find(t2Keys[0])
 		$DescriptionRect/T2I1/Label.text = "x%s %s" % [selectedRecipe.tier2requirements[t2Keys[0]], t2Keys[0]]
-
+	else:
+		$DescriptionRect/T2I1.visible = false
 
 
 func _on_accept_button_button_down():

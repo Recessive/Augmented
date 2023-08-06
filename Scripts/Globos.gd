@@ -10,10 +10,10 @@ var PENETRATION : float
 var KNOCKBACK : float
 
 @export
-var callBeat : int
+var chargeBeats : int
 
 @export
-var responseBeat : int
+var chargeFrequency : int
 
 @export
 var offsetBeats : int
@@ -83,6 +83,8 @@ func _ready():
 	
 	animation = $DeathAnimation
 	
+	lastShootBeat = Conductor.beatNumber
+	
 	
 	
 
@@ -105,6 +107,12 @@ var chargeAniLength : float = $AnimationPlayer.get_animation("charge").length
 func _physics_process(delta):
 	animation.global_position = $Sprite2D.global_position
 	if dead: return
+	var p : float
+	if preppingBeats > 0:
+		p = Conductor.percentage_beat(lastShootBeat, lastShootBeat + chargeBeats * chargeFrequency)
+	else:
+		
+		p = Conductor.percentage_beat(lastShootBeat, lastShootBeat + chargeFrequency)
 	# Take next enabled beat on responseBeat index and gradually increase laser size
 	# If there exists more than 2 points in the telegraphLine that is
 	if telegraphLine.points.size() > 1:
@@ -112,10 +120,9 @@ func _physics_process(delta):
 		var p2 = laserChargeLine.to_local(telegraphLine.to_global(telegraphLine.points[1]))
 		laserChargeLine.set_point_position(0, p1)
 		laserChargeLine.set_point_position(1, p2)
-		laserChargeLine.width = laserChargeWidth * laserChargeCurve.sample(Conductor.percentage_enabled(responseBeat))
+		laserChargeLine.width = laserChargeWidth * laserChargeCurve.sample(p)
 	
-	if !prepping:
-		var p : float = Conductor.percentage_enabled(responseBeat)
+	if preppingBeats == 0:
 		$AnimationPlayer.seek(p * chargeAniLength)
 	
 func _on_player_hurt_body_entered(body : Node):
@@ -153,24 +160,25 @@ func damage_player(pos : Vector2, body : Node):
 	attack.pos = pos
 	body.hurt(attack)
 
-var prepping : bool = true
+@onready 
+var preppingBeats : int = chargeBeats
+var lastShootBeat : int
 var result
 func beat(enabled : Array[bool], beat : int):
 	if dead: return
+	if beat % chargeFrequency != 0:
+		return
 	
-	if(enabled[callBeat]):
+	if preppingBeats > 0:
+		preppingBeats -= 1
 		laserLockSound.play()
-		if offsetBeats > 0:
-			offsetBeats -= 1
-			return
-		
 		pivot = target
 		var pos
 		if(telegraphLine.points.size() == 1):
 			pos = sprite.global_position
 		else:
 			pos = telegraphLine.to_global(telegraphLine.points[-1])
-		
+			
 		# Magic value:
 		# 10,000: make raycast long
 		# 0x00000001: Only collide with wall layer
@@ -183,17 +191,12 @@ func beat(enabled : Array[bool], beat : int):
 		else:
 			telegraphLine.add_point(telegraphLine.to_local(result.position - direc.normalized()*(minShootDist/8)))
 			direc = direc.bounce(result.normal)
-		
-		if Conductor.rightEnabled[callBeat][beat] > Conductor.rightEnabled[responseBeat][beat]:
-			prepping = false
+		if preppingBeats == 0:
+			lastShootBeat = beat
 			$AnimationPlayer.play("charge")
-		
-		
-	if(enabled[responseBeat]):
-		
+	else:
+		lastShootBeat = beat
 		# "Shoot" along the drawn path
-		if telegraphLine.points.size() == 1:
-			return
 		laserSound.play()
 		pivot = telegraphLine.to_global(telegraphLine.points[0])
 		target = telegraphLine.to_global(telegraphLine.points[1])
@@ -214,5 +217,5 @@ func beat(enabled : Array[bool], beat : int):
 		if telegraphLine.points.size() == 1:
 			angle = sprite.global_position.angle_to_point(player.global_position)
 			direc = Vector2(cos(angle), sin(angle))
-			prepping = true
 			$AnimationPlayer.play("idle")
+			preppingBeats = chargeBeats

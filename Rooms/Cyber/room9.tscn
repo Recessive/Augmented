@@ -14,8 +14,9 @@ doorNodes = [NodePath("Door")]
 roomTypeList = Array[Resource("res://Scripts/Room.gd")]([ExtResource("2_auwv1"), ExtResource("3_a5qhq")])
 
 [node name="Flower" parent="." index="3" instance=ExtResource("2_2h2xi")]
+modulate = Color(1, 0.592157, 0.592157, 1)
 position = Vector2(-145, -1)
-shootCount = 12
+shootCount = 8
 
 [node name="Ghost" parent="." index="4" instance=ExtResource("3_m4w32")]
 position = Vector2(-97, 0)

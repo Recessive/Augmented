@@ -102,6 +102,12 @@ func get_percentage_enabled():
 func percentage_enabled(mapIndex : int) -> float:
 	return percentEnabled[mapIndex]
 
+func percentage_beat(startBeat : int, endBeat : int):
+	var startTime : float = Conductor.BeatToTime(startBeat)
+	var endTime : float = Conductor.BeatToTime(endBeat)
+	var p : float = (Conductor.songPosition - startTime) / (endTime - startTime)
+	return p
+	
 func timeToNextEnabled(mapIndex : int) -> float:
 	var next : float = BeatToTime(rightEnabled[mapIndex][beatNumber])
 	return next - songPosition
