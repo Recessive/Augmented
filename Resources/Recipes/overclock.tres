@@ -9,7 +9,7 @@ tier1requirements = {
 "plate": 3
 }
 tier2requirements = {
-"circuit": 2
+"circuit": 1
 }
 bodyPart = "Head"
 productName = "Overclock"

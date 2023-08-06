@@ -6,5 +6,5 @@
 script = ExtResource("1_881xi")
 rooms = Array[String](["res://Rooms/Augment Rooms/cyber_aug1.tscn"])
 highHeatRooms = Array[String](["res://Rooms/Augment Rooms/cyber_aug1.tscn"])
-weight = 1.0
+weight = 2.0
 type = "cyber_aug"

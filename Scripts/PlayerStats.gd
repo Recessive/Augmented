@@ -73,6 +73,9 @@ var tier1Inventory
 var tier2Inventory
 
 func start():
+	tier1Inventory = {}
+	tier2Inventory = {}
+	
 	maxHP = startMaxHP 
 	maxArmor = startMaxArmor 
 	maxSpeed = startMaxSpeed 

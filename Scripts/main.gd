@@ -12,7 +12,6 @@ func _ready():
 	tween.tween_property($BasicComponents, "volume_db", -20, 1)
 	await tween.finished
 	
-	
 	#for i in range(1):
 	#	PlayerStats.add_augment(AugmentData.name_to_augment("Overclock"), "Head")
 	

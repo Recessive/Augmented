@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://d136l5d1sry65"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.gd" id="1_b1eeh"]
+
+[resource]
+script = ExtResource("1_b1eeh")
+tier1requirements = {
+"gear": 3,
+"plate": 3
+}
+tier2requirements = {
+"circuit": 2
+}
+bodyPart = "Head"
+productName = "Swiftblitz"
+quality = 2

@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnke24mc1elql"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_uqpfq"]
+[ext_resource type="AudioStream" uid="uid://dfvqo2esmpao" path="res://Songs/COOLUPBEATSONG.wav" id="2_jr5ng"]
+[ext_resource type="Script" path="res://Scripts/AudioController.gd" id="2_n4i6r"]
+[ext_resource type="Script" path="res://Scripts/RoomControl.gd" id="3_cwx3v"]
+[ext_resource type="PackedScene" uid="uid://n1jt1t3tea4i" path="res://Rooms/Tutorial/TutorialRoom.tscn" id="4_ryk4n"]
+[ext_resource type="PackedScene" uid="uid://dhe4du707gwjv" path="res://Nodes/player.tscn" id="5_5l5kb"]
+[ext_resource type="AudioStream" uid="uid://myvixwgg3xvj" path="res://Sounds/door_enter.wav" id="6_pcpdx"]
+[ext_resource type="PackedScene" uid="uid://buq3sqi80kr25" path="res://Sprites/UI/PlayerHealth/node_2d.tscn" id="7_gqoks"]
+[ext_resource type="PackedScene" uid="uid://b8anhn5n048yx" path="res://HUD/hud.tscn" id="7_yfyk6"]
+[ext_resource type="FontFile" uid="uid://ctyngybukb20x" path="res://Fonts/m5x7.ttf" id="8_oiae0"]
+[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="9_otxni"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_uqpfq")
+mainMenuScenePath = "res://main_menu.tscn"
+
+[node name="BasicComponents" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jr5ng")
+volume_db = -80.0
+script = ExtResource("2_n4i6r")
+beatFilePath = "res://Songs/cool.txt"
+
+[node name="EnterRoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pcpdx")
+volume_db = -10.0
+
+[node name="RoomControl" type="Node" parent="." node_paths=PackedStringArray("disposables", "player", "fade")]
+script = ExtResource("3_cwx3v")
+disposables = NodePath("../Disposables")
+player = NodePath("../Player")
+fade = NodePath("../Fade")
+
+[node name="Room" parent="RoomControl" instance=ExtResource("4_ryk4n")]
+
+[node name="Disposables" type="Node" parent="."]
+
+[node name="Player" parent="." node_paths=PackedStringArray("disposables") instance=ExtResource("5_5l5kb")]
+scale = Vector2(1, 1)
+disposables = NodePath("../Disposables")
+critColor = Color(1, 0.45098, 0.384314, 1)
+
+[node name="Fade" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -1083.0
+offset_top = -614.0
+offset_right = 1041.0
+offset_bottom = 708.0
+color = Color(0, 0, 0, 1)
+
+[node name="Healthbar" parent="." instance=ExtResource("7_gqoks")]
+visible = false
+
+[node name="ProgressBar" parent="Healthbar" index="0"]
+offset_left = 112.0
+offset_top = -78.0
+offset_right = 226.0
+offset_bottom = -66.0
+scale = Vector2(0.5, 0.5)
+
+[node name="HealthbarSprite" parent="Healthbar" index="1"]
+position = Vector2(140, -75)
+animation = &"VeryCracked"
+frame_progress = 0.624201
+
+[node name="HUD" parent="." instance=ExtResource("7_yfyk6")]
+mouse_filter = 2
+
+[node name="GameOver" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+top_level = true
+texture_filter = 1
+offset_left = -196.0
+offset_top = -110.0
+offset_right = 196.0
+offset_bottom = 111.0
+mouse_filter = 1
+color = Color(0.176471, 0.168627, 0.352941, 1)
+script = ExtResource("9_otxni")
+messages = Array[String](["Game Over", "get good", "Definitely your fault", "LMB to shoot btw", "GG F7", "BRO WHAT IS THAT", "Uninstall.", "ez", "Alt + F4 to lower the diffuclty", "Genuinely sorry for that one, that wasn't fair", "HE'S CHEATING", "Awww so close", "lmao", "Maybe if you tried harder"])
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+layout_mode = 0
+offset_right = 392.0
+offset_bottom = 221.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_oiae0")
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Death Message" type="Label" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.223529, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("8_oiae0")
+text = "Death message here"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Depth Message" type="Label" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.631373, 0.470588, 1)
+theme_override_colors/font_outline_color = Color(0.223529, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("8_oiae0")
+text = "You made it to a depth of: %s"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Button" type="Button" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_oiae0")
+text = "Continue"
+
+[node name="SceneFade" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -196.0
+offset_top = -110.0
+offset_right = 196.0
+offset_bottom = 109.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="enemies_dead" from="RoomControl" to="HUD" method="_on_room_control_enemies_dead"]
+[connection signal="entered_combat" from="RoomControl" to="HUD" method="_on_room_control_entered_combat"]
+[connection signal="button_down" from="GameOver/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_button_down"]
+
+[editable path="Healthbar"]

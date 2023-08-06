@@ -20,10 +20,10 @@ position = Vector2(-145, 80)
 position = Vector2(144, -80)
 
 [node name="Ghost2" parent="." index="3" instance=ExtResource("3_ytm5v")]
-position = Vector2(-55, -50)
+position = Vector2(-55, -20)
 
 [node name="Ghost4" parent="." index="4" instance=ExtResource("3_ytm5v")]
-position = Vector2(144, 49)
+position = Vector2(113, 19)
 
 [node name="Flower" parent="." index="6" instance=ExtResource("6_cpw6r")]
 position = Vector2(-1, -6)

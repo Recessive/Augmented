@@ -34,7 +34,7 @@ var dead : bool = false
 
 func _parent_ready():
 	var h = PlayerStats.get_heat_scale()
-	SPEED = floor(SPEED * min(h, 1.5))
+	SPEED = floor(SPEED * min(h/2.0, 1.5))
 	ACCELERATION = floor(ACCELERATION * h)
 	CONTACT_PENETRATION = floor(CONTACT_PENETRATION * h)
 	CONTACT_DAMAGE = floor(CONTACT_DAMAGE * h)

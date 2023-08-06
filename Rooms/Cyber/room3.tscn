@@ -21,10 +21,10 @@ position = Vector2(144, -80)
 position = Vector2(-112, -80)
 
 [node name="Globos" parent="." index="4" instance=ExtResource("3_tmrtr")]
-position = Vector2(-149, -54)
+position = Vector2(-149, -29)
 
 [node name="Ghost" parent="." index="5" instance=ExtResource("5_g6ovw")]
-position = Vector2(144, 47)
+position = Vector2(143, -21)
 
 [node name="Flower" parent="." index="7" instance=ExtResource("7_nq0nt")]
-position = Vector2(0, -52)
+position = Vector2(92, -35)

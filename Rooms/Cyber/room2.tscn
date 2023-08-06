@@ -35,7 +35,7 @@ position = Vector2(64, 0)
 position = Vector2(128, 0)
 
 [node name="Ghost" parent="." index="8" instance=ExtResource("6_cqw0a")]
-position = Vector2(128, -48)
+position = Vector2(128, -32)
 
 [node name="Ghost2" parent="." index="9" instance=ExtResource("6_cqw0a")]
-position = Vector2(-128, -48)
+position = Vector2(-128, -32)

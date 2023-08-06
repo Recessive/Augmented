@@ -20,7 +20,7 @@ var critColor : Color
 @onready 
 var invi : Node = $Invincibility
 @onready
-var canTakeDmg : bool = invi.is_stopped()
+var canTakeDmg : bool = false
 @onready 
 var healthSprite : Node = get_node("../Healthbar/HealthbarSprite")
 @onready

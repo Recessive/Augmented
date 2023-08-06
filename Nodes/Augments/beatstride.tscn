@@ -5,7 +5,7 @@
 
 [node name="Augment" instance=ExtResource("1_j1p8j")]
 script = ExtResource("2_0g72o")
-speedUp = 1.0
-stackSpeed = 0.05
+speedUp = 1.15
+stackSpeed = 0.1
 augmentName = "Beatstride"
 augmentDesc = "Increases speed"

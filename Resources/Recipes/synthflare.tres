@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_8yt7p")
 tier1requirements = {
-"plate": 6,
+"plate": 4,
 "tube": 1
 }
 tier2requirements = {
-"circuit": 2
+"circuit": 1
 }
 bodyPart = "Arms"
 productName = "Synthflare"
