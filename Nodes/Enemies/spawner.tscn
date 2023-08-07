@@ -51,6 +51,7 @@ texture_filter = 1
 script = ExtResource("2_hrt2p")
 toSpawn = null
 spawnSpeed = 16
+customSpawnValues = {}
 tier1drops = Array[String](["gear", "plate", "tube"])
 tier2drops = Array[String](["circuit"])
 tier2chance = 0.3

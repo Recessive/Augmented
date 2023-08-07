@@ -67,11 +67,11 @@ func room_ready():
 	
 	# increase depth for each room
 	PlayerStats.depth += 1
-	if PlayerStats.depth % 10 == 0:
+	if PlayerStats.depth % 10 == 0 or (PlayerStats.heat >= 10 and PlayerStats.depth % 5 == 0):
 		PlayerStats.heat += 1# increase heat once for each 10 rooms you go through
 	
 	if PlayerStats.depth != 1:
-		GlobalAssets.SpawnText("Depth +1", Vector2(-16, 0))
+		GlobalAssets.SpawnText("Depth +1", Vector2(0, -16))
 	
 	PlayerStats.proc_new_room()
 

@@ -76,6 +76,8 @@ var animation : AnimatedSprite2D
 var laserTween : Tween
 func _ready():
 	_parent_ready()
+	var h = PlayerStats.get_heat_scale()
+	DAMAGE = floor(DAMAGE * h)
 	Conductor.onBeat.connect(beat)
 	telegraphLine.add_point(Vector2(0, 0))
 	laserChargeLine.add_point(Vector2(0, 0))
@@ -133,7 +135,7 @@ func hurt(attack : Attack):
 	if dead:
 		return
 	hp -= attack.damage
-	GlobalAssets.SpawnDamageNumber(attack.damage, sprite.global_position)
+	GlobalAssets.SpawnDamageNumber(attack.damage, sprite.global_position + Vector2(0, -10))
 	
 func die():
 	dead = true
@@ -166,12 +168,12 @@ var lastShootBeat : int
 var result
 func beat(enabled : Array[bool], beat : int):
 	if dead: return
-	if beat % chargeFrequency != 0:
+	if (beat + offsetBeats) % chargeFrequency != 0:
 		return
 	
 	if preppingBeats > 0:
 		preppingBeats -= 1
-		laserLockSound.play()
+		SfxDeconflicter.play(laserLockSound)
 		pivot = target
 		var pos
 		if(telegraphLine.points.size() == 1):
@@ -197,7 +199,7 @@ func beat(enabled : Array[bool], beat : int):
 	else:
 		lastShootBeat = beat
 		# "Shoot" along the drawn path
-		laserSound.play()
+		SfxDeconflicter.play(laserSound)
 		pivot = telegraphLine.to_global(telegraphLine.points[0])
 		target = telegraphLine.to_global(telegraphLine.points[1])
 		

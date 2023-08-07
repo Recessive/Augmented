@@ -16,6 +16,8 @@ tier1drops = Array[String]([])
 tier2drops = Array[String]([])
 tier1chance = 1.0
 tier2chance = 0.0
+eliteColoring = Color(1, 0.635294, 0.576471, 1)
+elite = false
 
 [node name="Area2D" parent="." index="3"]
 collision_layer = 4

@@ -91,15 +91,17 @@ tweenTime = 1.0
 scaleUp = 3.0
 qualityIcons = Array[CompressedTexture2D]([ExtResource("2_ewqm8"), ExtResource("3_imhv3"), ExtResource("4_adkyo"), ExtResource("5_6erho"), ExtResource("6_l2406"), ExtResource("7_128sl")])
 installedAugmentFGColor = Color(0.305882, 1, 1, 1)
-craftableAugmentBGColor = Color(1, 1, 1, 1)
-craftableAugmentFGColor = Color(0, 0.752941, 0, 1)
+craftableAugmentBGColor = Color(0.407843, 0.407843, 0.407843, 0.490196)
+craftableAugmentFGColor = Color(1, 1, 1, 1)
+uncraftableAugmentBGColor = Color(0.164706, 0.164706, 0.164706, 0.490196)
+uncraftableAugmentFGColor = Color(0.262745, 0.262745, 0.262745, 1)
 
 [node name="DescriptionRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 offset_left = 13.0
-offset_top = -12.0
+offset_top = -11.0
 offset_right = 31.0
-offset_bottom = 18.0
+offset_bottom = 19.0
 color = Color(0, 0, 0, 0.67451)
 
 [node name="Title" type="Node2D" parent="DescriptionRect"]
@@ -221,7 +223,7 @@ offset_left = -12.0
 offset_top = -11.0
 offset_right = 12.0
 offset_bottom = 19.0
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 0.67451)
 
 [node name="Head" type="Area2D" parent="."]
 collision_layer = 512

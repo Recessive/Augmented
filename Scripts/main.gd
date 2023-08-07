@@ -12,8 +12,17 @@ func _ready():
 	tween.tween_property($BasicComponents, "volume_db", -20, 1)
 	await tween.finished
 	
-	#for i in range(1):
-	#	PlayerStats.add_augment(AugmentData.name_to_augment("Overclock"), "Head")
+	# buff_player()
+	
+func buff_player():
+	for i in range(1):
+		PlayerStats.add_augment(AugmentData.name_to_augment("Overclock"), "Head")
+	for i in range(2):
+		PlayerStats.add_augment(AugmentData.name_to_augment("Swiftblitz"), "Head")
+	for i in range(5):
+		PlayerStats.add_augment(AugmentData.name_to_augment("Synthflare"), "Arms")
+	for i in range(3):
+		PlayerStats.add_augment(AugmentData.name_to_augment("Beatstride"), "Body")
 	
 	
 

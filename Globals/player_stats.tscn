@@ -7,6 +7,7 @@ script = ExtResource("1_5oy3t")
 startMaxHP = 200.0
 startMaxSpeed = 75.0
 startAcceleration = 500.0
+startDamage = 5.0
 startCritChance = 0.1
 startAttackSpeed = 4
 heatScaling = 0.1

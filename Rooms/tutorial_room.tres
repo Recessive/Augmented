@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_yikpu")
 rooms = Array[String](["res://Rooms/Tutorial/TutorialRoom2.tscn"])
-highHeatRooms = Array[String]([])
+highHeatRooms = Array[String](["res://Rooms/Tutorial/TutorialRoom2.tscn"])
 weight = 1.0
 type = "cyber"

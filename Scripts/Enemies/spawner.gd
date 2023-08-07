@@ -6,6 +6,8 @@ var toSpawn : PackedScene
 @export
 var spawnSpeed : int # in beats
 
+@export
+var customSpawnValues : Dictionary
 
 var lastSpawn : int
 var lastSpawnTime : float
@@ -34,8 +36,11 @@ func beat(enabled : Array[bool], beat : int):
 		lastSpawn = beat
 		lastSpawnTime = Conductor.BeatToTime(lastSpawn)
 		
+		
 		var o = toSpawn.instantiate()
 		o.global_position = global_position
 		o.dontDrop = true
+		for key in customSpawnValues:
+			o.set(key, customSpawnValues[key])
 		get_parent().add_child(o)
 		

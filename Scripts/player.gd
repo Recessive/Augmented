@@ -120,7 +120,7 @@ func hurt(attack : Attack):
 		PlayerStats.hp -= attack.damage
 		PlayerStats.update_healthbar()
 		velocity = (global_position - attack.pos).normalized() * (attack.knockback * PlayerStats.knockbackResistance)
-		GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
+		GlobalAssets.SpawnDamageNumber(attack.damage, global_position + Vector2(0, -10))
 		$HitSound.pitch_scale = randf_range(0.7, 1.3)
 		$HitSound.play()
 		

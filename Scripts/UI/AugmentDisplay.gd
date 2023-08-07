@@ -23,6 +23,12 @@ var craftableAugmentBGColor : Color
 @export
 var craftableAugmentFGColor : Color
 
+@export
+var uncraftableAugmentBGColor : Color
+
+@export
+var uncraftableAugmentFGColor : Color
+
 @onready
 var baseScale : Vector2 = scale
 @onready
@@ -46,6 +52,7 @@ func _ready():
 			child.clicked.connect(part_clicked)
 
 func expand():
+	visible = true
 	var tween = create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
 	pulse_parts()
 	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), tweenTime)
@@ -162,6 +169,8 @@ func _on_back_button_button_down():
 		minimize(tween)
 		selectable = false
 		emit_signal("augment_cancelled")
+		await tween.finished
+		visible = false
 
 func populate_list(partName : String):
 	list.clear()
@@ -174,7 +183,7 @@ func populate_list(partName : String):
 			partRecipes.append(recipe)
 			ind = recipe.quality*2
 			list.add_item(recipe.productName, qualityIcons[ind])
-			# list.set_item_custom_bg_color(-1, craftableAugmentBGColor)
+			list.set_item_custom_bg_color(-1, craftableAugmentBGColor)
 			list.set_item_custom_fg_color(-1, craftableAugmentFGColor)
 	
 	for recipe in AugmentData.recipes:
@@ -183,6 +192,8 @@ func populate_list(partName : String):
 			partRecipes.append(recipe)
 			ind = recipe.quality*2+1
 			list.add_item(recipe.productName, qualityIcons[ind])
+			list.set_item_custom_bg_color(-1, uncraftableAugmentBGColor)
+			list.set_item_custom_fg_color(-1, uncraftableAugmentFGColor)
 	
 	for i in list.item_count:
 		if PlayerStats.augments.has(partAugments[i]):
@@ -237,6 +248,8 @@ func _on_accept_button_button_down():
 		$Accept.visible = false
 		reset_ui(tween)
 		minimize(tween)
-		await tween.finished
 		selectable = false
+		await tween.finished
+		visible = false
+		
 		

@@ -54,8 +54,10 @@ size = Vector2(20, 29)
 [node name="Flower" instance=ExtResource("1_cax3u")]
 texture_filter = 1
 script = ExtResource("2_50nrw")
+DAMAGE = 15.0
 attackSpeed = 16
 shootCount = 3
+shootOffset = 0
 projectile = ExtResource("3_gjocr")
 CONTACT_DAMAGE = 15.0
 CONTACT_KNOCKBACK = 100.0

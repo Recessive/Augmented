@@ -27,6 +27,12 @@ var tier1chance : float = 1
 @export
 var tier2chance : float
 
+@export
+var eliteColoring : Color
+
+@export
+var elite : bool
+
 var dontDrop : bool = false
 
 var dead : bool = false
@@ -41,6 +47,9 @@ func _parent_ready():
 	maxHP = floor(maxHP * h)
 	$"Sprite2D/Healthbar".maxHP = maxHP
 	hp = maxHP
+	
+	if elite:
+		modulate = eliteColoring
 	
 
 func set_hp(value):
@@ -57,7 +66,7 @@ func hurt(attack : Attack):
 	if dead: return
 	hp -= attack.damage
 	velocity = (global_position - attack.pos).normalized() * attack.knockback
-	GlobalAssets.SpawnDamageNumber(attack.damage, global_position)
+	GlobalAssets.SpawnDamageNumber(attack.damage, global_position + Vector2(0, -10))
 	if attack.isCrit:
 		$CritSound.pitch_scale = randf_range(0.7, 1.3)
 		$CritSound.play()

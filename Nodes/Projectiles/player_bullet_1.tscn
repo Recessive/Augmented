@@ -49,7 +49,6 @@ collision_layer = 0
 collision_mask = 5
 SPEED = 3.0
 PROC_CHANCE = 1.0
-DAMAGE = 5.0
 KNOCKBACK = 50.0
 targetGroup = "Enemies"
 playerBullet = true

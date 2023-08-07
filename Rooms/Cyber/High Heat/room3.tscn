@@ -20,9 +20,11 @@ position = Vector2(-150, 54)
 
 [node name="Globos3" parent="." index="5" instance=ExtResource("2_oy2qd")]
 position = Vector2(150, 55)
+offsetBeats = 2
 
 [node name="Globos4" parent="." index="6" instance=ExtResource("2_oy2qd")]
 position = Vector2(149, -55)
+offsetBeats = 2
 
 [node name="Door" parent="." index="7" instance=ExtResource("3_ofj2g")]
 position = Vector2(16, -80)

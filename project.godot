@@ -21,6 +21,7 @@ PlayerStats="*res://Globals/player_stats.tscn"
 Conductor="*res://Scripts/Conductor.gd"
 GlobalAssets="*res://Globals/global_assets.tscn"
 AugmentData="*res://Globals/augment_data.tscn"
+SfxDeconflicter="*res://Globals/sfx_deconflicter.tscn"
 
 [display]
 

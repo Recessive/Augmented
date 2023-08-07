@@ -20,8 +20,11 @@ position = Vector2(80, -80)
 
 [node name="Flower" parent="." index="5" instance=ExtResource("3_2r1gh")]
 position = Vector2(-81, -51)
-shootCount = 5
+shootCount = 6
+shootOffset = 8
+elite = true
 
 [node name="Flower2" parent="." index="6" instance=ExtResource("3_2r1gh")]
 position = Vector2(81, -51)
-shootCount = 5
+shootCount = 6
+elite = true

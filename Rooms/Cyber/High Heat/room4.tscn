@@ -14,8 +14,10 @@ doorNodes = [NodePath("Door"), NodePath("Door2")]
 roomTypeList = Array[Resource("res://Scripts/Room.gd")]([ExtResource("2_k7ys4"), ExtResource("3_7i1al")])
 
 [node name="Spawner" parent="." index="3" instance=ExtResource("2_8m4cp")]
-position = Vector2(0, -48)
+position = Vector2(0, -38)
 toSpawn = ExtResource("3_p3fd5")
+spawnSpeed = 8
+elite = true
 
 [node name="Door" parent="." index="4" instance=ExtResource("4_wkt30")]
 position = Vector2(-16, -80)

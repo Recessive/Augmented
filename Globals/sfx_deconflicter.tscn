@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo6cde8esg1wq"]
+
+[ext_resource type="Script" path="res://Scripts/Globals/sfx_deconflicter.gd" id="1_lt258"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_lt258")

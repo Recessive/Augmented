@@ -1,11 +1,16 @@
 extends "res://Scripts/Base/EnemyBase.gd"
 
+@export
+var DAMAGE : float
 
 @export
 var attackSpeed : int # in beats
 
 @export
 var shootCount : int
+
+@export
+var shootOffset : int
 
 @export
 var projectile : PackedScene
@@ -17,6 +22,8 @@ var player : Node
 
 func _ready():
 	_parent_ready()
+	var h = PlayerStats.get_heat_scale()
+	DAMAGE = floor(DAMAGE * h)
 	Conductor.onBeat.connect(beat)
 	player = PlayerStats.player
 	
@@ -35,8 +42,8 @@ func _process(delta):
 func beat(enabled : Array[bool], beat : int):
 	if dead:
 		return
-	if beat % attackSpeed == 0:
-		$Shoot.play()
+	if (beat + shootOffset) % attackSpeed == 0:
+		SfxDeconflicter.play($Shoot)
 		lastShot = beat
 		lastShotTime = Conductor.BeatToTime(lastShot)
 		var baseAngle = global_position.angle_to_point(player.global_position)
@@ -46,6 +53,7 @@ func beat(enabled : Array[bool], beat : int):
 		var b : Node
 		for i in range(shootCount):
 			b = projectile.instantiate()
+			b.DAMAGE = DAMAGE
 			direc = Vector2(cos(angle), sin(angle))
 			vel = direc * b.SPEED
 			PlayerStats.disposables.add_child(b)

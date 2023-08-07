@@ -7,6 +7,7 @@
 [node name="Augment" instance=ExtResource("1_3i5vq")]
 script = ExtResource("2_h6dj8")
 burnDebuff = ExtResource("3_t3q8t")
+chanceAdd = 0.1
 augmentName = "Synthflare"
 augmentDesc = "Chance to burn enemies on hit"
-chance = 0.1
+chance = 0.4
